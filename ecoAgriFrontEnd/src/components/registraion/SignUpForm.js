@@ -1,15 +1,30 @@
 import { Button, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { userTypeSelectorButtonActions } from '../../store/userType-selector-slice';
 import CenteredBox from '../ui/CenteredBox';
+import GoBackIcon from '../ui/GoBackIcon';
+import GoForward from '../ui/GoForward';
 import ImageUploader from '../ui/ImageUploader';
 import PasswordInputField from '../ui/PasswordInputField'
-import classes from "./Registraion.module.css";
+import classes from "./SignUpForm.module.css";
 
 function SignUpForm(props) {
     console.log(props.userType);
+    const selectedSignupButton = useSelector(
+        (state) => state.userTypeSelectorButton.selectedSignupButton
+    );
+    const dispatch = useDispatch();
+    const backButtonClicked = () => {
+        dispatch(userTypeSelectorButtonActions.setBeforeClickBackButton(props.userType));
+        dispatch(userTypeSelectorButtonActions.setSelectedSignupButton(""));
+    }
     return (
         <div className={classes["forms-wrap"]}>
             <form>
+                <div onClick={backButtonClicked}>
+                    <GoBackIcon show={selectedSignupButton !== ""} />
+                </div>
                 <Grid container sx={{ mb: 3 }}>
                     <Grid item xs={12}>
                         <CenteredBox align="center">
@@ -19,32 +34,39 @@ function SignUpForm(props) {
                 </Grid>
                 <Grid container spacing={2} sx={{ mb: 3 }}>
                     <Grid item xs={6}>
-                        <TextField variant="standard" label="First Name" />
+                        <TextField required variant="standard" label="First Name" />
                     </Grid>
                     <Grid item xs={6}>
-                        <TextField variant="standard" label="Last Name" />
+                        <TextField required variant="standard" label="Last Name" />
                     </Grid>
                 </Grid>
                 <Grid container sx={{ mb: 3 }} spacing={3}>
                     <Grid item xs={12}>
-                        <TextField variant="standard" fullWidth label="Phone number" />
+                        <TextField required variant="standard" fullWidth label="Phone number" />
                     </Grid>
-                    <Grid item xs={12}>
-                        <TextField variant="standard" fullWidth label="Address" />
-                    </Grid>
+                    {props.userType !== "Buyer" &&
+                        <Grid item xs={12}>
+                            <TextField required variant="standard" fullWidth label="Address" />
+                        </Grid>
+                    }
+                    {props.userType === "Advertiser" &&
+                        <Grid item xs={12}>
+                            <TextField required variant="standard" fullWidth label="Email" />
+                        </Grid>
+                    }
                 </Grid>
                 <Grid container spacing={2} sx={{ mb: 3 }}>
                     <Grid item xs={6}>
-                        <TextField variant="standard" label="City" />
+                        <TextField required variant="standard" label="City" />
                     </Grid>
                     <Grid item xs={6}>
-                        <TextField variant="standard" label="Town" />
+                        <TextField required variant="standard" label="Town" />
                     </Grid>
                 </Grid>
                 <Grid container sx={{ mb: 3 }} spacing={3}>
                     {props.userType === "Charity" &&
                         <Grid item xs={12}>
-                            <TextField variant="standard" fullWidth label="Registration No." />
+                            <TextField required variant="standard" fullWidth label="Registration No." />
                         </Grid>
                     }
                     {props.userType === "Charity" &&
@@ -54,6 +76,7 @@ function SignUpForm(props) {
                     }
                     <Grid item xs={12}>
                         <PasswordInputField
+                            required
                             label="Password"
                             id="standard-adornment-sign-up-password"
                             name="password"
@@ -61,6 +84,7 @@ function SignUpForm(props) {
                     </Grid>
                     <Grid item xs={12}>
                         <PasswordInputField
+                            required
                             label="Confirm Password"
                             name="confirm_password"
                             id="standard-adornment-sign-up-confirm-password"

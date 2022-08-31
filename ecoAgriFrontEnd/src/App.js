@@ -5,6 +5,7 @@ import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material'
 import { red } from '@mui/material/colors';
 import Login from './components/pages/Login';
 import Test from './components/ui/ImageUploader';
+import DashBoard from './components/pages/farmer/DashBoard';
 
 function App() {
   const theme = createTheme({
@@ -18,9 +19,10 @@ function App() {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<Registration />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/test" element={<Test />}></Route>
+          <Route path="/" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/farmer/dashboard" element={<DashBoard />} />
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>
