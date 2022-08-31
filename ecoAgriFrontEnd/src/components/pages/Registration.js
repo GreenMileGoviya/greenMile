@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import SignUpForm from '../registraion/SignUpForm';
 import classes from "./Registration.module.css";
 
-
 export default function Registration() {
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
@@ -26,13 +25,11 @@ export default function Registration() {
     width: 400,
     height: (selectedSignupButton !== "") ? 600 : "auto",
     bgcolor: 'background.paper',
-    overflow: "auto",
-    // border: '2px solid #000',
     border: "none",
     boxShadow: 24,
     borderRadius: 5,
-    px: 4,
-    pt: 2
+    p: 4,
+    pr: 0,
   };
 
   return (
@@ -44,14 +41,14 @@ export default function Registration() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box>
-          <Box sx={style} className={classes.box}>
-          {selectedSignupButton === "" &&
-            <UserTypeSelector />
-          }
-          {selectedSignupButton !== "" &&
-            <SignUpForm userType={selectedSignupButton} />
-          }
+        <Box sx={style}>
+          <Box sx={{ pr: 2, height: (selectedSignupButton !== "") ? 600 : "auto", overflow: "auto" }} className={classes.box}>
+            {selectedSignupButton === "" &&
+              <UserTypeSelector />
+            }
+            {selectedSignupButton !== "" &&
+              <SignUpForm userType={selectedSignupButton} />
+            }
           </Box>
         </Box>
       </Modal>

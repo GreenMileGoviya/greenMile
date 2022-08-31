@@ -1,6 +1,6 @@
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import React from 'react'
-import classes from '../registraion/Registraion.module.css';
+import classes from '../registraion/SignUpForm.module.css';
 import CenteredBox from '../ui/CenteredBox';
 import PasswordInputField from '../ui/PasswordInputField';
 
