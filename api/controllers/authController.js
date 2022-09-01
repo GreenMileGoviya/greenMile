@@ -61,17 +61,7 @@ export const Login = async (req, res) => {
 
 //register
 export const Register = async (req, res) => {
-  const {
-    username,
-    email,
-    password,
-    confPassword,
-    userrole,
-    address,
-    phone_number,
-    city,
-    town,
-  } = req.body;
+  const { confPassword,password, ...other } = req.body;
   if (password !== confPassword)
     return res.send({
       message: "Password and Confirm Password does not match",
@@ -84,18 +74,12 @@ export const Register = async (req, res) => {
     console.log("Error in hashing");
   }
 
+  const userData = { ...other, password:hashPassword};
+  console.log(userData);
+
   try {
-    await Users.create({
-      username: username,
-      email: email,
-      password: hashPassword,
-      userrole: userrole,
-      address: address,
-      phone_number: phone_number,
-      city: city,
-      town: town,
-    });
-    res.send({ message: "Registration Successful" });
+    await Users.create(userData);
+    res.send({ message: "Registration Successfull" });
   } catch (error) {
     // console.log(error);
     res.status(500).json(error);

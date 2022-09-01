@@ -8,6 +8,7 @@ const Users = db.define(
   {
     username: {
       type: DataTypes.STRING,
+      unique: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -28,6 +29,12 @@ const Users = db.define(
       type: DataTypes.STRING,
     },
     town: {
+      type: DataTypes.STRING,
+    },
+    img: {
+      type: DataTypes.STRING,
+    },
+    registerNo: {
       type: DataTypes.STRING,
     },
     refresh_token: {

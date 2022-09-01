@@ -58,7 +58,7 @@ export const checkDuplicateUsernameOrEmail = async (req, res, next) => {
     },
   }).then((user) => {
     if (user) {
-      res.send({
+      res.status(500).send({
         message: "Failed! Username is already in use!",
       });
       return;
@@ -66,12 +66,12 @@ export const checkDuplicateUsernameOrEmail = async (req, res, next) => {
     // Email
     Users.findOne({
       where: {
-        email: req.body.email,
+        phone_number: req.body.phone_number,
       },
     }).then((user) => {
       if (user) {
-        res.send({
-          message: "Failed! Email is already in use!",
+        res.status(500).send({
+          message: "Failed! Phone Number is already in use!",
         });
         return;
       }
