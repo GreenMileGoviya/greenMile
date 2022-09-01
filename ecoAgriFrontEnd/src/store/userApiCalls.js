@@ -23,10 +23,13 @@ export const register = async (User) => {
     // dispatch(addUserStart());
     try {
       const res = await publicRequest.post(`/register`, User);
+      console.log(res);
       alert("User registration Success!");
+      return 1;
       //   dispatch(addUserSuccess(res.data));
     } catch (err) {
       alert("User registration Failed!");
+      return 0;
       //   dispatch(addUserFailure());
     }
   };

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserTypeSelectorButtonState = {
-  selectedSignupButton: "",
+  selectedSignupButton: "", //userType
   beforeClickBackButton: "",
 };
 const userTypeSelectorButtonSlice = createSlice({
