@@ -20,6 +20,7 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import MainTab from "./MainTab";
 import SettingsIcon from '@mui/icons-material/Settings';
 import SlideBar from "./SlideBar";
+import MainHeaderMenu from "./MainHeaderMenu";
 
 const theme = createTheme({
     breakpoints: {
@@ -77,9 +78,7 @@ export default function MainHeader(props) {
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton>
-                            <SettingsIcon />
-                        </IconButton>
+                        <MainHeaderMenu />
                     </Toolbar>
                 </AppBar>
                 <SlideBar open={mobileOpen} onClose={handleDrawerToggle} tabValue={tabValue} />
