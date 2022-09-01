@@ -10,6 +10,7 @@ import Sell from './components/pages/farmer/Sell';
 import Donate from './components/pages/farmer/Donate';
 import AddBank from './components/pages/farmer/AddBank';
 import Test from './components/ui/Test';
+import AddProduct from './components/pages/farmer/AddProduct';
 
 function App() {
   const theme = createTheme({
@@ -38,6 +39,7 @@ function App() {
           <Route path="/sell" element={<Sell />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
+          <Route path="/sell/add-product" element={<AddProduct />} />
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

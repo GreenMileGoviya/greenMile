@@ -19,6 +19,7 @@ export const SlideBarListItems = (tabValue) => {
                 id: "leftbar-listItem-2",
                 listName: "Add Product",
                 icon: <BookmarksIcon />,
+                link: "/sell/add-product"
             },
             {
                 id: "leftbar-listItem-3",
