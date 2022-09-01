@@ -3,23 +3,23 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const Login = async (req, res) => {
-  const { email, password } = req.body;
-  console.log("Login email---- " + email);
+  const { phone_number, password } = req.body;
+  console.log("Login phone_number---- " + phone_number);
   try {
     //find the user in users table
-    const userEmail = await Users.findOne({
+    const userphone_number = await Users.findOne({
       where: {
-        email: email,
+        phone_number: phone_number,
       },
     });
 
-    if (userEmail === null)
-      return res.json({ message: "Wrong Password or Email" });
+    if (userphone_number === null)
+      return res.json({ message: "Wrong Password or phone_number" });
 
-    const match = await bcrypt.compare(password, userEmail.password);
+    const match = await bcrypt.compare(password, userphone_number.password);
     // res.send(match);
-    if (!match) return res.json({ message: "Wrong Password or Email" });
-    const userId = userEmail.id;
+    if (!match) return res.status(500).json({ message: "Wrong Password or phone_number" });
+    const userId = userphone_number.id;
 
     // const accessToken = jwt.sign({ id: userId }, "SECRET_ACCESS", {
     //   expiresIn: "60s",
@@ -54,7 +54,7 @@ export const Login = async (req, res) => {
     const response = { ...updateUser.dataValues, accessToken: accessToken };
     res.status(200).json(response);
   } catch (err) {
-    // res.send({ message: "email is invalid" });
+    // res.send({ message: "phone_number is invalid" });
     res.status(500).json(err);
   }
 };
