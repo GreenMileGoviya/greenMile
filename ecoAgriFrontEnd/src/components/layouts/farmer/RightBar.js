@@ -13,8 +13,8 @@ export default function RightBar() {
     return (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2 }}>
             {itemData.map((item) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                    <ImageListItem>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <ImageListItem style={{borderRadius: 10}}>
                         <img
                             src={`${item.img}?w=248&fit=crop&auto=format`}
                             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}

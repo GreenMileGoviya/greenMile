@@ -10,18 +10,19 @@ const style = {
   // left: '50%',
   // transform: 'translate(-50%, -50%)',
   width: 400,
+  height: 505,
   bgcolor: 'background.paper',
+  overflow: "auto",
   border: "none",
   boxShadow: 24,
   borderRadius: 5,
   p: 4,
-  pr: 0,
 };
 function AddBankForm() {
   return (
     <div>
       <CenteredBox align="center">
-        <Box style={style}>
+        <Box sx={style}>
           <form>
             <Grid container sx={{ mb: 3 }}>
               <Grid item xs={12}>
