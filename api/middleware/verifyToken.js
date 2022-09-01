@@ -1,13 +1,16 @@
 import jwt from "jsonwebtoken";
 
+//TOKEN VERIFY
 export const verifyToken = (req, res, next) => {
-  let token = req.headers["x-access-token"];
-  if (!token) {
+  let authHeader = req.headers["token"];
+  console.log(authHeader);
+  if (!authHeader) {
     return res.status(403).send({
       message: "No token provided!",
     });
   }
-  jwt.verify(token, "SECRET_ACCESS", (err, decoded) => {
+  const token = authHeader.split(" ")[1];
+  jwt.verify(token, process.env.JWT_SEC, (err, decoded) => {
     if (err) {
       return res.status(401).send({
         message: "Unauthorized!",
