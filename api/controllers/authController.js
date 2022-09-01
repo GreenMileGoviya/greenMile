@@ -52,9 +52,10 @@ export const Login = async (req, res) => {
     });
 
     const response = { ...updateUser.dataValues, accessToken: accessToken };
-    res.json(response);
+    res.status(200).json(response);
   } catch (err) {
     // res.send({ message: "email is invalid" });
+    res.status(500).json(err);
   }
 };
 
@@ -96,6 +97,7 @@ export const Register = async (req, res) => {
     });
     res.send({ message: "Registration Successful" });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    res.status(500).json(error);
   }
 };

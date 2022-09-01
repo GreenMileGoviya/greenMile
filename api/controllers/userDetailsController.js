@@ -7,9 +7,9 @@ export const getUsers = async (req, res) => {
     //   attributes: ["id", "username", "email", "userrole", "refresh_token"],
     // });
     const users = await Users.findAll();
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 };
 
@@ -21,18 +21,18 @@ export const getUser = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 };
 
 //UPDATE
 export const updateUser = async (req, res) => {
   try {
-    const users = await Users.update(
+    const user_update = await Users.update(
       {
-        address: "452",
+        address: "466",
       },
       {
         where: {
@@ -40,6 +40,11 @@ export const updateUser = async (req, res) => {
         },
       }
     );
+    const users = await Users.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
     // const users = await Users.findOrCreate(
     //   {
     //     where: {
@@ -50,9 +55,9 @@ export const updateUser = async (req, res) => {
     //     }
     //   }
     // );
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 };
 
@@ -64,8 +69,8 @@ export const deleteUser = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.json(users);
+    res.status(200).json("User has been deleted...");
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 };
