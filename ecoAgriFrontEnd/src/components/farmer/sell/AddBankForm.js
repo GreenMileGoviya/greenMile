@@ -3,6 +3,7 @@ import { Button, Checkbox, FormControl, FormControlLabel, FormHelperText, Grid, 
 import { Box } from '@mui/system'
 import CenteredBox from '../../ui/CenteredBox';
 import classes from "../../ui/Form.module.css";
+import useInput from "../../../hooks/use-input";
 
 const style = {
   // position: 'absolute',
@@ -18,12 +19,110 @@ const style = {
   borderRadius: 5,
   p: 4,
 };
+
 function AddBankForm() {
+
+  const {
+    value: accNumber,
+    isValid: accNumberIsValid,
+    hasError: accNumberHasError,
+    error: accNumberError,
+    valueChangeHandler: accNumberChangeHandler,
+    inputBlurHandler: accNumberBlurHandler,
+  } = useInput((value) => {
+    if (value.trim() === "") {
+      return { inputIsValid: false, error: "Can't be Empty !" };
+    }
+    // else if (hasNumber(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained numbers !" };
+    // } else if (hasSpecialChars(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained special chars !" };
+    // } 
+    else {
+      return { inputIsValid: true, error: "" };
+    }
+  })
+
+  const {
+    value: ahName,
+    isValid: ahNameIsValid,
+    hasError: ahNameHasError,
+    error: ahNameError,
+    valueChangeHandler: ahNameChangeHandler,
+    inputBlurHandler: ahNameBlurHandler,
+  } = useInput((value) => {
+    if (value.trim() === "") {
+      return { inputIsValid: false, error: "Can't be Empty !" };
+    }
+    // else if (hasNumber(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained numbers !" };
+    // } else if (hasSpecialChars(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained special chars !" };
+    // } 
+    else {
+      return { inputIsValid: true, error: "" };
+    }
+  })
+
+  const {
+    value: bank,
+    isValid: bankIsValid,
+    hasError: bankHasError,
+    error: bankError,
+    valueChangeHandler: bankChangeHandler,
+    inputBlurHandler: bankBlurHandler,
+  } = useInput((value) => {
+    if (value === "") {
+      return { inputIsValid: false, error: "Can't be Empty !" };
+    }
+    // else if (hasNumber(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained numbers !" };
+    // } else if (hasSpecialChars(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained special chars !" };
+    // } 
+    else {
+      return { inputIsValid: true, error: "" };
+    }
+  })
+
+  const {
+    value: branch,
+    isValid: branchIsValid,
+    hasError: branchHasError,
+    error: branchError,
+    valueChangeHandler: branchChangeHandler,
+    inputBlurHandler: branchBlurHandler,
+  } = useInput((value) => {
+    if (value === "") {
+      return { inputIsValid: false, error: "Can't be Empty !" };
+    }
+    // else if (hasNumber(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained numbers !" };
+    // } else if (hasSpecialChars(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained special chars !" };
+    // } 
+    else {
+      return { inputIsValid: true, error: "" };
+    }
+  })
+
+  let formIsValid = false;
+  if (accNumberIsValid && ahNameIsValid && branchIsValid && bankIsValid) {
+    formIsValid = true;
+  }
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    if (!accNumberIsValid && !ahNameIsValid && !branchIsValid && !bankIsValid) {
+      return;
+    }
+
+    //api call here
+  }
   return (
     <div>
       <CenteredBox align="center">
         <Box sx={style}>
-          <form>
+          <form onSubmit={onSubmitHandler}>
             <Grid container sx={{ mb: 3 }}>
               <Grid item xs={12}>
                 <CenteredBox align="center">
@@ -38,6 +137,12 @@ function AddBankForm() {
                   required
                   label="Account Number"
                   type="number"
+                  name="AccountNumber"
+                  value={accNumber}
+                  onChange={accNumberChangeHandler}
+                  onBlur={accNumberBlurHandler}
+                  error={accNumberHasError}
+                  helperText={accNumberHasError ? accNumberError : ""}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -46,54 +151,56 @@ function AddBankForm() {
                   required
                   label="Account holder's name"
                   type="text"
+                  name="ahName"
+                  value={ahName}
+                  onChange={ahNameChangeHandler}
+                  onBlur={ahNameBlurHandler}
+                  error={ahNameHasError}
+                  helperText={ahNameHasError ? ahNameError : ""}
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControl fullWidth required>
+                <FormControl fullWidth required error={bankHasError}>
                   <InputLabel>Bank</InputLabel>
                   <Select
                     label="Bank"
-                  // value={university}
-                  // onChange={universityChangeHandler}
-                  // onBlur={universityBlurHandler}
+                    value={bank}
+                    onChange={bankChangeHandler}
+                    onBlur={bankBlurHandler}
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value={1}>University of Moratuwa</MenuItem>
-                    <MenuItem value={2}>University of Colombo</MenuItem>
-                    <MenuItem value={3}>University of Peradeniya</MenuItem>
-                    <MenuItem value={4}>University of Kelaniya</MenuItem>
-                    <MenuItem value={5}>University of Japura</MenuItem>
-                    <MenuItem value={6}>University of Ruhuna</MenuItem>
-                    {/* <MenuItem value={7}>Sri Lanka Institute of Information Technology (SLIIT)</MenuItem>
-                    <MenuItem value={8}>Informatics Information of Technology (IIT)</MenuItem> */}
+                    <MenuItem value={1}>Sampath Bank</MenuItem>
+                    <MenuItem value={2}>People's Bank</MenuItem>
+                    <MenuItem value={3}>bank of Peradeniya</MenuItem>
+                    <MenuItem value={4}>bank of Kelaniya</MenuItem>
+                    <MenuItem value={5}>bank of Japura</MenuItem>
+                    <MenuItem value={6}>bank of Ruhuna</MenuItem>
                   </Select>
-                  {/* <FormHelperText>{universityHasError ? universityError : ""}</FormHelperText> */}
+                  <FormHelperText>{bankHasError ? bankError : ""}</FormHelperText>
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl fullWidth required>
+                <FormControl fullWidth required error={branchHasError}>
                   <InputLabel>Branch</InputLabel>
                   <Select
                     label="Branch"
-                  // value={university}
-                  // onChange={universityChangeHandler}
-                  // onBlur={universityBlurHandler}
+                    value={branch}
+                    onChange={branchChangeHandler}
+                    onBlur={branchBlurHandler}
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value={1}>University of Moratuwa</MenuItem>
-                    <MenuItem value={2}>University of Colombo</MenuItem>
-                    <MenuItem value={3}>University of Peradeniya</MenuItem>
-                    <MenuItem value={4}>University of Kelaniya</MenuItem>
-                    <MenuItem value={5}>University of Japura</MenuItem>
-                    <MenuItem value={6}>University of Ruhuna</MenuItem>
-                    {/* <MenuItem value={7}>Sri Lanka Institute of Information Technology (SLIIT)</MenuItem>
-                    <MenuItem value={8}>Informatics Information of Technology (IIT)</MenuItem> */}
+                    <MenuItem value={1}>Moratuwa</MenuItem>
+                    <MenuItem value={2}>Colombo</MenuItem>
+                    <MenuItem value={3}>Peradeniya</MenuItem>
+                    <MenuItem value={4}>Kelaniya</MenuItem>
+                    <MenuItem value={5}>Japura</MenuItem>
+                    <MenuItem value={6}>Ruhuna</MenuItem>
                   </Select>
-                  {/* <FormHelperText>{universityHasError ? universityError : ""}</FormHelperText> */}
+                  <FormHelperText>{branchHasError ? branchError : ""}</FormHelperText>
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
@@ -112,7 +219,7 @@ function AddBankForm() {
             </Grid>
             <Grid container sx={{ mt: 3 }}>
               <Grid item xs={12}>
-                <Button fullWidth variant="contained" type="submit" style={{textTransform: "none"}}>Submit</Button>
+                <Button fullWidth variant="contained" type="submit" style={{ textTransform: "none" }} disabled={!formIsValid}>Submit</Button>
               </Grid>
             </Grid>
           </form>
