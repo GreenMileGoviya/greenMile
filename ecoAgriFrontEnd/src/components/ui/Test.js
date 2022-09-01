@@ -6,21 +6,21 @@ import Grid from '@mui/material/Grid';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import CenteredBox from '../../ui/CenteredBox';
+import CenteredBox from './CenteredBox';
 import { Typography } from '@mui/material';
 
-export default function RightBar() {
+export default function Test() {
     return (
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2 }}>
+        <Grid container spacing={2}>
             {itemData.map((item) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                <Grid item xs={3} key={item.img}>
                     <ImageListItem>
                         <img
                             src={`${item.img}?w=248&fit=crop&auto=format`}
                             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                             alt={item.title}
                             loading="lazy"
-                            style={{ height: "230px" }}
+                            style={{height: "220px"}}
                         />
                         <ImageListItemBar
                             title={item.title}
@@ -36,7 +36,7 @@ export default function RightBar() {
 const itemData = [
     {
         img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-        title: 'Mango',
+        title: 'Breakfast',
         author: <Grid container>
             <Grid item xs={8}>
                 <Typography variant="body2">

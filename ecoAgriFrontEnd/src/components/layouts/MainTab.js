@@ -42,35 +42,34 @@ export default function MainTab(props) {
                 value={value}
                 onChange={handleChange}
                 textColor="primary"
-                indicatorColor={false}
+                indicatorColor="primary" 
             >
                 <Tab
                     sx={{ minWidth: 0, p: 0 }}
                     value={0}
                     component={Link}
-                    to={"/main"}
-                    label={<Button style={{textTransform: "none"}} variant={value === 0 && "contained"}>Home</Button>}
+                    to={"/dashboard"}
+                    label={<Button style={{ textTransform: "none" }} variant={value === 0 && "contained"}>Home</Button>}
                 />
                 <Tab
-                    sx={{ minWidth: 0 }}
+                    sx={{ minWidth: 0, p: 0 }}
                     value={1}
-                    //   icon={<PeopleAltIcon />}
                     component={Link}
-                    to={"/my-network"}
-                    label="Buy"
+                    to={"/sell"}
+                    label={<Button style={{ textTransform: "none" }} variant={value === 1 && "contained"}>Sell</Button>}
                 />
                 <Tab
-                    sx={{ minWidth: 0 }}
+                    sx={{ minWidth: 0, p: 0 }}
                     value={2}
                     component={Link}
-                    to={"/chat"}
-                    label="Donate"
+                    to={"/donate"}
+                    label={<Button style={{ textTransform: "none" }} variant={value === 2 && "contained"}>Donate</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0 }}
                     value={3}
                     component={Link}
-                    to={"/chat"}
+                    to={"/profile"}
                     icon={<Avatar></Avatar>}
                 />
             </Tabs>
