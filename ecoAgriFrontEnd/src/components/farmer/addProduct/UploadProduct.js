@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react'
 import CenteredBox from '../../ui/CenteredBox';
-import ImageUploader from '../../ui/ImageUploader';
+import ImageUploader from '../../ui/imageUploader/ImageUploader';
 import UseImageInput from '../../../hooks/use-imageInput';
 const style = {
     position: 'relative',
@@ -19,12 +19,7 @@ const style = {
 };
 
 function UploadProduct() {
-    const {
-        handleUploadClick: handleUploadHandler,
-        imagePreview: profileImagePreview,
-        fileInput: profileImageInput,
-        imageData: profileImageData
-    } = UseImageInput(() => { })
+
     return (
         <div>
             <CenteredBox align="center">

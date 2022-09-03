@@ -42,7 +42,7 @@ export default function Registration() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Box sx={{ pr: 2, height: (selectedSignupButton !== "") ? 600 : "auto", overflow: "auto" }} className={classes.box}>
+          <Box sx={{ pr: 4, height: (selectedSignupButton !== "") ? 600 : "auto", overflow: "auto" }} className={classes.box}>
             {selectedSignupButton === "" &&
               <UserTypeSelector />
             }

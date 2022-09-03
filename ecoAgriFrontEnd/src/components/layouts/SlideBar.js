@@ -1,71 +1,39 @@
-import { Avatar, Badge, Box, Chip, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Avatar, Badge, Box, Chip, Collapse, createTheme, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ThemeProvider, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { SlideBarListItems } from './SlideBarListItems';
 
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import StarBorder from '@mui/icons-material/StarBorder';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import SendIcon from '@mui/icons-material/Send';
+const drawerWidth = 340;
 
-const drawerWidth = 240;
 
-const slidebarItems = [
-  {
-    id: "slider-icon-1",
-    icon: (
-      <div>
-        <Badge badgeContent={0} color="primary">
-          {/* <HouseIcon sx={{ fontSize: 30 }} /> */}
-        </Badge>{" "}
-        My Account
-      </div>
-    ),
-    linkName: "/main",
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#007A31",
+    },
   },
-  {
-    id: "slider-icon-2",
-    icon: (
-      <div>
-        <Badge badgeContent={0} color="primary">
-          {/* <PeopleAltIcon sx={{ fontSize: 30 }} /> */}
-        </Badge>{" "}
-        Orders
-      </div>
-    ),
-    linkName: "/my-network",
+  typography: {
+    fontFamily: "Poppins",
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
   },
-  {
-    id: "slider-icon-3",
-    icon: (
-      <div>
-        <Badge badgeContent={0} color="primary">
-          {/* <NotificationsIcon sx={{ fontSize: 30 }} /> */}
-        </Badge>{" "}
-        Articles
-      </div>
-    ),
-    linkName: "/notifications",
-  },
-  {
-    id: "slider-icon-5",
-    icon: (
-      <Chip
-        avatar={
-          <Avatar
-            alt="Natacha"
-            src="/images/tutors/tutor-1.jpg"
-            sx={{ fontSize: 30 }}
-          />
-        }
-        label="Kumud perera"
-        variant="outlined"
-        size="large"
-      />
-    ),
-    linkName: "/profile",
-  },
-];
-
+});
 function SlideBar(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [tabValue, setTabValue] = useState(props.value);
+  const [open, setOpen] = useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
   const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
@@ -74,43 +42,70 @@ function SlideBar(props) {
 
   const listItems = SlideBarListItems(props.tabValue);
   const drawer = (
-    <Box onClick={props.onClose} sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         EcoAgri
       </Typography>
       <Divider />
       <List>
         {listItems.map((listItem) => (
-          <ListItem key={listItem.id} disablePadding>
-          <ListItemButton onClick={() => { navigate(listItem.link) }}>
-            <ListItemIcon>{listItem.icon}</ListItemIcon>
-            <ListItemText primary={listItem.listName} />
-          </ListItemButton>
-        </ListItem>
+          <React.Fragment>
+            {
+              !listItem.hasExpand ?
+                (<ListItemButton key={listItem.id} onClick={() => navigate(listItem.link)}>
+                  <ListItemIcon>{listItem.icon}</ListItemIcon>
+                  <ListItemText primary={listItem.listName} />
+                </ListItemButton>
+                )
+                : (
+                  <React.Fragment>
+                    <ListItemButton key={listItem.id} onClick={handleClick}>
+                      <ListItemIcon>{listItem.icon}</ListItemIcon>
+                      <ListItemText primary={listItem.listName} />
+                      {open ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding>
+                        {listItem.expand.map((expandItem) => (
+                          <ListItemButton key={expandItem.id} onClick={() => navigate(expandItem.link)} sx={{ pl: 4 }}>
+                            <ListItemIcon>
+                              {expandItem.icon}
+                            </ListItemIcon>
+                            <ListItemText primary={expandItem.listName} />
+                          </ListItemButton>
+                        ))}
+                      </List>
+                    </Collapse>
+                  </React.Fragment>
+                )
+            }
+          </React.Fragment>
         ))}
       </List>
-    </Box>
+    </Box >
   );
   return (
-    <Box component="nav">
-      <Drawer
-        variant="temporary"
-        open={props.open}
-        onClose={props.onClose}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          //   display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-          },
-        }}
-      >
-        {drawer}
-      </Drawer>
-    </Box>
+    // <ThemeProvider theme={theme}>
+      <Box component="nav">
+        <Drawer
+          variant="temporary"
+          open={props.open}
+          onClose={props.onClose}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            //   display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    // </ThemeProvider>
   )
 }
 

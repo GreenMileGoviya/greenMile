@@ -13,16 +13,20 @@ import { userTypeSelectorButtonActions } from "../../store/userType-selector-sli
 import CenteredBox from "../ui/CenteredBox";
 import GoBackIcon from "../ui/GoBackIcon";
 import GoForward from "../ui/GoForward";
-import ImageUploader from "../ui/ImageUploader";
+import ImageUploader from "../ui/imageUploader/ImageUploader";
 import PasswordInputField from "../ui/PasswordInputField";
 import classes from "./SignUpForm.module.css";
 import { register } from "../../store/userApiCalls";
 import { useNavigate } from "react-router";
 import useInput from "../../hooks/use-input";
+import FileUploader from "../ui/fileUploader/FileUploader";
 function SignUpForm(props) {
   console.log(props.userType);
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
+  const setCharityFile = (value) => {
+    setFile(value)
+  }
   // const [password, setPassword] = useState(null);
   // const [confirmPassword, setConfirmPassword] = useState(null);
   const selectedSignupButton = useSelector(
@@ -302,7 +306,7 @@ function SignUpForm(props) {
 
   const clickRegister = async (e) => {
     e.preventDefault();
-    if(!formIsValid) {
+    if (!formIsValid) {
       return;
     }
     let data = {
@@ -317,7 +321,7 @@ function SignUpForm(props) {
       password: password,
       confPassword: confirmPassword,
     };
-    
+
     if (props.userType !== "Charity") {
       data = {
         ...data,
@@ -334,7 +338,7 @@ function SignUpForm(props) {
     console.log(data);
   };
   return (
-    <div className={classes["forms-wrap"]}>
+    <div>
       <form onSubmit={clickRegister}>
         <div onClick={backButtonClicked}>
           <GoBackIcon show={selectedSignupButton !== ""} />
@@ -353,8 +357,8 @@ function SignUpForm(props) {
               fullWidth
               variant="standard"
               label="First Name"
-              name="username"
-              id="username"
+              name="fname"
+              id="fname"
               type="text"
               // onChange={handleChange}
               value={fname}
@@ -370,8 +374,8 @@ function SignUpForm(props) {
               fullWidth
               variant="standard"
               label="Last Name"
-              name="username"
-              id="username"
+              name="lname"
+              id="lname"
               type="text"
               // onChange={handleChange}
               value={lname}
@@ -484,13 +488,13 @@ function SignUpForm(props) {
           )}
           {props.userType === "Charity" && (
             <Grid item xs={12}>
-              <ImageUploader
+              <FileUploader
                 required
                 label="Registration proof"
                 type="file"
                 id="file"
                 name="file"
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={setCharityFile}
               />
             </Grid>
           )}

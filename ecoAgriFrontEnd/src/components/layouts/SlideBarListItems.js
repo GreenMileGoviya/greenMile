@@ -19,7 +19,23 @@ export const SlideBarListItems = (tabValue) => {
                 id: "leftbar-listItem-2",
                 listName: "Add Product",
                 icon: <BookmarksIcon />,
-                link: "/sell/add-product"
+                hasExpand: true,
+                expand: [
+                    {
+                        id: "leftbar-listItem-2-1",
+                        listName: "Add to Sale",
+                        link: "/sell/add-sell-product",
+                        icon: <BookmarksIcon />,
+                        hasExpand: false,
+                    },
+                    {
+                        id: "leftbar-listItem-2-2",
+                        listName: "Add to donate",
+                        link: "/sell/add-donate-product",
+                        icon: <BookmarksIcon />,
+                        hasExpand: false,
+                    }
+                ]
             },
             {
                 id: "leftbar-listItem-3",
