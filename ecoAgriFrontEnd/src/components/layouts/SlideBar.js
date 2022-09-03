@@ -49,7 +49,7 @@ function SlideBar(props) {
       <Divider />
       <List>
         {listItems.map((listItem) => (
-          <React.Fragment>
+          <div key={listItem.id}>
             {
               !listItem.hasExpand ?
                 (<ListItemButton key={listItem.id} onClick={() => navigate(listItem.link)}>
@@ -79,7 +79,7 @@ function SlideBar(props) {
                   </React.Fragment>
                 )
             }
-          </React.Fragment>
+          </div>
         ))}
       </List>
     </Box >
