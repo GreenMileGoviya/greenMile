@@ -7,7 +7,7 @@ import ShowBankDetails from '../../farmer/sell/ShowBankDetails'
 import AddProductForm from '../../farmer/addProduct/AddProductForm'
 import UploadProduct from '../../farmer/addProduct/UploadProduct'
 
-function AddProduct() {
+function AddDonateProduct() {
     return (
         <React.Fragment>
             <MainHeader value={1}></MainHeader>
@@ -16,11 +16,11 @@ function AddProduct() {
                     <UploadProduct />
                 </Grid>
                 <Grid item xs={6}>
-                    <AddProductForm />
+                    <AddProductForm productType="donateProduct" />
                 </Grid>
             </Grid>
         </React.Fragment>
     )
 }
 
-export default AddProduct
+export default AddDonateProduct

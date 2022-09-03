@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Checkbox, FilledInput, FormControl, FormControlLabel, FormHelperText, Grid, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system'
 import CenteredBox from '../../ui/CenteredBox';
 import classes from "../../ui/Form.module.css";
 import useInput from "../../../hooks/use-input";
+import { useSelector } from 'react-redux';
 const style = {
   // position: 'absolute',
   // top: '50%',
@@ -19,8 +20,14 @@ const style = {
   p: 4,
 };
 
-function AddProductForm() {
+function AddProductForm(props) {
+  // const [images, setImages] = useState([])
 
+  // const setImagesHandler = (value) => {
+  //   setImages(images);
+  // }
+  const productImages = useSelector((state) => state.imageUpload.images);
+  console.log(productImages);
   const {
     value: productName,
     isValid: productNameIsValid,
@@ -245,6 +252,7 @@ function AddProductForm() {
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
+                {props.productType === "sellProduct" &&
                 <TextField
                   fullWidth
                   required
@@ -257,6 +265,7 @@ function AddProductForm() {
                   error={unitPriceHasError}
                   helperText={unitPriceHasError ? unitPriceError : ""}
                 />
+              }
               </Grid>
               <Grid item xs={6}>
                 <InputLabel htmlFor="outlined-adornment-password">Manufacture date*</InputLabel>
