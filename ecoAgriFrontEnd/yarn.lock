@@ -1779,6 +1779,17 @@
     "prop-types" "^15.8.1"
     "react-is" "^18.2.0"
 
+"@mui/x-data-grid@^5.17.0":
+  "integrity" "sha512-JiI2zNMN4fGKzHFy59/7PUE6LDablkJMWcXAc6fsSIh6cnnDk8zZVa8rOR7ntTu63G9L30iJ3mobPvjuoXjeCQ=="
+  "resolved" "https://registry.npmjs.org/@mui/x-data-grid/-/x-data-grid-5.17.0.tgz"
+  "version" "5.17.0"
+  dependencies:
+    "@babel/runtime" "^7.18.9"
+    "@mui/utils" "^5.9.3"
+    "clsx" "^1.2.1"
+    "prop-types" "^15.8.1"
+    "reselect" "^4.1.6"
+
 "@mui/x-date-pickers@^5.0.0-beta.7":
   "integrity" "sha512-3GugfJ17OQ13TOjyIvz/DsbtG3VF1cU+iKNxY+bscKx03LVJPTRZMXrMCVJnVz5L3mjhwWfcku7+nOY6aC0GVA=="
   "resolved" "https://registry.npmjs.org/@mui/x-date-pickers/-/x-date-pickers-5.0.0-beta.7.tgz"
@@ -8064,7 +8075,7 @@
   "resolved" "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
   "version" "1.0.0"
 
-"reselect@^4.1.5":
+"reselect@^4.1.5", "reselect@^4.1.6":
   "integrity" "sha512-ZovIuXqto7elwnxyXbBtCPo9YFEr3uJqj2rRbcOOog1bmu2Ag85M4hixSwFWyaBMKXNgvPaJ9OSu9SkBPIeJHQ=="
   "resolved" "https://registry.npmjs.org/reselect/-/reselect-4.1.6.tgz"
   "version" "4.1.6"

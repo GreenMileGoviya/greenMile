@@ -11,13 +11,6 @@ function DashBoard() {
             <Grid
                 container
                 spacing={2}
-                style={{
-                    boxSizing: "initial",
-                    width: "1500px",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    alignItems: "stretch",
-                }}
             >
                 <Grid
                     item

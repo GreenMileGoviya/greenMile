@@ -34,6 +34,13 @@ export default function MainTab(props) {
                 main: "#007A31",
             },
         },
+        typography: {
+            fontFamily: "Poppins",
+            fontWeightLight: 400,
+            fontWeightRegular: 500,
+            fontWeightMedium: 600,
+            fontWeightBold: 700,
+        },
     });
 
     return (
@@ -42,7 +49,7 @@ export default function MainTab(props) {
                 value={value}
                 onChange={handleChange}
                 textColor="primary"
-                indicatorColor="primary" 
+                indicatorColor="primary"
             >
                 <Tab
                     sx={{ minWidth: 0, p: 0 }}

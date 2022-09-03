@@ -7,10 +7,11 @@ import Login from './components/pages/Login';
 import DashBoard from './components/pages/farmer/DashBoard';
 import Buy from './components/pages/farmer/Buy';
 import Sell from './components/pages/farmer/Sell';
-import Donate from './components/pages/farmer/Donate';
+import PendingDonations from './components/pages/farmer/PendingDonations';
 import AddBank from './components/pages/farmer/AddBank';
 import Test from './components/ui/Test';
 import AddProduct from './components/pages/farmer/AddProduct';
+import Donate from './components/pages/farmer/Donate';
 
 function App() {
   const theme = createTheme({
@@ -38,6 +39,7 @@ function App() {
           <Route path="/buy" element={<Buy />} />
           <Route path="/sell" element={<Sell />} />
           <Route path="/donate" element={<Donate />} />
+          <Route path="/donate/pending" element={<PendingDonations />} />
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-product" element={<AddProduct />} />
         </Routes>
