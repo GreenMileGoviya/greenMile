@@ -1,5 +1,6 @@
-import { Card, Grid, Typography } from '@mui/material'
+import { Button, Card, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router';
 import CenteredBox from '../CenteredBox';
 
 const style = {
@@ -9,8 +10,12 @@ const style = {
     transform: 'translate(-50%, -50%)',
 };
 function SlideBarBox(props) {
+    const navigate = useNavigate();
+    const redirectHandler = () => {
+        navigate(props.link)
+    }
     return (
-        <Card sx={{ width: "100px", height: "100px", p: 2, position: 'relative' }}>
+        <Button onClick={redirectHandler} variant="contained" sx={{ width: "120px", height: "120px", p: 2, position: 'relative', textTransform: "none" }}>
             <div style={style}>
                 <CenteredBox align="center">
                     <Typography>{props.number}</Typography>
@@ -19,7 +24,7 @@ function SlideBarBox(props) {
                     <Typography>{props.name}</Typography>
                 </CenteredBox>
             </div>
-        </Card>
+        </Button>
     )
 }
 
