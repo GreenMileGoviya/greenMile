@@ -43,7 +43,7 @@ function App() {
           <Route path="/donate/pending" element={<PendingDonations />} />
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
-          <Route path="/sell/add-donate-product" element={<AddDonateProduct />} />
+          <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

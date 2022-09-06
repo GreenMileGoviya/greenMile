@@ -18,15 +18,11 @@ const style = {
     p: 4,
 };
 
-function UploadProduct() {
+function UploadProduct(props) {
 
     return (
         <div>
-            <CenteredBox align="center">
-                <Box sx={style}>
-                    <ImageUploader />
-                </Box>
-            </CenteredBox>
+            <ImageUploader size={props.size} />
         </div>
     )
 }

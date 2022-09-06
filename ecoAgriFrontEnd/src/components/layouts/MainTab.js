@@ -56,21 +56,21 @@ export default function MainTab(props) {
                     value={0}
                     component={Link}
                     to={"/dashboard"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 0 && "contained"}>Home</Button>}
+                    label={<Button style={{ textTransform: "none" }} variant={value === 0 ? "contained": ""}>Home</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0, p: 0 }}
                     value={1}
                     component={Link}
                     to={"/sell"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 1 && "contained"}>Sell</Button>}
+                    label={<Button style={{ textTransform: "none" }} variant={value === 1 ? "contained": ""}>Sell</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0, p: 0 }}
                     value={2}
                     component={Link}
                     to={"/donate"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 2 && "contained"}>Donate</Button>}
+                    label={<Button style={{ textTransform: "none" }} variant={value === 2 ? "contained": ""}>Donate</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0 }}
