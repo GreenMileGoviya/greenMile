@@ -11,6 +11,7 @@ import { Avatar, Badge, IconButton, List, ListItemButton, ListItemIcon, ListItem
 import classes from "./NotificationMenu.module.css";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { SlideBarListItems } from './SlideBarListItems';
+import NotiPanel from './NotiPanel';
 
 
 const options = [
@@ -44,7 +45,7 @@ export default function NotifcationMenu() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 300,
+        width: 500,
         // height: (selectedSignupButton !== "") ? 600 : "auto",
         height: 400,
         bgcolor: 'background.paper',
@@ -52,7 +53,8 @@ export default function NotifcationMenu() {
         boxShadow: 24,
         borderRadius: 5,
         p: 4,
-        pr: 0
+        pr: 0,
+        pl: 0
     };
 
     const listItems = SlideBarListItems();
@@ -70,15 +72,8 @@ export default function NotifcationMenu() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Box sx={{ pr: 4, height: 400, overflow: "auto" }} className={classes.box}>
-                        <List>
-                            {options.map((option) => (
-                                <ListItemButton key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                                    <ListItemIcon><Avatar /></ListItemIcon>
-                                    <ListItemText primary={option} />
-                                </ListItemButton>
-                            ))}
-                        </List>
+                    <Box sx={{ height: 400, overflow: "auto" }} className={classes.box}>
+                        <NotiPanel />
                     </Box>
                 </Box>
             </Modal>

@@ -44,25 +44,6 @@ export const SlideBarListItems = (tabValue) => {
             },
         ];
         return listItems;
-    } else if (tabValue === 0) {
-        let listItems = [
-            {
-                id: "leftbar-listItem-1",
-                listName: "My Account",
-                icon: <PeopleAltIcon />,
-            },
-            {
-                id: "leftbar-listItem-3",
-                listName: "Orders",
-                icon: <CellTowerIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-            },
-        ];
-        return listItems;
     } else {
         let listItems = [
             {
@@ -74,36 +55,6 @@ export const SlideBarListItems = (tabValue) => {
                 id: "leftbar-listItem-3",
                 listName: "Orders",
                 icon: <CellTowerIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
             },
             {
                 id: "leftbar-listItem-2",

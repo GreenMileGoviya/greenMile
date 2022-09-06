@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
-import { Box, createTheme } from "@mui/material";
+import { Box, createTheme, Typography } from "@mui/material";
 import React from "react";
 import {
   BarChart,
@@ -72,28 +72,15 @@ const theme = createTheme({
   },
 });
 
-
-const style = {
-  // position: 'absolute',
-  // top: '50%',
-  // left: '50%',
-  // transform: 'translate(-50%, -50%)',
-  // width: "700px",
-  // height: 505,
-  bgcolor: 'background.paper',
-  // overflowX: "auto",
-  // border: "none",
-  // boxShadow: 24,
-  borderRadius: 5,
-  p: 4,
-};
 export default function SalesChart() {
   return (
     <ThemeProvider theme={theme}>
       <CenteredBox>
-        <Box sx={style}>
+          <CenteredBox align="center">
+            <Typography variant="h5">Last 7 Days Sales</Typography>
+          </CenteredBox>
           <BarChart
-            width={700}
+            width={650}
             height={400}
             data={data}
             margin={{
@@ -111,7 +98,6 @@ export default function SalesChart() {
             <CartesianGrid strokeDasharray="3 3" />
             <Bar dataKey="Sales" fill="#007A31" background={{ fill: "#e8f5e9" }} />
           </BarChart>
-        </Box>
       </CenteredBox>
     </ThemeProvider>
   );

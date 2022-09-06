@@ -13,16 +13,11 @@ function AddSaleProduct() {
         <React.Fragment>
             <MainHeader value={1}></MainHeader>
             <Grid container sx={{ pt: "100px" }}>
-                {/* <Grid item xs={6}>
-                    <UploadProduct />
-                </Grid>
-                <Grid item xs={6}> */}
                 <Grid item xs={12} sx={{ mx: 10, bgcolor: "#fff" }}>
                     <CenteredBox align="center">
                         <AddProductForm productType="sellProduct" />
                     </CenteredBox>
                 </Grid>
-                {/* </Grid> */}
             </Grid>
         </React.Fragment>
     )
