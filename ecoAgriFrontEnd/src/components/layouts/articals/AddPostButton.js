@@ -21,7 +21,8 @@ const style = {
     boxShadow: 24,
     borderRadius: 6,
     p: 4,
-    pr: 0
+    pr: 0,
+    pb: 2
 };
 
 export default function AddPostButton(props) {
@@ -35,6 +36,8 @@ export default function AddPostButton(props) {
         fileInput: postImageInput,
         imageData: postImageData
     } = UseImageOneInput(() => { })
+
+    console.log(postImagePreview)
     return (
         <div>
             <Button fullWidth sx={{ p: 2 }} variant="outlined" onClick={handleOpen}>Add Post</Button>
@@ -74,7 +77,7 @@ export default function AddPostButton(props) {
                                     </div>
                                 </div>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={12} sx={{mt: 2}}>
                                 <div style={{ marginRight: "30px" }}>
                                     <Grid container>
                                         <Grid item xs={9}>
@@ -89,7 +92,7 @@ export default function AddPostButton(props) {
                                                     ref={postImageInput}
                                                     multiple
                                                     type="file"
-                                                    // onChange={handleUploadHandler}
+                                                    onChange={handleUploadHandler}
                                                     style={{ display: "none" }}
                                                 />
                                             </CenteredBox>
