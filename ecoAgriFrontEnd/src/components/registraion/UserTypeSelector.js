@@ -18,18 +18,18 @@ function UserTypeSelector() {
     <React.Fragment>
 
       <Typography>How do you want to register ?</Typography>
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={3}>
-          <UserTypes icon={<PersonIcon />} userType="Farmer" />
+          <UserTypes image="images/userTypes/Farmer.png" userType="Farmer" />
         </Grid>
         <Grid item xs={3}>
-          <UserTypes icon={<PersonIcon />} userType="Buyer" />
+          <UserTypes image="images/userTypes/Buyer.png" userType="Buyer" />
         </Grid>
         <Grid item xs={3}>
-          <UserTypes icon={<PersonIcon />} userType="Charity" />
+          <UserTypes image="images/userTypes/Charity.png" userType="Charity" />
         </Grid>
         <Grid item xs={3}>
-          <UserTypes icon={<PersonIcon />} userType="Advertiser" />
+          <UserTypes image="images/userTypes/Advertiser.png" userType="Advertiser" />
         </Grid>
       </Grid>
     </React.Fragment>
