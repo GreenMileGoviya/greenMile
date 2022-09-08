@@ -53,22 +53,32 @@ function ProfileDetails() {
                     </Grid>
                 ))}
                 <Grid item xs={12}>
-                    <CenteredBox align="right">
-                        <div style={{ marginRight: 100 }}>
-                            <UpdateProfileModal
-                                userDetails={{
-                                    firstName: "Kumud",
-                                    lastName: "Perera",
-                                    address: "Galle",
-                                    city: "Galle",
-                                    town: "Galle",
-                                }}
-                            />
-                            <UpdatedButton
-                                title="Change Password"
-                            />
-                        </div>
-                    </CenteredBox>
+                    {/* <CenteredBox align="right"> */}
+                    <div style={{ marginRight: 100 }}>
+                        <Grid container>
+                            <Grid item xs={6}>
+                                <CenteredBox align="left">
+                                    <UpdatedButton
+                                        title="Change Password"
+                                    />
+                                </CenteredBox>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <CenteredBox align="right">
+                                    <UpdateProfileModal
+                                        userDetails={{
+                                            firstName: "Kumud",
+                                            lastName: "Perera",
+                                            address: "Galle",
+                                            city: "Galle",
+                                            town: "Galle",
+                                        }}
+                                    />
+                                </CenteredBox>
+                            </Grid>
+                        </Grid>
+                    </div>
+                    {/* </CenteredBox> */}
                 </Grid>
             </Grid>
 

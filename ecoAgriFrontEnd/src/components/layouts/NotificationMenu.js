@@ -45,7 +45,7 @@ export default function NotifcationMenu() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 500,
+        width: 350,
         // height: (selectedSignupButton !== "") ? 600 : "auto",
         height: 400,
         bgcolor: 'background.paper',
