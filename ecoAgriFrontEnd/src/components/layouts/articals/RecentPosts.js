@@ -13,6 +13,12 @@ function RecentPosts() {
                 <Grid item xs={12}>
                     <RecentPost />
                 </Grid>
+                <Grid item xs={12}>
+                    <RecentPost />
+                </Grid>
+                <Grid item xs={12}>
+                    <RecentPost />
+                </Grid>
             </Grid>
         </React.Fragment>
     )

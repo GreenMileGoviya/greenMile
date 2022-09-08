@@ -1,13 +1,15 @@
 import { Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import RecentPosts from '../../ui/RecentPosts'
+import RecentPosts from './RecentPosts'
 import SearchBar from '../../ui/Searchbar'
+import PostCategories from './PostCategories'
 
 const style = {
     boxShadow: 5,
     borderRadius: 2,
-    p: 4
+    p: 2,
+    bgcolor: "#fff"
 }
 
 function ArticalsLeftBar() {
@@ -24,6 +26,11 @@ function ArticalsLeftBar() {
                         <RecentPosts />
                     </Box>
                 </Grid>
+                {/* <Grid item xs={12}>
+                    <Box sx={style}>
+                        <PostCategories />
+                    </Box>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     )

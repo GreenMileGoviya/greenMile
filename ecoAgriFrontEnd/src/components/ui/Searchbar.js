@@ -19,14 +19,14 @@ const Search = styled("div")(({ theme }) => ({
   // "&:hover": {
   //   backgroundColor: alpha(theme.palette.common.white, 0.25),
   // },
-  backgroundColor: "#DBF0FE",
+  backgroundColor: "#e8f5e9",
   marginLeft: 0,
-  marginRight: 20,
+  marginRight: 0,
   width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
+  // [theme.breakpoints.up("sm")]: {
+  //   marginLeft: theme.spacing(1),
+  //   width: "auto",
+  // },
   zIndex: 100,
 }));
 
@@ -38,11 +38,11 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "#0F6096",
+  color: "#007A31",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "#0F6096",
+  color: "#007A31",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon

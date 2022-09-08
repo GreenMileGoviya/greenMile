@@ -7,12 +7,14 @@ function RecentPost() {
             <Grid container>
                 <Grid item xs={4}>
                     <CardMedia
+                        sx={{ boxShadow: 3, borderRadius: 1 }}
                         component="img"
-                        image="https://firebasestorage.googleapis.com/v0/b/athpotha-720ab.appspot.com/o/images%2Fcover%2F275919192_1587990271576440_6279473193330590031_n.jpg23bedd91-36b1-4349-8443-3e3eb13c4068?alt=media&token=d9db2cb1-fcd9-4610-aea1-f01b4500ec4b"
+                        image="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
                     />
+
                 </Grid>
                 <Grid item xs={8}>
-                    <Box sx={{ ml: "3px" }}>
+                    <Box sx={{ ml: "10px" }}>
                         <Typography>
                             Are You Prepared for the strom season
                         </Typography>
