@@ -41,7 +41,7 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/login", user);
     console.log(res);
     dispatch(loginSuccess(res.data));
-    window.location.href = "http://localhost:3000/farmer/dashboard";
+    window.location.href = "http://localhost:3000/dashboard";
   } catch (err) {
     dispatch(loginFailure());
   }
