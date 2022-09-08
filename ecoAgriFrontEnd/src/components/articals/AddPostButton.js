@@ -3,13 +3,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import classes from "../../ui/ScrollBar.module.css";
 import { CardMedia, Grid, IconButton, TextField } from '@mui/material';
-import CenteredBox from '../../ui/CenteredBox';
+import CenteredBox from '../ui/CenteredBox';
 
 
 import CollectionsIcon from "@mui/icons-material/Collections";
-import UseImageOneInput from '../../../hooks/use-ImageOneInput';
+import UseImageOneInput from '../../hooks/use-ImageOneInput';
+import CloseIcon from '@mui/icons-material/Close';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -22,7 +22,8 @@ const style = {
     borderRadius: 6,
     p: 4,
     pr: 0,
-    pb: 2
+    pb: 2,
+    pt: 0
 };
 
 export default function AddPostButton(props) {
@@ -43,13 +44,21 @@ export default function AddPostButton(props) {
             <Button fullWidth sx={{ p: 2 }} variant="outlined" onClick={handleOpen}>Add Post</Button>
             <Modal
                 open={open}
-                onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <div style={{ marginTop: "20px" }}>
+                    <div>
                         <Grid container>
+                            <Grid item xs={12}>
+                                <CenteredBox align="right">
+                                    <IconButton
+                                        onClick={handleClose}
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
+                                </CenteredBox>
+                            </Grid>
                             <Grid item xs={12}>
                                 <div style={{ height: "250px", overflowY: "auto" }}>
                                     <div style={{ marginRight: "30px" }}>
@@ -77,7 +86,7 @@ export default function AddPostButton(props) {
                                     </div>
                                 </div>
                             </Grid>
-                            <Grid item xs={12} sx={{mt: 2}}>
+                            <Grid item xs={12} sx={{ mt: 2 }}>
                                 <div style={{ marginRight: "30px" }}>
                                     <Grid container>
                                         <Grid item xs={9}>

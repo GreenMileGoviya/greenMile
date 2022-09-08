@@ -3,34 +3,17 @@ import React from 'react'
 import LeftBar from '../../layouts/farmer/LeftBar'
 import RightBar from '../../layouts/farmer/RightBar'
 import MainHeader from '../../layouts/MainHeader'
+import classes from '../../ui/HideScrollBar.module.css';
 
 function DashBoard() {
     return (
         <React.Fragment>
             <MainHeader value={0} />
-            <Grid
-                container
-                spacing={2}
-            >
-                <Grid
-                    item
-                    xs={2}
-                    style={{
-                        height: "100vh",
-                        position: "sticky",
-                        top: 0,
-                        paddingTop: 100,
-                    }}
-                >
+            <Grid container spacing={2} sx={{pt: "100px", px: 5}}>
+                <Grid item xs={12} sm={2}>
                     <LeftBar></LeftBar>
                 </Grid>
-                <Grid
-                    item
-                    xs={10}
-                    style={{
-                        paddingTop: 100,
-                    }}
-                >
+                <Grid item xs={12} sm={10} className={classes.hideScrollBox}>
                     <RightBar></RightBar>
                 </Grid>
             </Grid>

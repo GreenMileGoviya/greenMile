@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import classes from "../../ui/ScrollBar.module.css";
+import classes from "../ui/ScrollBar.module.css";
 import { CardMedia } from '@mui/material';
 
 const style = {

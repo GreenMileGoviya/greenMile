@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import CenteredBox from '../../ui/CenteredBox'
+import CenteredBox from '../ui/CenteredBox'
 import ArticalCard from './ArticalCard'
 
 function ArticalsRightBar() {
