@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import RecentPosts from './RecentPosts'
-import SearchBar from '../../ui/Searchbar'
+import SearchBar from '../ui/Searchbar'
 import PostCategories from './PostCategories'
 import AddPostButton from './AddPostButton'
 

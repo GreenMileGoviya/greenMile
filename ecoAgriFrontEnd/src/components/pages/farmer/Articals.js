@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
-import ArticalsLeftBar from '../../layouts/articals/ArticalsLeftBar';
-import ArticalsRightBar from '../../layouts/articals/ArticalsRightBar';
+import ArticalsLeftBar from '../../articals/ArticalsLeftBar';
+import ArticalsRightBar from '../../articals/ArticalsRightBar';
 import MainHeader from '../../layouts/MainHeader';
 import classes from "../../ui/HideScrollBar.module.css";
 

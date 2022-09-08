@@ -6,19 +6,14 @@ import SalesCharts from '../../farmer/sell/SalesChart'
 import MainHeader from '../../layouts/MainHeader'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CenteredBox from '../../ui/CenteredBox';
+import PageHeading from '../../ui/PageHeading';
 
 function Sell() {
   return (
     <React.Fragment>
       <MainHeader value={1} />
-      <Grid container sx={{ pt: "100px", px: 7 }} spacing={3}>
-        <Grid item xs={12} sx={{ p: 5, mx: 5, mb: 5, bgcolor: "#fff" }}>
-          <CenteredBox align="center">
-            <Typography variant="h3">
-              Sales Details
-            </Typography>
-          </CenteredBox>
-        </Grid>
+      <Grid container sx={{ pt: "100px" }} spacing={3}>
+        <PageHeading heading="Sales Details" />
         <Grid item xs={12} sx={{ py: 5, mx: 5, bgcolor: "#fff" }}>
           <div>
             <Grid container>

@@ -17,8 +17,8 @@ function UserTypeSelector() {
   return (
     <React.Fragment>
 
-      <Typography>How do you want to register ?</Typography>
-      <Grid container spacing={2}>
+      <Typography variant="h5" color="primary" sx={{mb: 5}}>How do you want to register ?</Typography>
+      <Grid container>
         <Grid item xs={3}>
           <UserTypes image="images/userTypes/Farmer.png" userType="Farmer" />
         </Grid>

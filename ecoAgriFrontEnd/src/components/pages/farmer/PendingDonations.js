@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material'
+import { Button, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import { useNavigate } from 'react-router'
@@ -11,7 +11,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 1000,
+  // width: 1000,
   // height: 505,
   bgcolor: 'background.paper',
   overflow: "auto",
@@ -31,7 +31,10 @@ function PendingDonations() {
       <Box sx={{ postion: "relative" }}>
         <Box sx={style}>
           <CenteredBox align="center">
-            <Button onClick={clickHanlder} variant="contained" sx={{textTransform: "none", mb: 2}}>Donate</Button>
+            <Typography>Donation Pending Table</Typography>
+          </CenteredBox>
+          <CenteredBox align="center">
+            <Button onClick={clickHanlder} variant="contained" sx={{ textTransform: "none", mb: 2 }}>Donate</Button>
             <DonationPendingTable />
           </CenteredBox>
         </Box>
