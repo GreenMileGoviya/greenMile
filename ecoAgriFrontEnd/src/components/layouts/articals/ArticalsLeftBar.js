@@ -4,6 +4,7 @@ import React from 'react'
 import RecentPosts from './RecentPosts'
 import SearchBar from '../../ui/Searchbar'
 import PostCategories from './PostCategories'
+import AddPostButton from './AddPostButton'
 
 const style = {
     boxShadow: 5,
@@ -24,6 +25,11 @@ function ArticalsLeftBar() {
                 <Grid item xs={12}>
                     <Box sx={style}>
                         <RecentPosts />
+                    </Box>
+                </Grid>
+                <Grid item xs={12}>
+                    <Box sx={style}>
+                        <AddPostButton />
                     </Box>
                 </Grid>
                 {/* <Grid item xs={12}>
