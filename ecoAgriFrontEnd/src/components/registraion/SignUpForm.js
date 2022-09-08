@@ -454,6 +454,7 @@ function SignUpForm(props) {
               onBlur={cityBlurHandler}
               error={cityHasError}
               helperText={cityHasError ? cityError : ""}
+              fullWidth
             />
           </Grid>
           <Grid item xs={6}>
@@ -466,6 +467,7 @@ function SignUpForm(props) {
               onBlur={townBlurHandler}
               error={townHasError}
               helperText={townHasError ? townError : ""}
+              fullWidth
             />
           </Grid>
         </Grid>
