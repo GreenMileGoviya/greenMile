@@ -7,7 +7,7 @@ import Login from './components/pages/Login';
 import DashBoard from './components/pages/farmer/DashBoard';
 import Buy from './components/pages/farmer/Buy';
 import Sell from './components/pages/farmer/Sell';
-import PendingDonations from './components/pages/farmer/PendingDonations';
+import PendingDonations from './components/farmer/dashboard/PendingDonations';
 import AddBank from './components/pages/farmer/AddBank';
 import Test from './components/ui/Test';
 import AddSaleProduct from './components/pages/farmer/AddSaleProduct';

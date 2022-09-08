@@ -15,7 +15,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
+    width: 600,
     bgcolor: 'background.paper',
     // border: '2px solid #000',
     boxShadow: 24,
@@ -60,9 +60,21 @@ export default function AddPostButton(props) {
                                 </CenteredBox>
                             </Grid>
                             <Grid item xs={12}>
-                                <div style={{ height: "250px", overflowY: "auto" }}>
+                                <div style={{ height: "400px", overflowY: "auto" }}>
                                     <div style={{ marginRight: "30px" }}>
                                         {/* <ProfileImage size="small" /> */}
+                                        <TextField
+                                            sx={{ my: 2 }}
+                                            placeholder="Add title"
+                                            variant="standard"
+                                            multiline
+                                            // onChange={contentChangeHandler}
+                                            // onBlur={contentBlurHandler}
+                                            // error={contentHasError}
+                                            // helperText={contentHasError ? contentError : ""}
+                                            // value={content}
+                                            fullWidth
+                                        />
                                         <TextField
                                             sx={{ my: 2 }}
                                             placeholder="Say something..."

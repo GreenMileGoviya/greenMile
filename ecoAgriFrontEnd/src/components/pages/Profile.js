@@ -8,7 +8,7 @@ import PageHeading from '../ui/PageHeading'
 function Profile() {
     return (
         <React.Fragment>
-            <MainHeader value={3} />
+            <MainHeader value={4} />
             <Grid container sx={{ pt: "100px" }}>
                 <PageHeading
                     heading="Profile"

@@ -43,6 +43,7 @@ export default function MainTab(props) {
         },
     });
 
+    console.log(value)
     return (
         <ThemeProvider theme={theme}>
             <Tabs
@@ -56,25 +57,32 @@ export default function MainTab(props) {
                     value={0}
                     component={Link}
                     to={"/dashboard"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 0 ? "contained": ""}>Home</Button>}
+                    label={<Button style={{ textTransform: "none" }} variant={props.value === 0 ? "contained": ""}>Home</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0, p: 0 }}
                     value={1}
                     component={Link}
                     to={"/sell"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 1 ? "contained": ""}>Sell</Button>}
+                    label={<Button style={{ textTransform: "none" }} variant={props.value === 1 ? "contained": ""}>Sell</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0, p: 0 }}
                     value={2}
                     component={Link}
+                    to={"/buy"}
+                    label={<Button style={{ textTransform: "none" }} variant={props.value === 2 ? "contained": ""}>Buy</Button>}
+                />
+                <Tab
+                    sx={{ minWidth: 0, p: 0 }}
+                    value={3}
+                    component={Link}
                     to={"/donate"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 2 ? "contained": ""}>Donate</Button>}
+                    label={<Button style={{ textTransform: "none" }} variant={props.value === 3 ? "contained": ""}>Donate</Button>}
                 />
                 <Tab
                     sx={{ minWidth: 0 }}
-                    value={3}
+                    value={4}
                     component={Link}
                     to={"/profile"}
                     icon={<Avatar></Avatar>}
