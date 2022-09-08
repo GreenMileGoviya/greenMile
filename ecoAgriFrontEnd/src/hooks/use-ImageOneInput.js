@@ -6,7 +6,7 @@ const UseImageOneInput = () => {
     const [imageData, setImageData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
 
-    const handleUploadClick = event => {
+    const handleUploadClick = event => {    
         let file = event.target.files[0];
         setImageData(file);
         // const imageData = new FormData();
