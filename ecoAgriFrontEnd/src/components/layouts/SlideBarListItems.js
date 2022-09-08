@@ -31,7 +31,7 @@ export const SlideBarListItems = (tabValue) => {
                     {
                         id: "leftbar-listItem-2-2",
                         listName: "Add to donate",
-                        link: "/sell/add-donate-product",
+                        link: "/donate/add-donate-product",
                         icon: <BookmarksIcon />,
                         hasExpand: false,
                     }
@@ -41,6 +41,7 @@ export const SlideBarListItems = (tabValue) => {
                 id: "leftbar-listItem-3",
                 listName: "Pending",
                 icon: <BookmarksIcon />,
+                link: "/sell/pending",
             },
         ];
         return listItems;
@@ -60,6 +61,7 @@ export const SlideBarListItems = (tabValue) => {
                 id: "leftbar-listItem-2",
                 listName: "Articals",
                 icon: <CastForEducationIcon />,
+                link: "/articals"
             },
         ];
         return listItems;

@@ -15,12 +15,12 @@ import { Avatar, Badge, Button, Chip, createTheme, ThemeProvider } from "@mui/ma
 
 import HouseIcon from "@mui/icons-material/House";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import MainTab from "./MainTab";
 import SettingsIcon from '@mui/icons-material/Settings';
 import SlideBar from "./SlideBar";
 import MainHeaderMenu from "./MainHeaderMenu";
+import NotificationMenu from "./NotificationMenu";
 
 const theme = createTheme({
     breakpoints: {
@@ -73,11 +73,7 @@ export default function MainHeader(props) {
                         >
                             <MainTab value={tabValue} />
                         </Box>
-                        <IconButton>
-                            <Badge badgeContent={4} color="primary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                        <NotificationMenu />
                         <MainHeaderMenu />
                     </Toolbar>
                 </AppBar>

@@ -13,6 +13,8 @@ import Test from './components/ui/Test';
 import AddSaleProduct from './components/pages/farmer/AddSaleProduct';
 import Donate from './components/pages/farmer/Donate';
 import AddDonateProduct from './components/pages/farmer/AddDonateProduct';
+import Profile from './components/pages/Profile';
+import Articals from './components/pages/farmer/Articals';
 
 function App() {
   const theme = createTheme({
@@ -40,10 +42,12 @@ function App() {
           <Route path="/buy" element={<Buy />} />
           <Route path="/sell" element={<Sell />} />
           <Route path="/donate" element={<Donate />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/articals" element={<Articals />} />
           <Route path="/donate/pending" element={<PendingDonations />} />
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
-          <Route path="/sell/add-donate-product" element={<AddDonateProduct />} />
+          <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

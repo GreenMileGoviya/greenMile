@@ -8,13 +8,13 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { useDispatch } from 'react-redux';
 import { imageUploadActions } from '../../../store/uploadImage-slice';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-function ImageUploader({ label }) {
+function ImageUploader(props) {
     const {
         handleUploadClick: handleUploadHandler,
         imagePreview: imagePreview,
         fileInput: imageInput,
         imageData: imageData,
-        delteImageClick: delteImageClick
+        deleteImageClick: deleteImageClick
     } = UseImageInput(() => { })
 
     const dispatch = useDispatch();
@@ -23,13 +23,12 @@ function ImageUploader({ label }) {
             dispatch(imageUploadActions.addImage(image));
         })
     }
-    console.log(imageData)
-    console.log(imagePreview)
 
     return (
         <React.Fragment>
-            <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
-            <div className={classes["file-card"]}>
+            <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>
+
+            <Button sx={{ p: imagePreview === null && 1 }} onClick={() => imageInput.current.click()} className={classes["file-card"]} >
                 <div className={classes["file-inputs"]}>
                     <input
                         accept="image/*"
@@ -39,36 +38,26 @@ function ImageUploader({ label }) {
                         onChange={handleUploadHandler}
                         style={{ display: "none" }}
                     />
-                    <CenteredBox align="center">
-                        <Button variant="extended" onClick={() => imageInput.current.click()}>
-                            <AddPhotoAlternateIcon sx={{ mr: 1 }} />
-                            Add Image
-                        </Button>
-                    </CenteredBox>
-                    {imagePreview.length !== 0 && imagePreview.map((image) => (
-                        <div key={image.id} id={image.id}>
-                            <CenteredBox align="right">
-                                <IconButton onClick={delteImageClick(image.id)} sx={{ p: 0 }}>
-                                    <HighlightOffIcon />
-                                </IconButton>
-                            </CenteredBox>
+                    {imagePreview === null &&
+                        <CenteredBox align="center">
+                            add image
+                        </CenteredBox>
+                    }
+                    {imagePreview &&
+                        <div>
                             <CardMedia component="img"
-                                image={image.image}
-                                sx={{ pr: "30px", mb: "30px" }}
+                                image={imagePreview.image}
+                                sx={{ height: props.size, width: props.size }}
                             />
                         </div>
-                    ))}
-                    <CenteredBox align="center">
-                        <Button variant="extended" disabled={imagePreview.length === 0} onClick={uploadHandler}>
-                            <CloudUploadIcon sx={{ mr: 1 }} />
-                            Upload Image
-                        </Button>
-                    </CenteredBox>
+                    }
                 </div>
-                <p className={classes.main}>Supported files</p>
-                <p className={classes.info}>JPG, PNG</p>
-            </div>
-
+            </Button>
+            {imagePreview &&
+                <CenteredBox align="center">
+                    <Button onClick={() => deleteImageClick(imagePreview)} style={{textTransform: "none"}} color="error"> Delete Image</Button>
+                </CenteredBox>
+            }
         </React.Fragment>
     )
 }
