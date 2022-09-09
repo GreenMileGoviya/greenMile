@@ -23,7 +23,6 @@ const style = {
 function DashBoardItem(props) {
   return (
     <React.Fragment>
-      <MainHeader value={2} />
       <Box sx={style}>
         <CenteredBox align="center">
           <Typography sx={{mb: 2}} variant="h5">{props.tableName}</Typography>

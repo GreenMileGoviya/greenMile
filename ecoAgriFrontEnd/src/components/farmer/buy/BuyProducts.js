@@ -9,11 +9,14 @@ import InfoIcon from '@mui/icons-material/Info';
 import CenteredBox from '../../ui/CenteredBox';
 import { Button, Typography } from '@mui/material';
 
-export default function BuyProducts() {
+export default function BuyProducts(props) {
     return (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2 }}>
+            <Grid item xs={12}>
+                <Typography>{props.productCategory}</Typography>
+            </Grid>
             {itemData.map((item) => (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={item.title} item xs={12} sm={6} md={4} lg={3}>
                     <ImageListItem style={{ borderRadius: 10 }}>
                         <img
                             src={`${item.img}?w=248&fit=crop&auto=format`}
