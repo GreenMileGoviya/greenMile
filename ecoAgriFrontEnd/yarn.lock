@@ -8063,6 +8063,7 @@
     "react-swipeable-views-core" "^0.14.0"
     "shallow-equal" "^1.2.1"
 
+<<<<<<< HEAD
 "react-swipeable-views@^0.14.0":
   "integrity" "sha512-wrTT6bi2nC3JbmyNAsPXffUXLn0DVT9SbbcFr36gKpbaCgEp7rX/OFxsu5hPc/NBsUhHyoSRGvwqJNNrWTwCww=="
   "resolved" "https://registry.npmjs.org/react-swipeable-views/-/react-swipeable-views-0.14.0.tgz"
@@ -8074,6 +8075,8 @@
     "react-swipeable-views-utils" "^0.14.0"
     "warning" "^4.0.1"
 
+=======
+>>>>>>> origin/Yohan
 "react-transition-group@^4.4.5":
   "integrity" "sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
