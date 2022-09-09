@@ -6,6 +6,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Avatar,
     Badge,
@@ -43,43 +44,99 @@ export default function MainTab(props) {
         },
     });
 
+    const user = useSelector((state) => state.user.currentUser);
+    const userType = user.userrole;
+    console.log(userType);
     return (
         <ThemeProvider theme={theme}>
-            <Tabs
-                value={value}
-                onChange={handleChange}
-                textColor="primary"
-                indicatorColor="primary"
-            >
-                <Tab
-                    sx={{ minWidth: 0, p: 0 }}
-                    value={0}
-                    component={Link}
-                    to={"/dashboard"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 0 ? "contained": ""}>Home</Button>}
-                />
-                <Tab
-                    sx={{ minWidth: 0, p: 0 }}
-                    value={1}
-                    component={Link}
-                    to={"/sell"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 1 ? "contained": ""}>Sell</Button>}
-                />
-                <Tab
-                    sx={{ minWidth: 0, p: 0 }}
-                    value={2}
-                    component={Link}
-                    to={"/donate"}
-                    label={<Button style={{ textTransform: "none" }} variant={value === 2 ? "contained": ""}>Donate</Button>}
-                />
-                <Tab
-                    sx={{ minWidth: 0 }}
-                    value={3}
-                    component={Link}
-                    to={"/profile"}
-                    icon={<Avatar></Avatar>}
-                />
-            </Tabs>
+            {userType === "Farmer" &&
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    textColor="primary"
+                    indicatorColor="primary"
+                >
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={0}
+                        component={Link}
+                        to={"/dashboard"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 0 ? "contained" : ""}>Home</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={1}
+                        component={Link}
+                        to={"/sell"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 1 ? "contained" : ""}>Sell</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={2}
+                        component={Link}
+                        to={"/buy"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 2 ? "contained" : ""}>Buy</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={3}
+                        component={Link}
+                        to={"/donate"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 3 ? "contained" : ""}>Donate</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0 }}
+                        value={4}
+                        component={Link}
+                        to={"/profile"}
+                        icon={<Avatar></Avatar>}
+                    />
+                </Tabs>
+            }
+            {userType === "Buyer" &&
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    textColor="primary"
+                    indicatorColor="primary"
+                >
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={0}
+                        component={Link}
+                        to={"/dashboard"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 0 ? "contained" : ""}>Home</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={1}
+                        component={Link}
+                        to={"/sell"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 1 ? "contained" : ""}>Sell</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={2}
+                        component={Link}
+                        to={"/buy"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 2 ? "contained" : ""}>Buy</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0, p: 0 }}
+                        value={3}
+                        component={Link}
+                        to={"/donate"}
+                        label={<Button style={{ textTransform: "none" }} variant={props.value === 3 ? "contained" : ""}>Donate</Button>}
+                    />
+                    <Tab
+                        sx={{ minWidth: 0 }}
+                        value={4}
+                        component={Link}
+                        to={"/profile"}
+                        icon={<Avatar></Avatar>}
+                    />
+                </Tabs>
+            }
         </ThemeProvider>
     );
 }
