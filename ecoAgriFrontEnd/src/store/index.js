@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import imageUploadSlice from "./uploadImage-slice";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userTypeSelectorButton: userTypeSelectorButtonSlice.reducer,
   user: userReducer,
+  imageUpload: imageUploadSlice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

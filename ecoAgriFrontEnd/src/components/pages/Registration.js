@@ -22,10 +22,9 @@ export default function Registration() {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: (selectedSignupButton !== "") ? 420 : 625,
     height: (selectedSignupButton !== "") ? 600 : "auto",
     bgcolor: 'background.paper',
-    border: "none",
     boxShadow: 24,
     borderRadius: 5,
     p: 4,
@@ -42,7 +41,7 @@ export default function Registration() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Box sx={{ pr: 2, height: (selectedSignupButton !== "") ? 600 : "auto", overflow: "auto" }} className={classes.box}>
+          <Box sx={{ pr: 4, height: (selectedSignupButton !== "") ? 600 : "auto", overflow: "auto" }} className={classes.box}>
             {selectedSignupButton === "" &&
               <UserTypeSelector />
             }
