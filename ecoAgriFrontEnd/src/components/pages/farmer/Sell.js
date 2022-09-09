@@ -7,12 +7,19 @@ import MainHeader from '../../layouts/MainHeader'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CenteredBox from '../../ui/CenteredBox';
 import PageHeading from '../../ui/PageHeading';
+import classes from '../../ui/HideScrollBar.module.css';
+import ProductsSale from '../../farmer/sell/ProductsSale';
 
 function Sell() {
   return (
     <React.Fragment>
       <MainHeader value={1} />
-      <Grid container sx={{ pt: "100px" }} spacing={3}>
+      <Grid container sx={{ pt: "100px", px: 5 }}>
+        <Grid item xs={12} className={classes.hideScrollBox}>
+          <ProductsSale />
+        </Grid>
+      </Grid>
+      {/* <Grid container sx={{ pt: "100px" }} spacing={3}>
         <PageHeading heading="Sales Details" />
         <Grid item xs={12} sx={{ py: 5, mx: 5, bgcolor: "#fff" }}>
           <div>
@@ -42,7 +49,7 @@ function Sell() {
           </div>
         </Grid>
 
-      </Grid>
+      </Grid> */}
     </React.Fragment>
   )
 }
