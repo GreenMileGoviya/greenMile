@@ -20,7 +20,7 @@ const imageUploadSlice = createSlice({
             }
         },
         addImages(state, action) {
-            // state.images = action.payload;
+            state.images = action.payload;
         }
     },
 });

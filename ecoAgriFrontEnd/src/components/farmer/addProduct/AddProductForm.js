@@ -27,8 +27,8 @@ function AddProductForm(props) {
   // const setImagesHandler = (value) => {
   //   setImages(images);
   // }
-  const productImages = useSelector((state) => state.imageUpload.images);
-  console.log(productImages);
+  // const productImages = useSelector((state) => state.imageUpload.images);
+  // console.log(productImages);
   const {
     value: productName,
     isValid: productNameIsValid,
@@ -176,8 +176,21 @@ function AddProductForm(props) {
     }
   })
 
+  
+  const [productImages, setProductImages] = useState([]);
+  const deleteImageHandler = () => {
+    const images = productImages;
+    setProductImages(images);
+    console.log("deleted")
+  }
+
   let formIsValid = false;
-  if (productNameIsValid && productCategoryIsValid && weightIsValid && unitPriceIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid) {
+  
+  if (productNameIsValid && productCategoryIsValid && weightIsValid && unitPriceIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && (productImages.length !== 0) && (props.productType === "sellProduct")) {
+    formIsValid = true;
+  }
+  console.log(productImages);
+  if ((productImages.length !== 0) && (props.productType === "donateProduct")) {
     formIsValid = true;
   }
   const onSubmitHandler = (e) => {
@@ -191,6 +204,7 @@ function AddProductForm(props) {
 
     //api call here
   }
+
   return (
     <Box sx={style}>
       <form onSubmit={onSubmitHandler}>
@@ -310,16 +324,16 @@ function AddProductForm(props) {
             <div>
               <Grid container spacing={2}>
                 <Grid item xs={3}>
-                  <UploadProduct size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
                 </Grid>
                 <Grid item xs={3}>
-                  <UploadProduct size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
                 </Grid>
                 <Grid item xs={3}>
-                  <UploadProduct size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
                 </Grid>
                 <Grid item xs={3}>
-                  <UploadProduct size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
                 </Grid>
               </Grid>
             </div>

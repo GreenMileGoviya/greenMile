@@ -20,9 +20,10 @@ const style = {
 
 function UploadProduct(props) {
 
+    let image = {}
     return (
         <div>
-            <ImageUploader size={props.size} />
+            <ImageUploader image={props.image} images={props.images} onDelete={props.onDelete} onImageChange={props.onImageChange} size={props.size} />
         </div>
     )
 }
