@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import classes from "../ui/ScrollBar.module.css";
 import { CardMedia } from '@mui/material';
-import Carousel from '../ui/Carousel';
+// import Carousel from '../ui/Carousel/Carousel';
 
 const style = {
     position: 'absolute',
@@ -36,7 +36,7 @@ export default function CardModal(props) {
             >
                 <Box sx={style}>
                     <Box sx={{ height: 400, pr: 4, overflow: "auto" }} className={classes.box}>
-                        <Carousel
+                        {/* <Carousel
                             steps={
                                 [{
                                     label: 'Create an ad',
@@ -65,7 +65,7 @@ export default function CardModal(props) {
                                         alt="Paella dish"
                                     />,
                                 },]}
-                        />
+                        /> */}
                         <Typography paragraph>
                             Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
                             medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring

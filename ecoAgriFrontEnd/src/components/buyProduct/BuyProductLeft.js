@@ -1,12 +1,12 @@
 import { CardMedia } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import Carousel from '../ui/Carousel'
+// import Carousel from '../ui/Carousel/Carousel'
 
 function BuyProductLeft() {
     return (
         <Box sx={{px: 10}}>
-            <Carousel
+            {/* <Carousel
                 steps={
                     [{
                         label: 'Create an ad',
@@ -35,7 +35,7 @@ function BuyProductLeft() {
                             alt="Paella dish"
                         />,
                     },]}
-            />
+            /> */}
         </Box>
     )
 }

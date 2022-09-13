@@ -15,7 +15,7 @@ import Donate from './components/pages/farmer/Donate';
 import AddDonateProduct from './components/pages/farmer/AddDonateProduct';
 import Profile from './components/pages/Profile';
 import Articals from './components/pages/farmer/Articals';
-import Carousel from './components/ui/Carousel';
+// import Carousel from './components/ui/Carousel/Carousel';
 import BuyProduct from './components/pages/BuyProduct';
 
 function App() {
@@ -50,8 +50,8 @@ function App() {
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
           <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
-          <Route path="/buy-product" element={<BuyProduct />} />
-          <Route path="/testing" element={<Carousel />} />
+          {/* <Route path="/buy-product" element={<BuyProduct />} /> */}
+          {/* <Route path="/testing" element={<Carousel />} /> */}
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

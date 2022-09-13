@@ -9,9 +9,9 @@ function BuyProduct() {
         <React.Fragment>
             <MainHeader value={2} />
             <Grid container sx={{pt: "100px"}}>
-                <Grid item xs={12} sm={6}>
+                {/* <Grid item xs={12} sm={6}>
                     <BuyProductLeft />
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} sm={6}>
                     <BuyProductRight />
                 </Grid>
