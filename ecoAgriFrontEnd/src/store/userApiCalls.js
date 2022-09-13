@@ -41,7 +41,11 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/login", user);
     console.log(res);
     dispatch(loginSuccess(res.data));
-    window.location.href = "http://localhost:3000/dashboard";
+    if(res.data.userrole !== "Admin") {
+      window.location.href = "/dashboard";
+    } else {
+      window.location.href = "/admin/dashboard";
+    }
   } catch (err) {
     dispatch(loginFailure());
   }

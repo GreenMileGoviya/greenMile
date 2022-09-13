@@ -53,15 +53,13 @@ function ImageUploader(props) {
         });
         setImageData(null);
     }
-    function deleteImageClick(deleteImage) {
+    function deleteImageClick() {
         removeByAttr(props.images, 'id', imagePreview.id);
-        console.log(props.images)
         props.onImageChange(props.images);
         setImagePreview(null);
         props.onDelete();
     }
 
-    console.log(props.images)
     return (
         <React.Fragment>
             <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>

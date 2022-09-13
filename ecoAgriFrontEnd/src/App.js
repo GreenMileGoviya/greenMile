@@ -17,6 +17,9 @@ import Profile from './components/pages/Profile';
 import Articals from './components/pages/farmer/Articals';
 // import Carousel from './components/ui/Carousel/Carousel';
 import BuyProduct from './components/pages/BuyProduct';
+import AdminDashboard from './components/pages/admin/AdminDashboard';
+import ManageUsers from './components/pages/admin/ManageUsers';
+import CreateUsers from './components/pages/admin/CreateUsers';
 
 function App() {
   const theme = createTheme({
@@ -50,6 +53,11 @@ function App() {
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
           <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
+
+
+          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+          <Route path='/admin/manage-users' element={<ManageUsers />} />
+          <Route path='/admin/create-users' element={<CreateUsers />} />
           {/* <Route path="/buy-product" element={<BuyProduct />} /> */}
           {/* <Route path="/testing" element={<Carousel />} /> */}
         </Routes>

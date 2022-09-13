@@ -66,10 +66,16 @@ export default function EditSaleProduct(props) {
                             </ImageListItem>
                         </Grid>
                         <Grid item xs={12}>
-                            <AddProductForm productName="hello" />
+                            <AddProductForm
+                                productName="Mango"
+                                productCategory={1}
+                                manuDate="2022-09-20" 
+                                expireDate="2022-09-25" 
+                                fieldAddress="Galle"
+                                weight={2}
+                            />
                         </Grid>
                     </Grid>
-
                 </Box>
             </Modal>
         </div>

@@ -51,7 +51,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: productCategory,
     isValid: productCategoryIsValid,
     hasError: productCategoryHasError,
@@ -72,7 +72,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: weight,
     isValid: weightIsValid,
     hasError: weightHasError,
@@ -93,7 +93,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: unitPrice,
     isValid: unitPriceIsValid,
     hasError: unitPriceHasError,
@@ -114,7 +114,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: manuDate,
     isValid: manuDateIsValid,
     hasError: manuDateHasError,
@@ -135,7 +135,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: expireDate,
     isValid: expireDateIsValid,
     hasError: expireDateHasError,
@@ -156,7 +156,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: fieldAddress,
     isValid: fieldAddressIsValid,
     hasError: fieldAddressHasError,
@@ -226,7 +226,10 @@ function AddProductForm(props) {
     expireDate = props.expireDate;
   }
   if(props.fieldAddress !== undefined) {
-    productName = props.productName;
+    fieldAddress = props.fieldAddress;
+  }
+  if(props.weight !== undefined) {
+    weight = props.weight;
   }
   return (
     <Box sx={style}>

@@ -21,6 +21,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SlideBar from "./SlideBar";
 import MainHeaderMenu from "./MainHeaderMenu";
 import NotificationMenu from "./NotificationMenu";
+import { useSelector } from "react-redux";
 
 const theme = createTheme({
     breakpoints: {
@@ -41,7 +42,8 @@ export default function MainHeader(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
+    const user = useSelector((state) => state.user.currentUser);
+    const userType = user.userrole;
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ display: "flex", }}>
@@ -66,13 +68,14 @@ export default function MainHeader(props) {
                                 style={{ width: 60, height: 60 }}
                             /> */}
                         </Typography>
-
-                        <Box
-                            id="nav-container-list"
-                            sx={{ display: { xs: "none", sm: "block" } }}
-                        >
-                            <MainTab value={tabValue} />
-                        </Box>
+                        {userType !== "Admin" &&
+                            <Box
+                                id="nav-container-list"
+                                sx={{ display: { xs: "none", sm: "block" } }}
+                            >
+                                <MainTab value={tabValue} />
+                            </Box>
+                        }
                         <NotificationMenu />
                         <MainHeaderMenu />
                     </Toolbar>
