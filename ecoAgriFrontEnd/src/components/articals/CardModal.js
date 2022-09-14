@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import classes from "../ui/ScrollBar.module.css";
 import { CardMedia } from '@mui/material';
+import Carousel from '../ui/Carousel';
 // import Carousel from '../ui/Carousel/Carousel';
 
 const style = {
@@ -36,36 +37,23 @@ export default function CardModal(props) {
             >
                 <Box sx={style}>
                     <Box sx={{ height: 400, pr: 4, overflow: "auto" }} className={classes.box}>
-                        {/* <Carousel
-                            steps={
-                                [{
-                                    label: 'Create an ad',
-                                    description: <CardMedia
-                                        component="img"
-                                        height="194"
-                                        image="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                                        alt="Paella dish"
-                                    />,
-                                },
-                                {
-                                    label: 'Create an ad',
-                                    description: <CardMedia
-                                        component="img"
-                                        height="194"
-                                        image="https://images.unsplash.com/photo-1501263418469-bcf7b079b4c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-                                        alt="Paella dish"
-                                    />,
-                                },
-                                {
-                                    label: 'Create an ad',
-                                    description: <CardMedia
-                                        component="img"
-                                        height="194"
-                                        image="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                                        alt="Paella dish"
-                                    />,
-                                },]}
-                        /> */}
+                        <Carousel
+                            images={
+                                [
+                                    {
+                                        imgPath: "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+                                        label: "hello"
+                                    },
+                                    {
+                                        imgPath: "https://images.unsplash.com/photo-1501263418469-bcf7b079b4c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80",
+                                        label: "hello2"
+                                    },
+                                    {
+                                        imgPath: "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+                                        label: "hello3"
+                                    }
+                                ]}
+                        />
                         <Typography paragraph>
                             Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
                             medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring

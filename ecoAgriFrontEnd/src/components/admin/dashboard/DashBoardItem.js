@@ -24,26 +24,12 @@ function DashBoardItem(props) {
   return (
     <Grid container>
       <Grid item xs={12}>
-        {/* <CenteredBox align="center"> */}
           <Typography sx={{ mb: 2 }} variant="h5">{props.tableName}</Typography>
-        {/* </CenteredBox> */}
       </Grid>
       <Grid item xs={12}>
-        {/* <CenteredBox align="center"> */}
           {props.table}
-        {/* </CenteredBox> */}
       </Grid>
     </Grid>
-    // <React.Fragment>
-    //   <Box sx={style}>
-    //     <CenteredBox align="center">
-    //       <Typography sx={{mb: 2}} variant="h5">{props.tableName}</Typography>
-    //     </CenteredBox>
-    //     <CenteredBox align="center">
-    //         {props.table}
-    //     </CenteredBox>
-    //   </Box>
-    // </React.Fragment>
   )
 }
 

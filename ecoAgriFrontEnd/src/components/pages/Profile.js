@@ -6,6 +6,7 @@ import CenteredBox from '../ui/CenteredBox'
 import PageHeading from '../ui/PageHeading'
 
 function Profile() {
+    
     return (
         <React.Fragment>
             <MainHeader value={4} />

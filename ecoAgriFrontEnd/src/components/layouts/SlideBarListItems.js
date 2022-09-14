@@ -8,58 +8,9 @@ import { useSelector } from "react-redux";
 export const SlideBarListItems = () => {
     const user = useSelector((state) => state.user.currentUser);
     const userType = user.userrole;
+    console.log(userType)
     let listItems = [];
-    if (userType !== "Admin") {
-
-        listItems = [
-            {
-                id: "leftbar-listItem-1",
-                listName: "Bank Account",
-                icon: <PeopleAltIcon />,
-                link: "/sell/add-bankAccount"
-            },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Add Product",
-                icon: <BookmarksIcon />,
-                hasExpand: true,
-                expand: [
-                    {
-                        id: "leftbar-listItem-2-1",
-                        listName: "Add to Sale",
-                        link: "/sell/add-sell-product",
-                        icon: <BookmarksIcon />,
-                        hasExpand: false,
-                    },
-                    {
-                        id: "leftbar-listItem-2-2",
-                        listName: "Add to donate",
-                        link: "/donate/add-donate-product",
-                        icon: <BookmarksIcon />,
-                        hasExpand: false,
-                    }
-                ]
-            },
-            {
-                id: "leftbar-listItem-3",
-                listName: "Pending",
-                icon: <BookmarksIcon />,
-                link: "/sell/pending",
-            },
-            {
-                id: "leftbar-listItem-4",
-                listName: "My Account",
-                icon: <PeopleAltIcon />,
-                link: "/profile"
-            },
-            {
-                id: "leftbar-listItem-5",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-                link: "/articals"
-            },
-        ];
-    } else if (userType === "Admin") {
+    if (userType === "Admin") {
         listItems = [
             {
                 id: "leftbar-listItem-3",
@@ -125,7 +76,78 @@ export const SlideBarListItems = () => {
                     }
                 ]
             },
+
+        ];
+    } else if (userType === "Moderator") {
+        listItems = [
+            {
+                id: "leftbar-listItem-1",
+                listName: "Dashboard",
+                icon: <BookmarksIcon />,
+                link: "/moderator/dashboard",
+            },
+            {
+                id: "leftbar-listItem-2",
+                listName: "Articals",
+                icon: <BookmarksIcon />,
+                link: "/moderator/articals",
+            },
+            {
+                id: "leftbar-listItem-3",
+                listName: "My Profile",
+                icon: <BookmarksIcon />,
+                link: "/profile",
+            },
             
+        ];
+    } else if (userType === "Farmer") {
+        listItems = [
+            {
+                id: "leftbar-listItem-1",
+                listName: "Bank Account",
+                icon: <PeopleAltIcon />,
+                link: "/sell/add-bankAccount"
+            },
+            {
+                id: "leftbar-listItem-2",
+                listName: "Add Product",
+                icon: <BookmarksIcon />,
+                hasExpand: true,
+                expand: [
+                    {
+                        id: "leftbar-listItem-2-1",
+                        listName: "Add to Sale",
+                        link: "/sell/add-sell-product",
+                        icon: <BookmarksIcon />,
+                        hasExpand: false,
+                    },
+                    {
+                        id: "leftbar-listItem-2-2",
+                        listName: "Add to donate",
+                        link: "/donate/add-donate-product",
+                        icon: <BookmarksIcon />,
+                        hasExpand: false,
+                    }
+                ]
+            },
+            {
+                id: "leftbar-listItem-3",
+                listName: "Pending",
+                icon: <BookmarksIcon />,
+                link: "/sell/pending",
+            },
+            {
+                id: "leftbar-listItem-4",
+                listName: "My Account",
+                icon: <PeopleAltIcon />,
+                link: "/profile"
+            },
+            {
+                id: "leftbar-listItem-5",
+                listName: "Articals",
+                icon: <CastForEducationIcon />,
+                link: "/articals"
+            },
         ];
     }
 

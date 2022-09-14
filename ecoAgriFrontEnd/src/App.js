@@ -20,6 +20,8 @@ import BuyProduct from './components/pages/BuyProduct';
 import AdminDashboard from './components/pages/admin/AdminDashboard';
 import ManageUsers from './components/pages/admin/ManageUsers';
 import CreateUsers from './components/pages/admin/CreateUsers';
+import ConfirmArticals from './components/pages/moderator/ConfirmArticals';
+import Carousel from './components/ui/Carousel';
 
 function App() {
   const theme = createTheme({
@@ -54,12 +56,17 @@ function App() {
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
           <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
 
-
+          {/* admin */}
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/manage-users' element={<ManageUsers />} />
           <Route path='/admin/create-user/:userType' element={<CreateUsers />} />
+
+
+          {/* moderator */}
+          <Route path='/moderator/dashboard' element={<AdminDashboard />} />
+          <Route path='/moderator/articals' element={<ConfirmArticals />} />
           {/* <Route path="/buy-product" element={<BuyProduct />} /> */}
-          {/* <Route path="/testing" element={<Carousel />} /> */}
+          <Route path="/testing" element={<Carousel />} />
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

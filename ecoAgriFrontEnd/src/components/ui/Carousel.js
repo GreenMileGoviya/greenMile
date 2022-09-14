@@ -1,61 +1,114 @@
-import React from 'react';
-import classes from "./Carousel.module.css";
+import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+// const images = [
+//     {
+//         label: 'San Francisco – Oakland Bay Bridge, United States',
+//         imgPath:
+//             'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+//     },
+//     {
+//         label: 'Bird',
+//         imgPath:
+//             'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+//     },
+//     {
+//         label: 'Bali, Indonesia',
+//         imgPath:
+//             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+//     },
+//     {
+//         label: 'Goč, Serbia',
+//         imgPath:
+//             'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+//     },
+// ];
 
 function Carousel(props) {
-    function moveSlider(e) {
-        let index = e.target.dataset.value;
-        let images = document.querySelectorAll(`.${classes.image}`);
-        let bullets = document.querySelectorAll("span");
+    const theme = useTheme();
+    const [activeStep, setActiveStep] = React.useState(0);
+    const maxSteps = props.images.length;
 
-        let imageNumber = "img-" + index;
-        let currentImage = document.querySelector(`.${classes[imageNumber]}`);
-        images.forEach((img) => {
-            img.classList.remove(classes.show);
-        });
-        currentImage.classList.add(classes.show);
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
 
-        // let textSlider = document.querySelector(`.${classes["text-group"]}`);
-        // textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
 
-        bullets.forEach((bull) => {
-            bull.classList.remove(classes.active);
-        });
-        e.target.classList.add(classes.active);
-    }
+    const handleStepChange = (step) => {
+        setActiveStep(step);
+    };
 
     return (
-        <div className={classes.carousel}>
-            <div className={classes["images-wrapper"]}>
-                <img
-                    src={props.imageOne}
-                    className={`${classes.image} ${classes["img-1"]} ${classes.show}`}
-                    alt=""
-                />
-                <img
-                    src={props.imageTwo}
-                    className={`${classes.image} ${classes["img-2"]}`}
-                    alt=""
-                />
-                <img
-                    src={props.imageThree}
-                    className={`${classes.image} ${classes["img-3"]}`}
-                    alt=""
-                />
-            </div>
-
-            <div className={classes["text-slider"]}>
-                <div className={classes.bullets}>
-                    <span
-                        className={classes.active}
-                        data-value="1"
-                        onClick={moveSlider}
-                    ></span>
-                    <span data-value="2" onClick={moveSlider}></span>
-                    <span data-value="3" onClick={moveSlider}></span>
-                </div>
-            </div>
-        </div>
-    )
+        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+            <MobileStepper
+                steps={maxSteps}
+                position="static"
+                activeStep={activeStep}
+                nextButton={
+                    <Button
+                        size="small"
+                        onClick={handleNext}
+                        disabled={activeStep === maxSteps - 1}
+                    >
+                        Next
+                        {theme.direction === 'rtl' ? (
+                            <KeyboardArrowLeft />
+                        ) : (
+                            <KeyboardArrowRight />
+                        )}
+                    </Button>
+                }
+                backButton={
+                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                        {theme.direction === 'rtl' ? (
+                            <KeyboardArrowRight />
+                        ) : (
+                            <KeyboardArrowLeft />
+                        )}
+                        Back
+                    </Button>
+                }
+            />
+            <AutoPlaySwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={activeStep}
+                onChangeIndex={handleStepChange}
+                enableMouseEvents
+            >
+                {props.images.map((step, index) => (
+                    <div key={step.label}>
+                        {Math.abs(activeStep - index) <= 2 ? (
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 255,
+                                    display: 'block',
+                                    maxWidth: 400,
+                                    overflow: 'hidden',
+                                    width: '100%',
+                                }}
+                                src={step.imgPath}
+                            />
+                        ) : null}
+                    </div>
+                ))}
+            </AutoPlaySwipeableViews>
+        </Box>
+    );
 }
 
-export default Carousel
+export default Carousel;
