@@ -63,25 +63,31 @@ export const SlideBarListItems = () => {
         listItems = [
             {
                 id: "leftbar-listItem-3",
+                listName: "Dashboard",
+                icon: <BookmarksIcon />,
+                link: "/admin/dashboard",
+            },
+            {
+                id: "leftbar-listItem-1",
                 listName: "Manage Users",
                 icon: <BookmarksIcon />,
                 link: "/admin/manage-users",
             },
             {
-                id: "leftbar-listItem-4",
+                id: "leftbar-listItem-2",
                 listName: "Create Users",
                 icon: <BookmarksIcon />,
                 hasExpand: true,
                 expand: [
                     {
-                        id: "leftbar-listItem-4-1",
+                        id: "leftbar-listItem-2-1",
                         listName: "Create Farmer",
                         link: "/admin/create-user/Farmer",
                         icon: <BookmarksIcon />,
                         hasExpand: false,
                     },
                     {
-                        id: "leftbar-listItem-4-2",
+                        id: "leftbar-listItem-2-2",
                         listName: "Create Buyer",
                         link: "/admin/create-user/Buyer",
                         icon: <BookmarksIcon />,
@@ -89,7 +95,7 @@ export const SlideBarListItems = () => {
                     }
                     ,
                     {
-                        id: "leftbar-listItem-4-3",
+                        id: "leftbar-listItem-2-3",
                         listName: "Create Charity",
                         link: "/admin/create-user/Charity",
                         icon: <BookmarksIcon />,
@@ -97,21 +103,29 @@ export const SlideBarListItems = () => {
                     }
                     ,
                     {
-                        id: "leftbar-listItem-4-4",
+                        id: "leftbar-listItem-2-4",
                         listName: "Create Advertiser",
                         link: "/admin/create-user/Advertiser",
                         icon: <BookmarksIcon />,
                         hasExpand: false,
                     },
                     {
-                        id: "leftbar-listItem-4-5",
+                        id: "leftbar-listItem-2-5",
                         listName: "Create Moderator",
                         link: "/admin/create-user/Moderator",
+                        icon: <BookmarksIcon />,
+                        hasExpand: false,
+                    },
+                    {
+                        id: "leftbar-listItem-2-5",
+                        listName: "Create Argi Expert",
+                        link: "/admin/create-user/AgriExpert",
                         icon: <BookmarksIcon />,
                         hasExpand: false,
                     }
                 ]
             },
+            
         ];
     }
 
