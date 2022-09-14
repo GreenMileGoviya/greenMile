@@ -15,7 +15,7 @@ import { styled } from "@mui/material/styles";
 import { useRef } from "react";
 import UpdateUserModal from "./UpdateUserModal";
 import ViewUserModal from "./ViewUserModal";
-
+import { GridApi } from "@mui/x-data-grid";
 //Filter panel
 const CustomToolbar = ({ setFilterButtonEl }) => (
     <GridToolbarContainer>
@@ -26,25 +26,6 @@ const CustomToolbar = ({ setFilterButtonEl }) => (
 CustomToolbar.propTypes = {
     setFilterButtonEl: PropTypes.func.isRequired,
 };
-
-//Colour buttons
-const ColorButton1 = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(blue[600]),
-    textTransform: "none",
-    backgroundColor: blue[600],
-    "&:hover": {
-        backgroundColor: blue[700],
-    },
-}));
-
-const ColorButton2 = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(green[600]),
-    textTransform: "none",
-    backgroundColor: green[600],
-    "&:hover": {
-        backgroundColor: green[700],
-    },
-}));
 
 const ColorButton3 = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(red[600]),
@@ -59,13 +40,9 @@ const style = {
     boxShadow: 24,
     borderRadius: "0.5%",
     backgroundColor: "white",
+    width: "1000px"
 };
 export default function ManageUserTable() {
-    const [age, setAge] = React.useState("");
-    const [value, setValue] = React.useState(false);
-
-    const modelRef = useRef();
-
     const rows = [
         {
             id: 1,
@@ -124,7 +101,6 @@ export default function ManageUserTable() {
             headerClassName: "header-class-name",
             width: 300,
         },
-
         {
             field: "col4",
             headerName: "Actions",
@@ -135,14 +111,23 @@ export default function ManageUserTable() {
             sortable: false,
             renderCell: (params) => {
                 // const onClick = (e) => {};
+                // const thisRow: Record<string, GridCellValue> = {};
+                // console.log(thisRow);
+                const viewUserClickHandler = (e) => {
 
+                    console.log(params)
+                    console.log("hello on View");
+                }
+                const updateUserClickHandler = () => {
+                    console.log("hello on Update");
+                }
                 return (
                     <Grid container spacing={0}>
                         <Grid item xs={4}>
-                            <ViewUserModal />
+                            <ViewUserModal onView={viewUserClickHandler} />
                         </Grid>
                         <Grid item xs={4}>
-                            <UpdateUserModal />
+                            <UpdateUserModal userType={params.row.col2} onUpdate={updateUserClickHandler} />
                         </Grid>
                         <Grid item xs={4}>
                             <ColorButton3>Delete</ColorButton3>
@@ -153,40 +138,31 @@ export default function ManageUserTable() {
         },
     ];
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
     const [filterButtonEl, setFilterButtonEl] = React.useState(null);
     return (
-        <div>
-            <Grid>
-                <Box sx={style}>
-                    <Box
-                        sx={{
-                            height: 600,
-                            width: "100%",
-                            align: "center",
-                        }}
-                    >
-                        <DataGrid
-                            disableSelectionOnClick
-                            components={{
-                                Toolbar: CustomToolbar,
-                            }}
-                            componentsProps={{
-                                panel: {
-                                    anchorEl: filterButtonEl,
-                                },
-                                toolbar: {
-                                    setFilterButtonEl,
-                                },
-                            }}
-                            rows={rows}
-                            columns={columns}
-                        />
-                    </Box>
-                </Box>
-            </Grid>
-        </div>
+        <Box
+            sx={{
+                height: 600,
+                width: 1000,
+                align: "center",
+            }}
+        >
+            <DataGrid
+                disableSelectionOnClick
+                components={{
+                    Toolbar: CustomToolbar,
+                }}
+                componentsProps={{
+                    panel: {
+                        anchorEl: filterButtonEl,
+                    },
+                    toolbar: {
+                        setFilterButtonEl,
+                    },
+                }}
+                rows={rows}
+                columns={columns}
+            />
+        </Box>
     );
 }

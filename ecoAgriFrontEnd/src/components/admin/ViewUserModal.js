@@ -36,13 +36,16 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 export default function ViewUserModal(props) {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        setOpen(true);
+        props.onView();
+    };
+
     const handleClose = () => setOpen(false);
 
     return (
         <React.Fragment>
             <ColorButton onClick={handleOpen}>View User</ColorButton>
-
             <Modal
                 open={open}
             // onClose={handleClose}

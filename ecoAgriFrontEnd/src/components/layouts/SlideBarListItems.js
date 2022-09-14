@@ -61,34 +61,6 @@ export const SlideBarListItems = () => {
         ];
     } else if (userType === "Admin") {
         listItems = [
-            // {
-            //     id: "leftbar-listItem-1",
-            //     listName: "Bank Account",
-            //     icon: <PeopleAltIcon />,
-            //     link: "/sell/add-bankAccount"
-            // },
-            {
-                id: "leftbar-listItem-2",
-                listName: "Add Product",
-                icon: <BookmarksIcon />,
-                hasExpand: true,
-                expand: [
-                    {
-                        id: "leftbar-listItem-2-1",
-                        listName: "Add to Sale",
-                        link: "/sell/add-sell-product",
-                        icon: <BookmarksIcon />,
-                        hasExpand: false,
-                    },
-                    {
-                        id: "leftbar-listItem-2-2",
-                        listName: "Add to donate",
-                        link: "/donate/add-donate-product",
-                        icon: <BookmarksIcon />,
-                        hasExpand: false,
-                    }
-                ]
-            },
             {
                 id: "leftbar-listItem-3",
                 listName: "Manage Users",
@@ -130,14 +102,15 @@ export const SlideBarListItems = () => {
                         link: "/admin/create-user/Advertiser",
                         icon: <BookmarksIcon />,
                         hasExpand: false,
+                    },
+                    {
+                        id: "leftbar-listItem-4-5",
+                        listName: "Create Moderator",
+                        link: "/admin/create-user/Moderator",
+                        icon: <BookmarksIcon />,
+                        hasExpand: false,
                     }
                 ]
-            },
-            {
-                id: "leftbar-listItem-5",
-                listName: "Articals",
-                icon: <CastForEducationIcon />,
-                link: "/articals"
             },
         ];
     }

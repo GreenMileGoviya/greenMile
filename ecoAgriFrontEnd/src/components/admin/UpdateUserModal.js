@@ -9,6 +9,7 @@ import CenteredBox from '../ui/CenteredBox';
 import styled from '@emotion/styled';
 import { green } from '@mui/material/colors';
 import UpdateUserForm from './UpdateUserForm';
+import classes from "../ui/ScrollBar.module.css";
 
 const style = {
     position: 'absolute',
@@ -37,7 +38,10 @@ const ColorButton2 = styled(Button)(({ theme }) => ({
 }));
 export default function UpdateUserModal(props) {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        setOpen(true)
+        props.onUpdate();
+    };
     const handleClose = () => setOpen(false);
 
     return (
@@ -48,7 +52,7 @@ export default function UpdateUserModal(props) {
                 open={open}
             // onClose={handleClose}
             >
-                <Box sx={style}>
+                <Box sx={style} className={classes.box}>
                     <CenteredBox align="right">
                         <IconButton onClick={handleClose}>
                             <CloseIcon />
