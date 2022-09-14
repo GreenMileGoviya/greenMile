@@ -86,7 +86,7 @@ function SlideBar(props) {
     </Box >
   );
   return (
-    // <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Box component="nav">
         <Drawer
           variant="temporary"
@@ -106,7 +106,7 @@ function SlideBar(props) {
           {drawer}
         </Drawer>
       </Box>
-    // </ThemeProvider>
+    </ThemeProvider>
   )
 }
 
