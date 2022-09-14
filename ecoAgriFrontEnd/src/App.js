@@ -57,7 +57,7 @@ function App() {
 
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/manage-users' element={<ManageUsers />} />
-          <Route path='/admin/create-users' element={<CreateUsers />} />
+          <Route path='/admin/create-user/:userType' element={<CreateUsers />} />
           {/* <Route path="/buy-product" element={<BuyProduct />} /> */}
           {/* <Route path="/testing" element={<Carousel />} /> */}
         </Routes>
