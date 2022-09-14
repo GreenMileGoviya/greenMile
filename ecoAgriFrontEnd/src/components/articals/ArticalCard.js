@@ -16,6 +16,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CardModal from './CardModal';
 import Carousel from '../ui/Carousel';
+import { Button, Grid } from '@mui/material';
+import CenteredBox from '../ui/CenteredBox';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2'
 // import Carousel from '../ui/Carousel/Carousel';
 
 const ExpandMore = styled((props) => {
@@ -31,10 +35,32 @@ const ExpandMore = styled((props) => {
 
 export default function ArticalCard() {
     const [expanded, setExpanded] = React.useState(false);
-
+    const user = useSelector((state) => state.user.currentUser);
+    const userType = user.userrole;
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const articalConfirmHandler = (type) => {
+        Swal.fire({
+            title: `Are you want to ${type} the artical?`,
+            text: "You won't be able to revert this!",
+            icon: type === "reject" ? 'error' : 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: `Yes, ${type} it!`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //Confirmation backend call here
+                Swal.fire(
+                    `${type}!`,
+                    `Artical has been ${type}.`,
+                    'success'
+                )
+            }
+        })
+    }
 
     return (
         <Card sx={{ width: "100%" }}>
@@ -75,7 +101,19 @@ export default function ArticalCard() {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <CardModal />
+                <Grid container>
+                    <Grid item xs={4}>
+                        <CardModal onConfirm={articalConfirmHandler} />
+                    </Grid>
+                    {userType === "Moderator" &&
+                        <Grid item xs={8}>
+                            <CenteredBox align="right">
+                                <Button variant="contained" sx={{ mr: 1 }} onClick={() => { articalConfirmHandler("accept") }}>Accept</Button>
+                                <Button variant="outlined" color="error" onClick={() => { articalConfirmHandler("reject") }}>Reject</Button>
+                            </CenteredBox>
+                        </Grid>
+                    }
+                </Grid>
             </CardActions>
         </Card>
     );
