@@ -6,34 +6,36 @@ import Grid from '@mui/material/Grid';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import CenteredBox from '../../ui/CenteredBox';
-import { Button, Typography } from '@mui/material';
-import ProductDetailsContainer from './ProductDetailsContainer';
+import CenteredBox from '../ui/CenteredBox';
+import { Box, Button, Typography } from '@mui/material';
+import SellerDetailsContainer from './SellerDetailsContainer';
 
 export default function BuyProducts(props) {
     return (
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2 }}>
-            <Grid item xs={12}>
-                <Typography>{props.productCategory}</Typography>
-            </Grid>
-            {itemData.map((item) => (
-                <Grid key={item.title} item xs={12} sm={6} md={4} lg={3}>
-                    <ImageListItem style={{ borderRadius: 10 }}>
-                        <img
-                            src={`${item.img}?w=248&fit=crop&auto=format`}
-                            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                            alt={item.title}
-                            loading="lazy"
-                            style={{ height: "230px" }}
-                        />
-                        <ImageListItemBar
-                            title={item.title}
-                            subtitle={item.author}
-                        />
-                    </ImageListItem>
+        <Box>
+            <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2 }}>
+                <Grid item xs={12}>
+                    <Typography variant="h5">{props.productCategory}</Typography>
                 </Grid>
-            ))}
-        </Grid>
+                {itemData.map((item) => (
+                    <Grid key={item.title} item xs={12} sm={6} md={4} lg={3}>
+                        <ImageListItem style={{ borderRadius: 10 }}>
+                            <img
+                                src={`${item.img}?w=248&fit=crop&auto=format`}
+                                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                alt={item.title}
+                                loading="lazy"
+                                style={{ height: "230px" }}
+                            />
+                            <ImageListItemBar
+                                title={item.title}
+                                subtitle={item.author}
+                            />
+                        </ImageListItem>
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
     );
 }
 
@@ -56,7 +58,7 @@ const itemData = [
             </Grid>
             <Grid item xs={4}>
                 <CenteredBox align="right">
-                    <ProductDetailsContainer
+                    <SellerDetailsContainer
                         img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
                         title='Mango'
                         author={
@@ -97,7 +99,7 @@ const itemData = [
             </Grid>
             <Grid item xs={4}>
                 <CenteredBox align="right">
-                    <ProductDetailsContainer
+                    <SellerDetailsContainer
                         img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
                         title='Mango'
                         author={
@@ -138,7 +140,7 @@ const itemData = [
             </Grid>
             <Grid item xs={4}>
                 <CenteredBox align="right">
-                    <ProductDetailsContainer
+                    <SellerDetailsContainer
                         img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
                         title='Mango'
                         author={
@@ -179,7 +181,7 @@ const itemData = [
             </Grid>
             <Grid item xs={4}>
                 <CenteredBox align="right">
-                    <ProductDetailsContainer
+                    <SellerDetailsContainer
                         img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
                         title='Mango'
                         author={

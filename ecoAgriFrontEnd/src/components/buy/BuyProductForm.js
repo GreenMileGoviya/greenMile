@@ -3,9 +3,9 @@ import { Box } from '@mui/system'
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import React, { useState } from 'react'
-import BankDetailField from '../sell/BankDetailField'
-import UpdatedButton from '../../ui/UpdatedButton';
-import CenteredBox from '../../ui/CenteredBox';
+import BankDetailField from '../farmer/sell/BankDetailField';
+import UpdatedButton from '../ui/UpdatedButton';
+import CenteredBox from '../ui/CenteredBox';
 
 function BuyProductForm() {
     const [paymentType, setPaymentType] = useState('')
