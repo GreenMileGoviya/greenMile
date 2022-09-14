@@ -297,7 +297,7 @@ function SignUpForm(props) {
     if (fnameIsValid && lnameIsValid && registerNoIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
       formIsValid = true;
     }
-  } else if (props.userType === "Advertiser") {
+  } else if (props.userType === "Advertiser" || props.userType === "AgriExpert") {
     if (fnameIsValid && lnameIsValid && emailIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
       formIsValid = true;
     }
@@ -429,7 +429,7 @@ function SignUpForm(props) {
               />
             </Grid>
           )}
-          {props.userType === "Advertiser" && (
+          {(props.userType === "Advertiser" || props.userType === "AgriExpert") && (
             <Grid item xs={12}>
               <TextField
                 required
