@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CardModal from './CardModal';
 import Carousel from '../ui/Carousel';
+// import Carousel from '../ui/Carousel/Carousel';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -46,7 +47,13 @@ export default function ArticalCard() {
                 title="Shrimp and Chorizo Paella"
                 subheader="September 14, 2016"
             />
+{/*             
             <Carousel
+                imageOne="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+                imageTwo="https://images.unsplash.com/photo-1501263418469-bcf7b079b4c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
+                imageThree="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+            /> */}
+            {/* <Carousel
                 steps={
                     [{
                         label: 'Create an ad',
@@ -75,7 +82,7 @@ export default function ArticalCard() {
                             alt="Paella dish"
                         />,
                     },]}
-            />
+            /> */}
             <CardContent>
                 <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
                     <b>This impressive paella is a perfect party</b>

@@ -6,22 +6,23 @@ import classes from "../../ui/Form.module.css";
 import useInput from "../../../hooks/use-input";
 import { useSelector } from 'react-redux';
 import UploadProduct from './UploadProduct';
-const style = {
-  // position: 'absolute',
-  // top: '50%',
-  // left: '50%',
-  // transform: 'translate(-50%, -50%)',
-  width: 500,
-  // height: 505,
-  bgcolor: 'background.paper',
-  // overflow: "auto",
-  border: "none",
-  // boxShadow: 24,
-  borderRadius: 5,
-  p: 4,
-};
+
 
 function AddProductForm(props) {
+  const style = {
+    // position: 'absolute',
+    // top: '50%',
+    // left: '50%',
+    // transform: 'translate(-50%, -50%)',
+    width: props.width,
+    // height: 505,
+    bgcolor: 'background.paper',
+    // overflow: "auto",
+    border: "none",
+    // boxShadow: 24,
+    borderRadius: 5,
+    p: props.padding,
+  };
   // const [images, setImages] = useState([])
 
   // const setImagesHandler = (value) => {
@@ -29,7 +30,7 @@ function AddProductForm(props) {
   // }
   // const productImages = useSelector((state) => state.imageUpload.images);
   // console.log(productImages);
-  const {
+  let {
     value: productName,
     isValid: productNameIsValid,
     hasError: productNameHasError,
@@ -50,7 +51,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: productCategory,
     isValid: productCategoryIsValid,
     hasError: productCategoryHasError,
@@ -71,7 +72,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: weight,
     isValid: weightIsValid,
     hasError: weightHasError,
@@ -92,7 +93,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: unitPrice,
     isValid: unitPriceIsValid,
     hasError: unitPriceHasError,
@@ -113,7 +114,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: manuDate,
     isValid: manuDateIsValid,
     hasError: manuDateHasError,
@@ -134,7 +135,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: expireDate,
     isValid: expireDateIsValid,
     hasError: expireDateHasError,
@@ -155,7 +156,7 @@ function AddProductForm(props) {
     }
   })
 
-  const {
+  let {
     value: fieldAddress,
     isValid: fieldAddressIsValid,
     hasError: fieldAddressHasError,
@@ -176,7 +177,7 @@ function AddProductForm(props) {
     }
   })
 
-  
+
   const [productImages, setProductImages] = useState([]);
   const deleteImageHandler = () => {
     const images = productImages;
@@ -185,12 +186,10 @@ function AddProductForm(props) {
   }
 
   let formIsValid = false;
-  
+
   if (productNameIsValid && productCategoryIsValid && weightIsValid && unitPriceIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && (productImages.length !== 0) && (props.productType === "sellProduct")) {
     formIsValid = true;
-  }
-  console.log(productImages);
-  if ((productImages.length !== 0) && (props.productType === "donateProduct")) {
+  } else if (productNameIsValid && productCategoryIsValid && weightIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && (productImages.length !== 0) && (props.productType === "donateProduct")) {
     formIsValid = true;
   }
   const onSubmitHandler = (e) => {
@@ -199,12 +198,39 @@ function AddProductForm(props) {
       return;
     }
     const data = {
-
+      productName: productName,
+      productCategory: productCategory,
+      weight: weight,
+      unitPrice: unitPrice,
+      manuDate: manuDate,
+      expireDate: expireDate,
+      images: productImages.map((image) => {
+        return image.file
+      })
     };
 
+    console.log(data);
     //api call here
   }
 
+  if(props.productName !== undefined) {
+    productName = props.productName;
+  }
+  if(props.productCategory !== undefined) {
+    productCategory = props.productCategory;
+  }
+  if(props.manuDate !== undefined) {
+    manuDate = props.manuDate;
+  }
+  if(props.expireDate !== undefined) {
+    expireDate = props.expireDate;
+  }
+  if(props.fieldAddress !== undefined) {
+    fieldAddress = props.fieldAddress;
+  }
+  if(props.weight !== undefined) {
+    weight = props.weight;
+  }
   return (
     <Box sx={style}>
       <form onSubmit={onSubmitHandler}>
@@ -324,16 +350,16 @@ function AddProductForm(props) {
             <div>
               <Grid container spacing={2}>
                 <Grid item xs={3}>
-                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width / 4}px`} />
                 </Grid>
                 <Grid item xs={3}>
-                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width / 4}px`} />
                 </Grid>
                 <Grid item xs={3}>
-                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width / 4}px`} />
                 </Grid>
                 <Grid item xs={3}>
-                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width/4}px`} />
+                  <UploadProduct images={productImages} onDelete={deleteImageHandler} onImageChange={setProductImages} size={`${style.width / 4}px`} />
                 </Grid>
               </Grid>
             </div>
