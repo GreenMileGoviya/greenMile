@@ -7759,7 +7759,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.5.4", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
+"prop-types@^15.5.4", "prop-types@^15.5.4", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -8063,6 +8063,10 @@
     "react-swipeable-views-core" "^0.14.0"
     "shallow-equal" "^1.2.1"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2e476b8a49f775236abf33f6af10e70b607a3b7e
 "react-swipeable-views@^0.14.0":
   "integrity" "sha512-wrTT6bi2nC3JbmyNAsPXffUXLn0DVT9SbbcFr36gKpbaCgEp7rX/OFxsu5hPc/NBsUhHyoSRGvwqJNNrWTwCww=="
   "resolved" "https://registry.npmjs.org/react-swipeable-views/-/react-swipeable-views-0.14.0.tgz"
@@ -8074,6 +8078,11 @@
     "react-swipeable-views-utils" "^0.14.0"
     "warning" "^4.0.1"
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/Yohan
+>>>>>>> 2e476b8a49f775236abf33f6af10e70b607a3b7e
 "react-transition-group@^4.4.5":
   "integrity" "sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
