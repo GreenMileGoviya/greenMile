@@ -49,7 +49,7 @@ export default function MainTab(props) {
     console.log(userType);
     return (
         <ThemeProvider theme={theme}>
-            {userType === "Farmer" &&
+            {/* {userType === "Farmer" && */}
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -92,7 +92,7 @@ export default function MainTab(props) {
                         icon={<Avatar></Avatar>}
                     />
                 </Tabs>
-            }
+            {/* } */}
             {userType === "Buyer" &&
                 <Tabs
                     value={value}
