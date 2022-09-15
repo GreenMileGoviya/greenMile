@@ -59,6 +59,7 @@ const itemData = [
             <Grid item xs={4}>
                 <CenteredBox align="right">
                     <SellerDetailsContainer
+                        productId="2"
                         img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
                         title='Mango'
                         author={

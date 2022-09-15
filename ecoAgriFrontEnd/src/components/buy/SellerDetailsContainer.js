@@ -8,6 +8,9 @@ import BuyProductForm from './BuyProductForm';
 import CloseIcon from '@mui/icons-material/Close';
 import CenteredBox from '../ui/CenteredBox';
 import SellerDetails from './SellerDetails';
+import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router';
+import GoogleMapContainer from './GoogleMapContainer';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -26,6 +29,7 @@ export default function SellerDetailsContainer(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -42,9 +46,10 @@ export default function SellerDetailsContainer(props) {
                             <CloseIcon />
                         </IconButton>
                     </CenteredBox>
-                    <Grid container sx={{pr: 3}}>
+                    <Grid container sx={{pr: 3}} spacing={2}>
                         <Grid item xs={12}>
                             {/* map here */}
+                            <GoogleMapContainer />
 
                             {/* <ImageListItem style={{ borderRadius: 10 }}>
                                 <img
@@ -64,8 +69,11 @@ export default function SellerDetailsContainer(props) {
                             <SellerDetails />
                             {/* <BuyProductForm /> */}
                         </Grid>
-                        <Grid item xs={6}>
-                            
+                        <Grid item xs={12}>
+                            <CenteredBox align="right">
+                                {/* <Button variant="contained" onClick={() => navigate(`/buy-product/${props.productId}`)} endIcon={<SendIcon />}>Request</Button> */}
+                                <Button variant="contained" onClick={() => navigate(`/buy-product`)} endIcon={<SendIcon />}>Request</Button>
+                            </CenteredBox>
                         </Grid>
                     </Grid>
 
