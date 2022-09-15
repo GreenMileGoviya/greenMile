@@ -21,7 +21,6 @@ import { useNavigate } from "react-router";
 import useInput from "../../hooks/use-input";
 import FileUploader from "../ui/fileUploader/FileUploader";
 function SignUpForm(props) {
-  console.log(props.userType);
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const setCharityFile = (value) => {
@@ -555,7 +554,7 @@ function SignUpForm(props) {
                 </Button>
                 <CenteredBox align="center">
                   <p className={classes.text}>
-                    Already have an account? <a href="#">sign in</a>
+                    Already have an account? <a style={{cursor: "pointer"}} onClick={() => {navigate("/login")}}>sign in</a>
                   </p>
                 </CenteredBox>
               </Grid>
