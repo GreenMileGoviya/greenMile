@@ -22,6 +22,7 @@ import ManageUsers from './components/pages/admin/ManageUsers';
 import CreateUsers from './components/pages/admin/CreateUsers';
 import ConfirmArticals from './components/pages/moderator/ConfirmArticals';
 import Carousel from './components/ui/Carousel';
+import Landing from './components/pages/Landing';
 
 function App() {
   const theme = createTheme({
@@ -42,7 +43,8 @@ function App() {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<Registration />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/test" element={<Test />} />
           <Route path="/dashboard" element={<DashBoard />} />

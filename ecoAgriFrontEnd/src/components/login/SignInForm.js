@@ -7,8 +7,10 @@ import PasswordInputField from "../ui/PasswordInputField";
 
 import { login } from "../../store/userApiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 function SignInForm() {
+  const navigate = useNavigate();
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [errorMessageEmail, setErrorMessageEmail] = useState("");
@@ -116,7 +118,7 @@ function SignInForm() {
           </Button>
           <CenteredBox align="center">
             <p className={classes.text}>
-              Don't have an account? <a href="#">sign up</a>
+              Don't have an account? <a style={{cursor: "pointer"}} onClick={() => {navigate("/registration")}}>sign up</a>
             </p>
           </CenteredBox>
         </Grid>
