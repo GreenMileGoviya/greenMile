@@ -20,7 +20,7 @@ const center = { lat: 6.864908, lng: 79.899681 }
 
 function GoogleMapContainer() {
   const { isLoaded } = useJsApiLoader({
-    ecoAgriGoogleMapApiKey: process.env.ECOAGRI_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyAhS8uwAmc02YvUKfYRcCYls5FR_sGzTyI",
     libraries: ['places']
   });
 
@@ -39,7 +39,11 @@ function GoogleMapContainer() {
           <TextField type="text" />
         </Autocomplete>
       </Box>
-      <GoogleMap center={center} zoom={15} mapContainerStyle={{ width: "100%", height: "100%" }}>
+      <GoogleMap
+        center={center}
+        zoom={15}
+        mapContainerStyle={{ width: "100%", height: "100%" }}
+      >
         <Marker position={center} />
       </GoogleMap>
     </Box>
