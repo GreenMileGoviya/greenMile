@@ -3,48 +3,27 @@ import { Box } from '@mui/system'
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import React, { useState } from 'react'
-import BankDetailField from '../farmer/sell/BankDetailField'
+import BankDetailField from '../farmer/sell/BankDetailField';
 import UpdatedButton from '../ui/UpdatedButton';
+import CenteredBox from '../ui/CenteredBox';
 
-function BuyProductRight() {
+function BuyProductForm() {
     const [paymentType, setPaymentType] = useState('')
     const paymentTypeHandler = (payment_type) => {
         setPaymentType(payment_type);
-        console.log(paymentType);
     }
     return (
-        <Box>
+        <Box sx={{ mt: 3 }}>
             <Grid container>
-                <Grid item xs={12} sx={{ mb: 3 }}>
-                    <Typography variant='h4'>Banana</Typography>
-                </Grid>
                 <Grid item xs={12}>
+                    <BankDetailField
+                        fieldName="Seller"
+                        userDetail="Pasindu Lakmal"
+                    />
+                </Grid>
+                <Grid item xs={12} sx={{ mt: 2 }}>
                     <div>
                         <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <BankDetailField
-                                    fieldName="Seller"
-                                    userDetail="Pasindu Lakmal"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <BankDetailField
-                                    fieldName="Quality"
-                                    userDetail="10kg"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <BankDetailField
-                                    fieldName="Price"
-                                    userDetail="10kg"
-                                />
-                            </Grid>
-                        </Grid>
-                    </div>
-                </Grid>
-                <Grid item xs={12} sx={{ mt: 4 }}>
-                    <div>
-                        <Grid container spacing={4}>
                             <Grid item xs={6}>
                                 <TextField
                                     label="Amount"
@@ -64,16 +43,18 @@ function BuyProductRight() {
                                 />
                             </Grid>
                             <Grid item xs={6}>
-                                <FormControlLabel onClick={() => {paymentTypeHandler("cash")}} control={<Checkbox checked={paymentType === "cash"} />} label="Cash Payment" />
+                                <FormControlLabel onClick={() => { paymentTypeHandler("cash") }} control={<Checkbox checked={paymentType === "cash"} />} label="Cash Payment" />
                             </Grid>
                             <Grid item xs={6}>
-                                <FormControlLabel onClick={() => {paymentTypeHandler("card")}} control={<Checkbox checked={paymentType === "card"} />} label="Credit/Debit Card" />
+                                <FormControlLabel onClick={() => { paymentTypeHandler("card") }} control={<Checkbox checked={paymentType === "card"} />} label="Credit/Debit Card" />
                             </Grid>
                             <Grid item xs={6}>
                                 <UpdatedButton variant="outlined" title="Contact Seller" />
                             </Grid>
                             <Grid item xs={6}>
-                                <UpdatedButton variant="contained" title="Send Request" />
+                                <CenteredBox align="right">
+                                    <UpdatedButton variant="contained" title="Send Request" />
+                                </CenteredBox>
                             </Grid>
                         </Grid>
                     </div>
@@ -83,4 +64,4 @@ function BuyProductRight() {
     )
 }
 
-export default BuyProductRight
+export default BuyProductForm

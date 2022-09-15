@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import BuyProductLeft from '../buyProduct/BuyProductLeft'
-import BuyProductRight from '../buyProduct/BuyProductRight'
+import BuyProductLeft from '../buy/BuyProductLeft'
+import BuyProductRight from '../buy/BuyProductRight'
 import MainHeader from '../layouts/MainHeader'
 
 function BuyProduct() {

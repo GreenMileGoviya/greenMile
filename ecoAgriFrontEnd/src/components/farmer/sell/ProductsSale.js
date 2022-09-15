@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import CenteredBox from '../../ui/CenteredBox';
 import { Button, Typography } from '@mui/material';
+import EditSaleProduct from './EditSaleProduct';
 
 export default function ProductsSale() {
   return (
@@ -52,7 +53,25 @@ const itemData = [
       </Grid>
       <Grid item xs={4}>
         <CenteredBox align="right">
-          <Button variant='contained' color="error" style={{ textTransform: "none" }} sx={{ p: 0 }}>edit</Button>
+          <EditSaleProduct
+            img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+            title='Mango'
+            author={
+              <Grid container>
+                <Grid item xs={10}>
+                  <Typography variant="body2">
+                    Rs. 300
+                  </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                  <CenteredBox align="right">
+                    <Typography variant="body2">
+                      2kg
+                    </Typography>
+                  </CenteredBox>
+                </Grid>
+              </Grid>}
+          />
         </CenteredBox>
       </Grid>
     </Grid>
@@ -75,7 +94,25 @@ const itemData = [
       </Grid>
       <Grid item xs={4}>
         <CenteredBox align="right">
-          <Button variant='contained' color="error" style={{ textTransform: "none" }} sx={{ p: 0 }}>edit</Button>
+          <EditSaleProduct
+            img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+            title='Mango'
+            author={
+              <Grid container>
+                <Grid item xs={10}>
+                  <Typography variant="body2">
+                    Rs. 300
+                  </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                  <CenteredBox align="right">
+                    <Typography variant="body2">
+                      2kg
+                    </Typography>
+                  </CenteredBox>
+                </Grid>
+              </Grid>}
+          />
         </CenteredBox>
       </Grid>
     </Grid>
@@ -98,7 +135,25 @@ const itemData = [
       </Grid>
       <Grid item xs={4}>
         <CenteredBox align="right">
-          <Button variant='contained' color="error" style={{ textTransform: "none" }} sx={{ p: 0 }}>edit</Button>
+          <EditSaleProduct
+            img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+            title='Mango'
+            author={
+              <Grid container>
+                <Grid item xs={10}>
+                  <Typography variant="body2">
+                    Rs. 300
+                  </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                  <CenteredBox align="right">
+                    <Typography variant="body2">
+                      2kg
+                    </Typography>
+                  </CenteredBox>
+                </Grid>
+              </Grid>}
+          />
         </CenteredBox>
       </Grid>
     </Grid>
@@ -121,7 +176,25 @@ const itemData = [
       </Grid>
       <Grid item xs={4}>
         <CenteredBox align="right">
-          <Button variant='contained' color="error" style={{ textTransform: "none" }} sx={{ p: 0 }}>edit</Button>
+          <EditSaleProduct
+            img="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+            title='Mango'
+            author={
+              <Grid container>
+                <Grid item xs={10}>
+                  <Typography variant="body2">
+                    Rs. 300
+                  </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                  <CenteredBox align="right">
+                    <Typography variant="body2">
+                      2kg
+                    </Typography>
+                  </CenteredBox>
+                </Grid>
+              </Grid>}
+          />
         </CenteredBox>
       </Grid>
     </Grid>

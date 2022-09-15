@@ -43,6 +43,8 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "#007A31",
+  display: "block",
+
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -78,7 +80,7 @@ const searchModalStyle = {
   // pb: 2
 };
 
-function SearchBar() {
+function SearchBar(props) {
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
   const expandHandler = () => {
@@ -121,7 +123,7 @@ function SearchBar() {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
-        placeholder="Search…"
+        placeholder={props.placeholder}
         inputProps={{ "aria-label": "search" }}
         onClick={expandHandler}
       />

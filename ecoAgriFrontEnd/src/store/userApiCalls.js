@@ -20,19 +20,19 @@ import { publicRequest, userRequest } from "../requestMethods";
 // import { useNavigate } from "react-router";
 
 export const register = async (User) => {
-    // dispatch(addUserStart());
-    try {
-      const res = await publicRequest.post(`/register`, User);
-      console.log(res);
-      alert("User registration Success!");
-      return 1;
-      //   dispatch(addUserSuccess(res.data));
-    } catch (err) {
-      alert("User registration Failed!");
-      return 0;
-      //   dispatch(addUserFailure());
-    }
-  };
+  // dispatch(addUserStart());
+  try {
+    const res = await publicRequest.post(`/register`, User);
+    console.log(res);
+    alert("User registration Success!");
+    return 1;
+    //   dispatch(addUserSuccess(res.data));
+  } catch (err) {
+    alert("User registration Failed!");
+    return 0;
+    //   dispatch(addUserFailure());
+  }
+};
 
 export const login = async (dispatch, user) => {
   // const userData = JSON.stringify(user);
@@ -41,7 +41,13 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/login", user);
     console.log(res);
     dispatch(loginSuccess(res.data));
-    window.location.href = "http://localhost:3000/dashboard";
+    if (res.data.userrole === "Admin") {
+      window.location.href = "/admin/dashboard";
+    } else if (res.data.userrole === "Moderator") {
+      window.location.href = "/moderator/dashboard";
+    } else {
+      window.location.href = "/dashboard";
+    }
   } catch (err) {
     dispatch(loginFailure());
   }
