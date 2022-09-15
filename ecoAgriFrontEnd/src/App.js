@@ -5,7 +5,7 @@ import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material'
 import { red } from '@mui/material/colors';
 import Login from './components/pages/Login';
 import DashBoard from './components/pages/farmer/DashBoard';
-import Buy from './components/pages/farmer/Buy';
+import Buy from './components/pages/Buy';
 import Sell from './components/pages/farmer/Sell';
 import PendingDonations from './components/farmer/dashboard/PendingDonations';
 import AddBank from './components/pages/farmer/AddBank';
@@ -65,7 +65,8 @@ function App() {
           {/* moderator */}
           <Route path='/moderator/dashboard' element={<AdminDashboard />} />
           <Route path='/moderator/articals' element={<ConfirmArticals />} />
-          {/* <Route path="/buy-product" element={<BuyProduct />} /> */}
+          <Route path="/buy-product/" element={<BuyProduct />} />
+          <Route path="/buy-product/:productId" element={<BuyProduct />} />
           <Route path="/testing" element={<Carousel />} />
         </Routes>
       </ThemeProvider>

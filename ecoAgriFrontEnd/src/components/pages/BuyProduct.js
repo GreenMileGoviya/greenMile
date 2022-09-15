@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import BuyProductLeft from '../buyProduct/BuyProductLeft'
-import BuyProductRight from '../buyProduct/BuyProductRight'
+import BuyProductLeft from '../buy/BuyProductLeft'
+import BuyProductRight from '../buy/BuyProductRight'
 import MainHeader from '../layouts/MainHeader'
 
 function BuyProduct() {
@@ -9,9 +9,9 @@ function BuyProduct() {
         <React.Fragment>
             <MainHeader value={2} />
             <Grid container sx={{pt: "100px"}}>
-                {/* <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6}>
                     <BuyProductLeft />
-                </Grid> */}
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <BuyProductRight />
                 </Grid>

@@ -6,6 +6,7 @@ import classes from "../../ui/Form.module.css";
 import useInput from "../../../hooks/use-input";
 import { useSelector } from 'react-redux';
 import UploadProduct from './UploadProduct';
+import SetLocationModal from './SetLocationModal';
 
 
 function AddProductForm(props) {
@@ -213,22 +214,22 @@ function AddProductForm(props) {
     //api call here
   }
 
-  if(props.productName !== undefined) {
+  if (props.productName !== undefined) {
     productName = props.productName;
   }
-  if(props.productCategory !== undefined) {
+  if (props.productCategory !== undefined) {
     productCategory = props.productCategory;
   }
-  if(props.manuDate !== undefined) {
+  if (props.manuDate !== undefined) {
     manuDate = props.manuDate;
   }
-  if(props.expireDate !== undefined) {
+  if (props.expireDate !== undefined) {
     expireDate = props.expireDate;
   }
-  if(props.fieldAddress !== undefined) {
+  if (props.fieldAddress !== undefined) {
     fieldAddress = props.fieldAddress;
   }
-  if(props.weight !== undefined) {
+  if (props.weight !== undefined) {
     weight = props.weight;
   }
   return (
@@ -365,8 +366,22 @@ function AddProductForm(props) {
             </div>
           </Grid>
           <Grid item xs={12}>
+            <SetLocationModal />
+          </Grid>
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={<Checkbox defaultChecked />}
+              label={
+                <p className={classes.text}>
+                  Make sure you have set your product location
+                </p>
+              }
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button fullWidth variant="contained" type="submit" style={{ textTransform: "none" }} disabled={!formIsValid}>Submit</Button>
           </Grid>
+
         </Grid>
       </form>
     </Box>
