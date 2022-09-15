@@ -2,6 +2,7 @@ import express from "express";
 // import { Register } from "../controllers/registerController.js";
 import { Login, Register } from "../controllers/authController.js";
 import { getUsers,getUser,updateUser,deleteUser } from "../controllers/userDetailsController.js";
+import { saveProduct,getProducts,getProduct,updateProduct,deleteProduct } from "../controllers/productDetailController.js";
 import { Logout } from "../controllers/logoutController.js";
 import {
   verifyToken,
@@ -25,12 +26,19 @@ const router = express.Router();
 
 router.post("/register", [checkDuplicateUsernameOrEmail], Register);
 router.post("/login", Login);
+
 router.get("/users/all", getUsers);
 router.get("/users", [verifyToken], getUsers);
 router.get("/user/:id", [verifyToken], getUser);
 router.put("/user/:id", [verifyToken], updateUser);
 router.delete("/user/:id", [verifyToken], deleteUser);
 
+router.get("/products/all", getProducts);
+router.post("/product/save",[verifyToken], saveProduct);
+router.get("/products", [verifyToken], getProducts);
+router.get("/product/:id", [verifyToken], getProduct);
+router.put("/product/:id", [verifyToken], updateProduct);
+router.delete("/product/:id", [verifyToken], deleteProduct);
 
 router.get("/users/admin", [verifyToken, isAdmin], adminBoard);
 router.get(

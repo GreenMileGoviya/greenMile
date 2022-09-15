@@ -186,9 +186,16 @@ function AddProductForm(props) {
       return;
     }
     const data = {
-
+      productName:productName,
+      productCategory:productCategory,
+      weight:weight,
+      unitPrice:unitPrice,
+      manuDate:manuDate,
+      expireDate:expireDate,
+      fieldAddress:fieldAddress,
+      productImages:productImages
     };
-
+    console.log(data);
     //api call here
   }
   return (
@@ -228,8 +235,8 @@ function AddProductForm(props) {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={1}>Fruit</MenuItem>
-                <MenuItem value={2}>Vegitable</MenuItem>
+                <MenuItem value={"Fruit"}>Fruit</MenuItem>
+                <MenuItem value={"Vegetable"}>Vegetable</MenuItem>
               </Select>
               <FormHelperText>{productCategoryHasError ? productCategoryError : ""}</FormHelperText>
             </FormControl>
