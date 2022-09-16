@@ -9,7 +9,7 @@ import CenteredBox from '../../ui/CenteredBox';
 
 import CollectionsIcon from "@mui/icons-material/Collections";
 import CloseIcon from '@mui/icons-material/Close';
-import GoogleMapContainer from '../../buy/GoogleMapContainer';
+import GoogleMapContainer from '../../googleMap/GoogleMapContainer';
 const style = {
   position: 'absolute',
   top: '50%',

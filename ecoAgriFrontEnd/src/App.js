@@ -23,7 +23,6 @@ import CreateUsers from './components/pages/admin/CreateUsers';
 import ConfirmArticals from './components/pages/moderator/ConfirmArticals';
 import Carousel from './components/ui/Carousel';
 import Landing from './components/pages/Landing';
-import GoogleMapContainer from './components/buy/GoogleMapContainer';
 
 function App() {
   const theme = createTheme({
@@ -70,7 +69,7 @@ function App() {
           <Route path='/moderator/articals' element={<ConfirmArticals />} />
           {/* <Route path="/buy-product/" element={<BuyProduct />} /> */}
           <Route path="/buy-product/:productId" element={<BuyProduct />} />
-          <Route path="/testing" element={<GoogleMapContainer />} />
+          {/* <Route path="/testing" element={<GoogleMapContainer />} /> */}
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

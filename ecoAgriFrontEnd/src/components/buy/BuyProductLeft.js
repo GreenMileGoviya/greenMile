@@ -47,7 +47,7 @@ export default function BuyProductLeft() {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ bgcolor: '#FFF', p: 3 }}>
             <Box>
                 <Tabs value={value} onChange={handleChange}>
                     <Tab sx={{ p: 1, pl: 2 }} label={
@@ -74,32 +74,28 @@ export default function BuyProductLeft() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <Box sx={{ width: "600px", height: "50vh" }}>
-                    <CardMedia
-                        component="img"
-                        sx={{ width: "100%", height: "100%", p: 0 }}
-                        image="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                <Box sx={{ width: "600px", height: "500px" }}>
+                    <img
+                        src='https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80'
+                        style={{ width: "100%", height: "100%" }}
                     />
                 </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <Box sx={{ width: "600px", height: "50vh" }}>
-                    <CardMedia
-                        component="img"
-                        sx={{ width: "100%", height: "100%", p: 0 }}
-                        image="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+                <Box sx={{ width: "600px", height: "500px" }}>
+                    <img
+                        src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+                        style={{ width: "100%", height: "100%" }}
                     />
                 </Box>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Box sx={{ width: "600px", height: "50vh" }}>
-                    <CardMedia
-                        component="img"
-                        sx={{ width: "100%", height: "100%", p: 0 }}
-                        image="https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
+                <Box sx={{ width: "600px", height: "500px" }}>
+                    <img
+                        src="https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
+                        style={{ width: "100%", height: "100%" }}
                     />
                 </Box>
-
             </TabPanel>
         </Box>
     );
