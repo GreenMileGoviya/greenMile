@@ -22,12 +22,6 @@ function SellerDetails() {
                     <Grid container spacing={2}>
                         <Grid item xs={6}>
                             <BankDetailField
-                                fieldName="Distance"
-                                userDetail="5km"
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <BankDetailField
                                 fieldName="Address"
                                 userDetail="48, Perera Mw, Galle"
                             />
