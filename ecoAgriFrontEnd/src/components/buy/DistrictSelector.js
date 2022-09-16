@@ -13,6 +13,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 import { Divider, Grid } from '@mui/material';
 import PopularAreas from './PopularAreas';
+import Districts from './Districts';
 
 export default function DistrictSelector() {
     const [open, setOpen] = React.useState(false);
@@ -35,12 +36,8 @@ export default function DistrictSelector() {
                             </ListSubheader>
                         }
                     >
-                        <ListItemButton onClick={handleClick}>
-                            <ListItemText primary="Inbox" />
-                            {open ? <ExpandLess /> : <ExpandMore />}
-                        </ListItemButton>
-                        <Divider />
-                        <PopularAreas OnOpen={open} />
+                        <Districts districtName="Colombo" />
+                        <Districts districtName="Galle" />
                     </List>
                 </Grid>
             </Grid>

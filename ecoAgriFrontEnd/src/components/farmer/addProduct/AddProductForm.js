@@ -7,7 +7,11 @@ import useInput from "../../../hooks/use-input";
 import { useSelector } from 'react-redux';
 import UploadProduct from './UploadProduct';
 import SetLocationModal from './SetLocationModal';
-
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import Swal from "sweetalert2";
+import { storage } from '../../../Firebase';
+import { v4 } from "uuid";
+import { async } from '@firebase/util';
 
 function AddProductForm(props) {
   const style = {
@@ -180,6 +184,8 @@ function AddProductForm(props) {
 
 
   const [productImages, setProductImages] = useState([]);
+  const [productImageUrls, setProductImageUrls] = useState([]);
+  const [imageUploadingCount, setImageUploadingCount] = useState([]);
   const deleteImageHandler = () => {
     const images = productImages;
     setProductImages(images);
@@ -193,26 +199,7 @@ function AddProductForm(props) {
   } else if (productNameIsValid && productCategoryIsValid && weightIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && (productImages.length !== 0) && (props.productType === "donateProduct")) {
     formIsValid = true;
   }
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    if (!formIsValid) {
-      return;
-    }
-    const data = {
-      productName: productName,
-      productCategory: productCategory,
-      weight: weight,
-      unitPrice: unitPrice,
-      manuDate: manuDate,
-      expireDate: expireDate,
-      images: productImages.map((image) => {
-        return image.file
-      })
-    };
 
-    console.log(data);
-    //api call here
-  }
 
   if (props.productName !== undefined) {
     productName = props.productName;
@@ -232,9 +219,78 @@ function AddProductForm(props) {
   if (props.weight !== undefined) {
     weight = props.weight;
   }
+
+  const onSubmitHandler = async (e) => {
+    console.log('hell')
+    e.preventDefault();
+    let imagePath = [];
+    let imageRef = [];
+    let uploadTask = "";
+    let imagUrls = [];
+    console.log(productImages);
+    let count = 0;
+    for (var i = 0; i < productImages.length; i++) {
+      imagePath.push(`images/products/${productImages[i].file.name + v4()}`);
+      imageRef.push(ref(storage, imagePath[i]));
+      uploadTask = uploadBytesResumable(imageRef[i], productImages[i].file);
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Uploading progress is " + progress);
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong !',
+          })
+        },
+        () => {
+          console.log(uploadTask.snapshot);
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((downloadURL) => {
+              imagUrls.push(downloadURL);
+              setProductImageUrls(imagUrls)
+              console.log(imagUrls);
+            }
+            ).catch((error) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong !',
+              })
+            });
+        }
+      )
+      setImageUploadingCount(i + 1)
+    }
+
+    if (imageUploadingCount === productImages.length) {
+      console.log(productImageUrls);
+    }
+    // const imagePath = `images/profile/${profileImageData.name + v4()}`
+    // const uploadTask = uploadBytesResumable(imageRef, profileImageData);
+    // if (!formIsValid) {
+    //   return;
+    // }
+    // const data = {
+    //   productName: productName,
+    //   productCategory: productCategory,
+    //   weight: weight,
+    //   unitPrice: unitPrice,
+    //   manuDate: manuDate,
+    //   expireDate: expireDate,
+    //   images: productImageUrls.map((image) => {
+    //     return image
+    //   })
+    // };
+
+    // console.log(data);
+    //api call here
+  }
   return (
     <Box sx={style}>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={onSubmitHandler} noValidate>
         <Grid container sx={{ mb: 3 }}>
           <Grid item xs={12}>
             <CenteredBox align="center">
@@ -379,7 +435,15 @@ function AddProductForm(props) {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button fullWidth variant="contained" type="submit" style={{ textTransform: "none" }} disabled={!formIsValid}>Submit</Button>
+            <Button
+              fullWidth
+              variant="contained"
+              type="submit"
+              style={{ textTransform: "none" }}
+            // disabled={!formIsValid}
+            >
+              Submit
+            </Button>
           </Grid>
 
         </Grid>

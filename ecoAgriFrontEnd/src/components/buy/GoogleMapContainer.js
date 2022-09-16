@@ -103,7 +103,13 @@ function GoogleMapContainer() {
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <Autocomplete>
-              <TextField style={{zIndex: 2000}} type='text' placeholder='Origin' inputRef={originRef} />
+              <TextField
+                style={{ zIndex: 2000 }}
+                type='text'
+                placeholder='Origin'
+                inputRef={originRef}
+                variant="standard"
+              />
             </Autocomplete>
           </Grid>
           <Grid item xs={5}>
@@ -112,21 +118,22 @@ function GoogleMapContainer() {
                 type='text'
                 placeholder='Destination'
                 inputRef={destiantionRef}
+                variant="standard"
               />
             </Autocomplete>
           </Grid>
           <Grid item xs={2}>
-            <Button sx={{p: "3px"}} variant="outlined" style={{textTransform: "none"}} type='submit' onClick={calculateRoute}>
+            <Button sx={{ p: "3px" }} variant="outlined" style={{ textTransform: "none" }} type='submit' onClick={calculateRoute}>
               Distance
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <IconButton sx={{p: "3px"}} onClick={clearRoute}>
+            <IconButton sx={{ p: "3px" }} onClick={clearRoute}>
               <CloseIcon />
             </IconButton>
           </Grid>
         </Grid >
-        <Grid container sx={{mt: 2}}>
+        <Grid container sx={{ mt: 2 }}>
           <Grid item xs={5}>
             <Typography>Distance: {distance} </Typography>
           </Grid>
@@ -135,7 +142,7 @@ function GoogleMapContainer() {
           </Grid>
           <Grid item xs={2}>
             <IconButton
-            sx={{p: "3px"}}
+              sx={{ p: "3px" }}
               onClick={() => {
                 map.panTo(center)
                 map.setZoom(15)
