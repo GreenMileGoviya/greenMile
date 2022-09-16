@@ -10,7 +10,7 @@ import CenteredBox from '../ui/CenteredBox';
 import SellerDetails from './SellerDetails';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router';
-import GoogleMapContainer from './GoogleMapContainer';
+import GoogleMapContainer from '../googleMap/GoogleMapContainer';
 const style = {
     position: 'absolute',
     top: '50%',

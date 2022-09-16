@@ -17,7 +17,7 @@ function Districts(props) {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Divider />
-      <PopularAreas OnOpen={open} />
+      <PopularAreas OnOpen={open} places={props.places} />
     </React.Fragment>
   )
 }

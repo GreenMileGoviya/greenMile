@@ -109,7 +109,7 @@ function ProfileDetails() {
     }
 
     return (
-        <>
+        <Box  sx={{ p: 5 }}>
             <Grid container spacing={3}>
                 {userData.map((user) => (
                     <Grid key={user.fieldId} item xs={12}>
@@ -148,8 +148,8 @@ function ProfileDetails() {
                     {/* </CenteredBox> */}
                 </Grid>
             </Grid>
+        </Box>
 
-        </>
     )
 }
 

@@ -36,8 +36,28 @@ export default function DistrictSelector() {
                             </ListSubheader>
                         }
                     >
-                        <Districts districtName="Colombo" />
-                        <Districts districtName="Galle" />
+                        <Districts districtName="Colombo"
+                            places={
+                                [
+                                    "Maharagma",
+                                    "Nugegoda",
+                                    "Piliyandala",
+                                    "Dehiwala",
+                                    "Kottawa"
+                                ]
+                            }
+                        />
+                        <Districts districtName="Galle"
+                            places={
+                                [
+                                    "Galle City",
+                                    "Ambalangoda",
+                                    "Elpitiya",
+                                    "Bentota",
+                                    "Baddegama",
+                                ]
+                            }
+                        />
                     </List>
                 </Grid>
             </Grid>

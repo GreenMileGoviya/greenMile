@@ -13,7 +13,7 @@ function BuyProductRight() {
         setPaymentType(payment_type);
     }
     return (
-        <Box>
+        <Box sx={{bgcolor: "#fff", p: 3, pb: 5}}>
             <Grid container>
                 <Grid item xs={12} sx={{ mb: 3 }}>
                     <Typography variant='h4'>Banana</Typography>
@@ -51,13 +51,13 @@ function BuyProductRight() {
                 <Grid item xs={12} sx={{ mt: 4 }}>
                     <div>
                         <Grid container spacing={4}>
-                            <Grid item xs={6}>
+                            <Grid item md={12} lg={6}>
                                 <TextField
                                     label="Amount"
                                     type="number"
                                 />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item md={12} lg={6}>
                                 <TextField
                                     label="Price"
                                     type="number"
@@ -72,12 +72,12 @@ function BuyProductRight() {
                                     type="date"
                                 />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={8}>
                                 <Typography>
                                     Where you can buy this product ?
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
                                 <SellerDetailsContainer />
                             </Grid>
                             {/* <Grid item xs={6}>
@@ -86,10 +86,10 @@ function BuyProductRight() {
                             <Grid item xs={6}>
                                 <FormControlLabel onClick={() => {paymentTypeHandler("card")}} control={<Checkbox checked={paymentType === "card"} />} label="Credit/Debit Card" />
                             </Grid> */}
-                            <Grid item xs={6}>
+                            <Grid item xs={8}>
                                 <UpdatedButton variant="outlined" title="Contact Seller" />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
                                 <UpdatedButton variant="contained" title="Send Request" />
                             </Grid>
                         </Grid>

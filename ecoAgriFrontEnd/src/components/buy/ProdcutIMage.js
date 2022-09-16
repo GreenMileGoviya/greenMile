@@ -88,15 +88,37 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 export default function ProdcutIMage(props) {
   return (
-    <ImageButton
-      focusRipple
+    <Box
       style={{
-        width: "200px",
+        width: "150px",
+        height: "150px"
       }}
     >
+      <ImageButton
+        focusRipple
+        component="div"
+        style={{
+          width: "100%",
+          height: "100%"
+        }}
+      >
 
-      <ImageSrc style={{ backgroundImage: `url(${props.url})` }} />
-      <ImageBackdrop className="MuiImageBackdrop-root" />
-    </ImageButton>
+        <ImageSrc style={{
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${props.url})`
+        }}
+        />
+
+        {/* <img style={{
+          width: "100%",
+          height: "100%"
+        }}
+          src={props.url}
+        /> */}
+        <ImageBackdrop className="MuiImageBackdrop-root" />
+      </ImageButton>
+    </Box>
+
   );
 }

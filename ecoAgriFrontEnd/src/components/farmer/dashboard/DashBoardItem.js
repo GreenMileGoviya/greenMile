@@ -27,10 +27,10 @@ function DashBoardItem(props) {
         <CenteredBox align="center">
           <Typography sx={{mb: 2}} variant="h5">{props.tableName}</Typography>
         </CenteredBox>
-        <CenteredBox align="center">
+        {/* <CenteredBox align="center"> */}
             {props.table}
           {/* <Button onClick={clickHanlder} variant="contained" sx={{ textTransform: "none", mb: 2 }}>Donate</Button> */}
-        </CenteredBox>
+        {/* </CenteredBox> */}
       </Box>
     </React.Fragment>
   )
