@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { CardMedia } from '@mui/material';
+import ProdcutIMage from './ProdcutIMage';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -16,7 +18,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ pl: 2, pt: 3 }}>
                     <div>{children}</div>
                 </Box>
             )}
@@ -46,23 +48,59 @@ export default function BuyProductLeft() {
 
     return (
         <Box sx={{ width: '100%' }}>
-
-            <TabPanel value={value} index={0}>
-                1
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                2
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                3
-            </TabPanel>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Sales History" {...a11yProps(0)} />
-                    <Tab label="Purchase History" {...a11yProps(1)} />
-                    <Tab label="Donation History" {...a11yProps(2)} />
+            <Box>
+                <Tabs value={value} onChange={handleChange}>
+                    <Tab sx={{ p: 1, pl: 2 }} label={
+                        <ProdcutIMage
+                            url="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                        />
+                    }
+                        {...a11yProps(0)}
+                    />
+                    <Tab sx={{ p: 1 }} label={
+                        <ProdcutIMage
+                            url="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+                        />
+                    }
+                        {...a11yProps(0)}
+                    />
+                    <Tab sx={{ p: 1 }} label={
+                        <ProdcutIMage
+                            url="https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
+                        />
+                    }
+                        {...a11yProps(0)}
+                    />
                 </Tabs>
             </Box>
+            <TabPanel value={value} index={0}>
+                <Box sx={{ width: "600px", height: "50vh" }}>
+                    <CardMedia
+                        component="img"
+                        sx={{ width: "100%", height: "100%", p: 0 }}
+                        image="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                    />
+                </Box>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <Box sx={{ width: "600px", height: "50vh" }}>
+                    <CardMedia
+                        component="img"
+                        sx={{ width: "100%", height: "100%", p: 0 }}
+                        image="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+                    />
+                </Box>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <Box sx={{ width: "600px", height: "50vh" }}>
+                    <CardMedia
+                        component="img"
+                        sx={{ width: "100%", height: "100%", p: 0 }}
+                        image="https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
+                    />
+                </Box>
+
+            </TabPanel>
         </Box>
     );
 }

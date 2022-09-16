@@ -1,10 +1,11 @@
-import { FormControl, FormControlLabel, Grid, InputLabel, TextField, Typography } from '@mui/material'
+import { Button, FormControl, FormControlLabel, Grid, InputLabel, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import React, { useState } from 'react'
 import BankDetailField from '../farmer/sell/BankDetailField'
 import UpdatedButton from '../ui/UpdatedButton';
+import SellerDetailsContainer from './SellerDetailsContainer';
 
 function BuyProductRight() {
     const [paymentType, setPaymentType] = useState('')
@@ -28,14 +29,20 @@ function BuyProductRight() {
                             </Grid>
                             <Grid item xs={12}>
                                 <BankDetailField
-                                    fieldName="Quality"
+                                    fieldName="Quantity"
                                     userDetail="10kg"
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <BankDetailField
+                                    fieldName="Unit Price"
+                                    userDetail="100"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <BankDetailField
                                     fieldName="Price"
-                                    userDetail="10kg"
+                                    userDetail="1000"
                                 />
                             </Grid>
                         </Grid>
@@ -54,6 +61,9 @@ function BuyProductRight() {
                                 <TextField
                                     label="Price"
                                     type="number"
+                                    value={1000}
+                                    readOnly
+                                    disabled
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -63,11 +73,19 @@ function BuyProductRight() {
                                 />
                             </Grid>
                             <Grid item xs={6}>
+                                <Typography>
+                                    Where you can buy this product ?
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <SellerDetailsContainer />
+                            </Grid>
+                            {/* <Grid item xs={6}>
                                 <FormControlLabel onClick={() => {paymentTypeHandler("cash")}} control={<Checkbox checked={paymentType === "cash"} />} label="Cash Payment" />
                             </Grid>
                             <Grid item xs={6}>
                                 <FormControlLabel onClick={() => {paymentTypeHandler("card")}} control={<Checkbox checked={paymentType === "card"} />} label="Credit/Debit Card" />
-                            </Grid>
+                            </Grid> */}
                             <Grid item xs={6}>
                                 <UpdatedButton variant="outlined" title="Contact Seller" />
                             </Grid>

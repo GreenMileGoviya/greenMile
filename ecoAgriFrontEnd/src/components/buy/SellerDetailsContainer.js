@@ -33,7 +33,7 @@ export default function SellerDetailsContainer(props) {
 
     return (
         <div>
-            <Button variant='contained' style={{ textTransform: "none" }} sx={{ p: 0 }} onClick={handleOpen}>Request</Button>
+            <Button variant='contained' style={{ textTransform: "none" }} onClick={handleOpen}>Location</Button>
             <Modal
                 open={open}
                 // onClose={handleClose}
@@ -67,14 +67,12 @@ export default function SellerDetailsContainer(props) {
                         </Grid>
                         <Grid item xs={12}>
                             <SellerDetails />
-                            {/* <BuyProductForm /> */}
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <CenteredBox align="right">
-                                {/* <Button variant="contained" onClick={() => navigate(`/buy-product/${props.productId}`)} endIcon={<SendIcon />}>Request</Button> */}
                                 <Button variant="contained" onClick={() => navigate(`/buy-product`)} endIcon={<SendIcon />}>Request</Button>
                             </CenteredBox>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
 
                 </Box>
