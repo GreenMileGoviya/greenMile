@@ -50,26 +50,29 @@ export default function BuyProductLeft() {
         <Box sx={{ bgcolor: '#FFF', p: 3 }}>
             <Box>
                 <Tabs value={value} onChange={handleChange}>
-                    <Tab sx={{ p: 1, pl: 2 }} label={
-                        <ProdcutIMage
-                            url="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
-                        />
-                    }
+                    <Tab sx={{ p: 1, pl: 2 }}
+                        label={
+                            <ProdcutIMage
+                                url="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                            />
+                        }
                         {...a11yProps(0)}
                     />
-                    <Tab sx={{ p: 1 }} label={
-                        <ProdcutIMage
-                            url="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
-                        />
-                    }
-                        {...a11yProps(0)}
+                    <Tab sx={{ p: 1 }}
+                        label={
+                            <ProdcutIMage
+                                url="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+                            />
+                        }
+                        {...a11yProps(1)}
                     />
-                    <Tab sx={{ p: 1 }} label={
-                        <ProdcutIMage
-                            url="https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
-                        />
-                    }
-                        {...a11yProps(0)}
+                    <Tab sx={{ p: 1 }}
+                        label={
+                            <ProdcutIMage
+                                url="https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
+                            />
+                        }
+                        {...a11yProps(2)}
                     />
                 </Tabs>
             </Box>

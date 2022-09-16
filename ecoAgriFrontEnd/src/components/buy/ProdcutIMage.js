@@ -96,6 +96,7 @@ export default function ProdcutIMage(props) {
     >
       <ImageButton
         focusRipple
+        component="div"
         style={{
           width: "100%",
           height: "100%"
@@ -104,8 +105,11 @@ export default function ProdcutIMage(props) {
 
         <ImageSrc style={{
           width: "100%",
-          height: "100%"
-        }} style={{ backgroundImage: `url(${props.url})` }} />
+          height: "100%",
+          backgroundImage: `url(${props.url})`
+        }}
+        />
+
         {/* <img style={{
           width: "100%",
           height: "100%"
