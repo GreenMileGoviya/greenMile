@@ -31,7 +31,7 @@ const DUMMY_ARTICALS = [
 ]
 function LandingPageArticals() {
     return (
-        <Grid container sx={{ mt: 10 }}>
+        <Grid container sx={{ mt: 10 }} rowSpacing={4} columnSpacing={{ xs: 1, sm: 1 }}>
             {DUMMY_ARTICALS.map((artical) => (
                 <Grid key={artical.id} item xs={12} sm={6} md={4} lg={3}>
                     <LandingPageArticalCard

@@ -4,6 +4,9 @@ import './animate.css';
 import './home.css';
 import './main.css';
 
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import BenifitListItem from './BenifitListItem';
 function SectionOne() {
     useEffect(() => {
         var scroll = window.requestAnimationFrame ||
@@ -120,11 +123,13 @@ function SectionOne() {
                 </section>
                 <section className="flex-content padding_2x">
                     <h1 className="title medium inline-photo3 show-on-scroll3">Our <em>Benifits.</em></h1>
-                    <p>Direct buying & selling</p>
-                    <p>Secure payments</p>
-                    <p>Connections with the Agricultural Experts</p>
-                    <p>Donations to the community</p>
-                    <p>Knowledge sharing</p>
+                    <List>
+                        <BenifitListItem title="Direct buying & selling" />
+                        <BenifitListItem title="Secure payments" />
+                        <BenifitListItem title="Connections with the Agricultural Experts" />
+                        <BenifitListItem title="Donations to the community" />
+                        <BenifitListItem title="Knowledge sharing" />
+                    </List>
                 </section>
             </div>
 
