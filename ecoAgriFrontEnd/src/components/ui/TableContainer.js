@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import CenteredBox from '../../ui/CenteredBox'
+import CenteredBox from './CenteredBox'
 
 const style = {
   // position: 'absolute',
@@ -17,7 +17,7 @@ const style = {
   borderRadius: 2,
   p: 4,
 };
-function DashBoardItem(props) {
+function TableContainer(props) {
   return (
     <React.Fragment>
       <Box sx={style}>
@@ -33,4 +33,4 @@ function DashBoardItem(props) {
   )
 }
 
-export default DashBoardItem
+export default TableContainer

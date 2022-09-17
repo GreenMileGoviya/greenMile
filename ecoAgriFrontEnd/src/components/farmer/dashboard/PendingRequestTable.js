@@ -7,6 +7,7 @@ import {
 } from "@mui/x-data-grid";
 import { Box, Button, Chip, Grid } from "@mui/material";
 import CenteredBox from "../../ui/CenteredBox";
+import BuyingModal from "./BuyingModal";
 
 //Filter panel
 const CustomToolbar = ({ setFilterButtonEl }) => (
@@ -126,7 +127,7 @@ export default function PendingRequestTable() {
                 return (
                     <React.Fragment>
                         {params.row.status === "accepted" &&
-                            <Button style={{textTransform: "none", borderRadius: 20}} variant="contained">Buy</Button>
+                            <BuyingModal />
                         }
                         {params.row.status === "cancelled" &&
                             <Chip label="Cancelled" color="error" variant="outlined" />

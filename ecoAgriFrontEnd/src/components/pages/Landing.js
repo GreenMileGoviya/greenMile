@@ -1,9 +1,13 @@
 import React from 'react'
 import LandingAppBar from '../Landing/LandingAppBar'
+import SectionOne from '../Landing/SectionOne'
 
 function Landing() {
   return (
-    <LandingAppBar />
+    <React.Fragment>
+      <LandingAppBar />
+      <SectionOne />
+    </React.Fragment>
   )
 }
 

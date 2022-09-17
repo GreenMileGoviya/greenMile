@@ -3,24 +3,28 @@ import React from 'react'
 import MainHeader from '../layouts/MainHeader'
 import BuyProducts from '../buy/BuyProducts'
 import BuyProductActions from '../buy/BuyProductActions'
+import { useSelector } from 'react-redux'
 // import classes from '../../ui/HideScrollBar.module.css';
 
 function Buy() {
+  const user = useSelector((state) => state.user.currentUser);
+  const userType = user.userrole;
+  const value = (userType === "Farmer" && 2) || (userType === "Buyer" && 0);
   return (
     <React.Fragment>
-      <MainHeader value={2} />
+      <MainHeader value={value} />
       <Grid container sx={{ pt: "100px", px: 5 }}>
-        <Grid item xs={12} sx={{bgcolor: "#FFF"}}>
+        <Grid item xs={12} sx={{ bgcolor: "#FFF" }}>
           <BuyProductActions />
         </Grid>
-        <Grid item xs={12} sx={{bgcolor: "#FFF", mt: 3, p: 3}}>
+        <Grid item xs={12} sx={{ bgcolor: "#FFF", mt: 3, p: 3 }}>
           <BuyProducts
-            productCategory = "Vegitable"
+            productCategory="Vegitable"
           />
         </Grid>
-        <Grid item xs={12}  sx={{bgcolor: "#FFF", mt: 3, p: 3}}>
+        <Grid item xs={12} sx={{ bgcolor: "#FFF", mt: 3, p: 3 }}>
           <BuyProducts
-            productCategory = "Fruits"
+            productCategory="Fruits"
           />
         </Grid>
       </Grid>
