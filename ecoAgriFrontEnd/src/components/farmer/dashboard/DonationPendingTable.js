@@ -20,7 +20,7 @@ CustomToolbar.propTypes = {
     setFilterButtonEl: PropTypes.func.isRequired,
 };
 
-export default function PendingRequestTable() {
+export default function DonationPendingTable() {
     const ColorButton1 = styled(Button)(({ theme }) => ({
         color: theme.palette.getContrastText(green[600]),
         textTransform: "none",

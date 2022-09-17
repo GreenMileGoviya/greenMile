@@ -19,7 +19,7 @@ CustomToolbar.propTypes = {
     setFilterButtonEl: PropTypes.func.isRequired,
 };
 
-export default function SoldProductsTable() {
+export default function PurchaseTable() {
     const rows = [
         {
             id: 1, col1: 'Hello', col2: 'World', col3: 'Hello', col4: 'World', col5: 'World'
