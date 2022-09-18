@@ -1,4 +1,5 @@
 import Products from "../models/productsModel.js";
+import ProductImage from "../models/productImagesModel.js";
 
 //PRODUCT SAVE
 export const saveProduct = async (req, res) => {
@@ -22,7 +23,7 @@ export const getProducts = async (req, res) => {
     // const users = await Users.findAll({
     //   attributes: ["id", "username", "email", "userrole", "refresh_token"],
     // });
-    const products = await Products.findAll();
+    const products = await ProductImage.findAll();
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json(error);
