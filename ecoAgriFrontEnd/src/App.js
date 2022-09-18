@@ -13,7 +13,7 @@ import Test from './components/ui/Test';
 import AddSaleProduct from './components/pages/farmer/AddSaleProduct';
 import Donate from './components/pages/farmer/Donate';
 import AddDonateProduct from './components/pages/farmer/AddDonateProduct';
-import Profile from './components/pages/Profile';
+import FarmerProfile from './components/pages/farmer/Profile';
 import Articals from './components/pages/farmer/Articals';
 // import Carousel from './components/ui/Carousel/Carousel';
 import BuyProduct from './components/pages/BuyProduct';
@@ -21,8 +21,13 @@ import AdminDashboard from './components/pages/admin/AdminDashboard';
 import ManageUsers from './components/pages/admin/ManageUsers';
 import CreateUsers from './components/pages/admin/CreateUsers';
 import ConfirmArticals from './components/pages/moderator/ConfirmArticals';
+import ModeratorProfile from './components/pages/moderator/Profile';
 import Carousel from './components/ui/Carousel';
 import Landing from './components/pages/Landing';
+
+import BuyerDashboard from './components/pages/buyer/Dashboard';
+import BuyDetails from './components/pages/buyer/BuyDetails';
+import BuyerProfile from './components/pages/buyer/Profile';
 
 function App() {
   const theme = createTheme({
@@ -47,16 +52,21 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/farmer/dashboard" element={<DashBoard />} />
           <Route path="/buy" element={<Buy />} />
           <Route path="/sell" element={<Sell />} />
           <Route path="/donate" element={<Donate />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/farmer/profile" element={<FarmerProfile />} />
           <Route path="/articals" element={<Articals />} />
           <Route path="/donate/pending" element={<PendingDonations />} />
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
           <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
+
+          {/* buyer */}
+          <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
+          <Route path="/buyer/buy-details" element={<BuyDetails />} />
+          <Route path="/buyer/profile" element={<BuyerProfile />} />
 
           {/* admin */}
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
@@ -67,9 +77,10 @@ function App() {
           {/* moderator */}
           <Route path='/moderator/dashboard' element={<AdminDashboard />} />
           <Route path='/moderator/articals' element={<ConfirmArticals />} />
-          <Route path="/buy-product/" element={<BuyProduct />} />
+          <Route path='/moderator/profile' element={<ModeratorProfile />} />
+          {/* <Route path="/buy-product/" element={<BuyProduct />} /> */}
           <Route path="/buy-product/:productId" element={<BuyProduct />} />
-          <Route path="/testing" element={<Carousel />} />
+          {/* <Route path="/testing" element={<GoogleMapContainer />} /> */}
         </Routes>
       </ThemeProvider>
     </StyledEngineProvider>

@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import imageUploadSlice from "./uploadImage-slice";
+import popularAreaSelectorSlice from "./popularAreaSelector-slice";
 
 const persistConfig = {
   key: "root",
@@ -23,7 +24,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userTypeSelectorButton: userTypeSelectorButtonSlice.reducer,
   user: userReducer,
-  imageUpload: imageUploadSlice.reducer
+  imageUpload: imageUploadSlice.reducer,
+  popularArea: popularAreaSelectorSlice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

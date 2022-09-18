@@ -1,15 +1,27 @@
 import { Collapse, Divider, List, ListItemButton, ListItemText } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { propularAreaActions } from '../../store/popularAreaSelector-slice';
 
 function PopularAreas(props) {
+    const [places, setPlaces] = useState(props.places)
+    const dispatch = useDispatch();
+
+    const selectPlaceHandler = (place) => {
+        dispatch(propularAreaActions.addArea(place))
+    }
+
     return (
-        <Collapse in={props.OnOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText secondary="Starred" />
-                </ListItemButton>
-            </List>
-        </Collapse>
+        places.map((place) => (
+            <Collapse key={place} in={props.OnOpen} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                    <ListItemButton onClick={() => {selectPlaceHandler(place)}} sx={{ pl: 4 }}>
+                        <ListItemText secondary={place} />
+                    </ListItemButton>
+                </List>
+            </Collapse>
+        ))
+
     )
 }
 

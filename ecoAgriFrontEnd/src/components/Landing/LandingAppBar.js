@@ -5,11 +5,13 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Avatar, Badge, Button, Chip, createTheme, ThemeProvider } from "@mui/material";
+import { Avatar, Badge, Button, Chip, createTheme, Paper, ThemeProvider } from "@mui/material";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import LogoCom from "./LogoCom";
 
+import Logo from "../../assets/images/ecoAgri.png";
 const theme = createTheme({
     palette: {
         primary: {
@@ -42,29 +44,24 @@ export default function LandingAppBar() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ display: "flex", }}>
+            <Box sx={{ display: "flex", mb: 5 }}>
                 <AppBar component="nav" sx={{ backgroundColor: "#fff" }}>
+                    {/* <LogoCom /> */}
+
                     <Toolbar style={{ position: "relative" }}>
-                        {/* <IconButton
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                        >
-                            <MenuIcon />
-                        </IconButton> */}
-                        <Typography
-                            variant="h6"
-                            component="div"
-                            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-                        >
-                        </Typography>
-                        <Box
-                            id="nav-container-list"
-                            sx={{ display: { xs: "none", sm: "block" } }}
-                        >
-                        </Box>
-                        <Button variant="outlined" onClick={() => {navigate("/registration")}} sx={{mr: 2}}>Sign Up</Button>
-                        <Button variant="contained" onClick={() => {navigate("/login")}}>Sign In</Button>
+                        {/* <img
+                            src={Logo}
+                            style={{
+                                width: "60px",
+                                height: "60px"
+                            }}
+                        ></img> */}
+                        <LogoCom />
+                        <Paper elevation={0} sx={{ flexGrow: 1 }}>
+
+                        </Paper>
+                        <Button variant="outlined" onClick={() => { navigate("/registration") }} sx={{ mr: 2 }}>Sign Up</Button>
+                        <Button variant="contained" onClick={() => { navigate("/login") }}>Sign In</Button>
                     </Toolbar>
                 </AppBar>
             </Box>
