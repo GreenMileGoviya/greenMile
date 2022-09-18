@@ -30,6 +30,13 @@ const Products = db.define(
     expireDate: {
       type: DataTypes.DATEONLY,
     },
+    status: {
+      type: DataTypes.STRING,
+    },
+    isAccept: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     freezeTableName: true,
