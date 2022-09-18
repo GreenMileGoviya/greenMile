@@ -80,7 +80,8 @@ function ImageUploader(props) {
                     }
                     {imagePreview &&
                         <div>
-                            <CardMedia component="img"
+                            <CardMedia
+                                component="img"
                                 image={imagePreview.image}
                                 sx={{ height: props.size, width: props.size }}
                             />
@@ -100,13 +101,13 @@ function ImageUploader(props) {
                 </React.Fragment>
             }
             {alreadyAdded &&
-            <SimpleSnackbar
-                variant="filled"
-                alertType="error"
-                message="Image is already added !"
-                vertical="bottom"
-                horizontal="center"
-            />
+                <SimpleSnackbar
+                    variant="filled"
+                    alertType="error"
+                    message="Image is already added !"
+                    vertical="bottom"
+                    horizontal="center"
+                />
             }
         </React.Fragment>
     )

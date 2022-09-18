@@ -45,8 +45,10 @@ export const login = async (dispatch, user) => {
       window.location.href = "/admin/dashboard";
     } else if (res.data.userrole === "Moderator") {
       window.location.href = "/moderator/dashboard";
-    } else {
-      window.location.href = "/dashboard";
+    } else if (res.data.userrole === "Farmer") {
+      window.location.href = "farmer/dashboard";
+    } else if (res.data.userrole === "Buyer") {
+      window.location.href = "buyer/dashboard";
     }
   } catch (err) {
     dispatch(loginFailure());

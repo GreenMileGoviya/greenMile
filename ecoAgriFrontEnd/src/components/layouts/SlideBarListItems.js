@@ -96,7 +96,7 @@ export const SlideBarListItems = () => {
                 id: "leftbar-listItem-3",
                 listName: "My Profile",
                 icon: <BookmarksIcon />,
-                link: "/profile",
+                link: "/moderator/profile",
             },
             
         ];
@@ -140,13 +140,28 @@ export const SlideBarListItems = () => {
                 id: "leftbar-listItem-4",
                 listName: "My Account",
                 icon: <PeopleAltIcon />,
-                link: "/profile"
+                link: "/farmer/profile"
             },
             {
                 id: "leftbar-listItem-5",
                 listName: "Articals",
                 icon: <CastForEducationIcon />,
                 link: "/articals"
+            },
+        ];
+    } else if (userType === "Buyer") {
+        listItems = [
+            {
+                id: "leftbar-listItem-1",
+                listName: "Buy Details",
+                icon: <BookmarksIcon />,
+                link: "/buyer/buy-details",
+            },
+            {
+                id: "leftbar-listItem-2",
+                listName: "My Account",
+                icon: <PeopleAltIcon />,
+                link: "/buyer/profile"
             },
         ];
     }

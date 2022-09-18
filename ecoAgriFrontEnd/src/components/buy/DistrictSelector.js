@@ -13,6 +13,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 import { Divider, Grid } from '@mui/material';
 import PopularAreas from './PopularAreas';
+import Districts from './Districts';
 
 export default function DistrictSelector() {
     const [open, setOpen] = React.useState(false);
@@ -35,12 +36,28 @@ export default function DistrictSelector() {
                             </ListSubheader>
                         }
                     >
-                        <ListItemButton onClick={handleClick}>
-                            <ListItemText primary="Inbox" />
-                            {open ? <ExpandLess /> : <ExpandMore />}
-                        </ListItemButton>
-                        <Divider />
-                        <PopularAreas OnOpen={open} />
+                        <Districts districtName="Colombo"
+                            places={
+                                [
+                                    "Maharagma",
+                                    "Nugegoda",
+                                    "Piliyandala",
+                                    "Dehiwala",
+                                    "Kottawa"
+                                ]
+                            }
+                        />
+                        <Districts districtName="Galle"
+                            places={
+                                [
+                                    "Galle City",
+                                    "Ambalangoda",
+                                    "Elpitiya",
+                                    "Bentota",
+                                    "Baddegama",
+                                ]
+                            }
+                        />
                     </List>
                 </Grid>
             </Grid>

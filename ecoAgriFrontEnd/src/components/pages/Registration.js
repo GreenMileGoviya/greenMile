@@ -23,7 +23,7 @@ export default function Registration() {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: (selectedSignupButton !== "") ? 420 : 625,
-    height: (selectedSignupButton !== "") ? 600 : "auto",
+    height: (selectedSignupButton !== "") ? 650 : "auto",
     bgcolor: 'background.paper',
     boxShadow: 24,
     borderRadius: 5,
