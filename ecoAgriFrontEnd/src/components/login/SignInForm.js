@@ -101,7 +101,7 @@ function SignInForm() {
           />
           <CenteredBox align="right">
             <p className={classes.text}>
-              <a href="#">Forget Password?</a>
+              <a onClick={() => {navigate("/forget-password")}}>Forget Password?</a>
             </p>
           </CenteredBox>
         </Grid>
@@ -113,8 +113,7 @@ function SignInForm() {
             fullWidth
             style={{ textTransform: "none", borderRadius: 10 }}
           >
-            {" "}
-            Sign In{" "}
+            Sign In
           </Button>
           <CenteredBox align="center">
             <p className={classes.text}>

@@ -28,6 +28,7 @@ import Landing from './components/pages/Landing';
 import BuyerDashboard from './components/pages/buyer/Dashboard';
 import BuyDetails from './components/pages/buyer/BuyDetails';
 import BuyerProfile from './components/pages/buyer/Profile';
+import ForgetPassword from './components/pages/ForgetPassword';
 
 function App() {
   const theme = createTheme({
@@ -51,6 +52,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forget-password" element={<ForgetPassword />} />
+
           <Route path="/test" element={<Test />} />
           <Route path="/farmer/dashboard" element={<DashBoard />} />
           <Route path="/buy" element={<Buy />} />
