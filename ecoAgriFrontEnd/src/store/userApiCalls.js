@@ -41,17 +41,10 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/login", user);
     console.log(res);
     dispatch(loginSuccess(res.data));
-    if (res.data.userrole === "Admin") {
-      window.location.href = "/admin/dashboard";
-    } else if (res.data.userrole === "Moderator") {
-      window.location.href = "/moderator/dashboard";
-    } else if (res.data.userrole === "Farmer") {
-      window.location.href = "farmer/dashboard";
-    } else if (res.data.userrole === "Buyer") {
-      window.location.href = "buyer/dashboard";
-    }
+    return 1;
   } catch (err) {
     dispatch(loginFailure());
+    return 0;
   }
 };
 
@@ -85,6 +78,11 @@ export const updateUser = async (id, User, dispatch) => {
     dispatch(updateUserFailure());
   }
 };
+
+export const logOutUser = async (dispatch) => {
+  dispatch(logout());
+};
+
 // export const addUserWithAuth = async (User, dispatch) => {
 //   dispatch(addUserStart());
 //   try {
