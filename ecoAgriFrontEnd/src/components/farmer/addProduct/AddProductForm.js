@@ -323,8 +323,8 @@ function AddProductForm(props) {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={1}>Fruit</MenuItem>
-                <MenuItem value={2}>Vegitable</MenuItem>
+                <MenuItem value={"Fruit"}>Fruit</MenuItem>
+                <MenuItem value={"Vegetable"}>Vegetable</MenuItem>
               </Select>
               <FormHelperText>{productCategoryHasError ? productCategoryError : ""}</FormHelperText>
             </FormControl>

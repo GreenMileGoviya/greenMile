@@ -48,7 +48,7 @@ export default function MainTab(props) {
     const userType = user.userrole;
     return (
         <ThemeProvider theme={theme}>
-            {userType === "Farmer" &&
+            {/* {userType === "Farmer" && */}
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -91,7 +91,7 @@ export default function MainTab(props) {
                         icon={<Avatar></Avatar>}
                     />
                 </Tabs>
-            }
+            {/* } */}
             {userType === "Buyer" &&
                 <Tabs
                     value={value}
