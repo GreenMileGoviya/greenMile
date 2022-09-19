@@ -15,10 +15,12 @@ export const publicRequest = axios.create({
   "Content-Type": "application/json",
 });
 
+// export const userRequest = axios.create({
+//   baseURL: BASE_URL,
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
 export const userRequest = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-    // Authorization: `Bearer ${TOKEN}`,
-  },
+  baseURL: BASE_URL
 });
