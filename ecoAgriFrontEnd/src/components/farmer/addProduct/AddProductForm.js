@@ -221,7 +221,9 @@ function AddProductForm(props) {
   }
 
   const onSubmitHandler = async (e) => {
-    console.log('hell')
+    if (!formIsValid) {
+      return;
+    }
     e.preventDefault();
     let imagePath = [];
     let imageRef = [];
@@ -268,22 +270,18 @@ function AddProductForm(props) {
     if (imageUploadingCount === productImages.length) {
       console.log(productImageUrls);
     }
-    // const imagePath = `images/profile/${profileImageData.name + v4()}`
-    // const uploadTask = uploadBytesResumable(imageRef, profileImageData);
-    // if (!formIsValid) {
-    //   return;
-    // }
-    // const data = {
-    //   productName: productName,
-    //   productCategory: productCategory,
-    //   weight: weight,
-    //   unitPrice: unitPrice,
-    //   manuDate: manuDate,
-    //   expireDate: expireDate,
-    //   images: productImageUrls.map((image) => {
-    //     return image
-    //   })
-    // };
+    
+    const data = {
+      productName: productName,
+      productCategory: productCategory,
+      weight: weight,
+      unitPrice: unitPrice,
+      manuDate: manuDate,
+      expireDate: expireDate,
+      images: productImageUrls.map((image) => {
+        return image
+      })
+    };
 
     // console.log(data);
     //api call here
@@ -440,7 +438,7 @@ function AddProductForm(props) {
               variant="contained"
               type="submit"
               style={{ textTransform: "none" }}
-            // disabled={!formIsValid}
+            disabled={!formIsValid}
             >
               Submit
             </Button>
