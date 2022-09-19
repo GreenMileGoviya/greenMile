@@ -12,6 +12,7 @@ import { Grid, TextField } from '@mui/material';
 import UpdatedButton from '../ui/UpdatedButton';
 import CenteredBox from '../ui/CenteredBox';
 
+import "./OtpVerify.css";
 export default function ForgetPassword() {
     const [open, setOpen] = React.useState(true);
     const handleOpen = () => setOpen(true);
@@ -25,52 +26,40 @@ export default function ForgetPassword() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        boxShadow: 24,
-        borderRadius: 5,
-        p: 4,
     };
 
     return (
-        <div>
-            {/* <Button onClick={handleOpen}>Open modal</Button> */}
-            <Modal
-                open={open}
-                // onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <form>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>
-                                <Typography variant="h5" color="primary">
-                                    Verify The Mobile Number
-                                </Typography>
 
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Typography>
-                                    Enter Your Registered Mobile Number To Check Your Registration
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    type="number"
-                                    label="Enter your mobile number"
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CenteredBox align="center">
-                                    <UpdatedButton variant="contained" title={"Send OTP"} />
-                                </CenteredBox>
-                            </Grid>
+        <Box sx={style}>
+            <div class="container">
+                <form>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <Typography variant="h5" color="primary">
+                                Verify The Mobile Number
+                            </Typography>
+
                         </Grid>
-                    </form>
-                </Box>
-            </Modal>
-        </div>
+                        <Grid item xs={12}>
+                            <Typography>
+                                Enter Your Registered Mobile Number To Check Your Registration
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                type="number"
+                                label="Enter your mobile number"
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <CenteredBox align="center">
+                                <UpdatedButton variant="contained" title={"Send OTP"} />
+                            </CenteredBox>
+                        </Grid>
+                    </Grid>
+                </form>
+            </div>
+        </Box>
     );
 }

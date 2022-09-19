@@ -57,12 +57,12 @@ function SignInForm() {
       <Grid container sx={{ mb: 3 }}>
         <Grid item xs={12}>
           <CenteredBox align="center">
-            <Typography>Welcome Back !</Typography>
+            <Typography color="primary" variant="h4" sx={{p: 2}}>Welcome Back !</Typography>
           </CenteredBox>
         </Grid>
         <Grid item xs={12}>
           <CenteredBox align="center">
-            <Typography>Please, Login</Typography>
+            <Typography variant="h5">Please, Login</Typography>
           </CenteredBox>
         </Grid>
       </Grid>

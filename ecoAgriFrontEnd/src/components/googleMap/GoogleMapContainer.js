@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   useJsApiLoader,
   GoogleMap,
@@ -10,8 +10,9 @@ import { Box, Stack } from '@mui/system';
 import { Button, ButtonGroup, Grid, IconButton, TextField, Typography } from '@mui/material';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import CloseIcon from '@mui/icons-material/Close';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import "./GoogleMapContainer.css";
-
+import axios from "axios";
 
 const style = {
   position: 'absolute',
@@ -27,18 +28,52 @@ const style = {
   // pr: 0
 };
 
-const center = { lat: 6.864908, lng: 79.899681 }
+const DUMMY_DELIVERIES = [
+  { lng: 79.88389509223174, lat: 6.872037471140445 }
+  // {lng: 79.88922832802155, lat: 6.869367245163559},
+  // {lng: 79.89069906133057, lat: 6.85667478076337},
+]
 
-function GoogleMapContainer() {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyCRfgjfFDYHisegvLIyjG3-E87rFD64kXk",
-    libraries: ['places'],
+const API_KEY = "AIzaSyALcSlRXEsNoL2uMQtEx9x01OUAiXnbAj0"
+
+function setLocationAddress(lat, lng, locationType) {
+  axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_KEY}`
+  ).then((response) => {
+    locationType(response.data.results[0].formatted_address)
   })
-
+}
+function GoogleMapContainer() {
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
+
+  const [center, setCenter] = useState(null)
+  const [origin, setOrigin] = useState(null);
+  //product location here
+  const [destination, setDestination] = useState({ lng: 79.88389509223174, lat: 6.872037471140445 });
+
+  const setPath = async () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      })
+      setLocationAddress(position.coords.latitude, position.coords.longitude, setOrigin);
+      setLocationAddress(destination.lat, destination.lng, setDestination);
+
+    })
+    calculateRoute(origin, destination)
+  }
+  useEffect(() => {
+    setPath()
+  }, [origin, destination])
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: API_KEY,
+    libraries: ['places'],
+  })
+
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -49,18 +84,21 @@ function GoogleMapContainer() {
     return <p>Loading ...</p>
   }
 
-  async function calculateRoute() {
-    if (originRef.current.value === '' || destiantionRef.current.value === '') {
+
+  async function calculateRoute(origin, destination) {
+    console.log(origin, destination)
+    if (origin === '' || destination === '') {
       return
     }
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService()
     const results = await directionsService.route({
-      origin: originRef.current.value,
-      destination: destiantionRef.current.value,
+      origin: origin,
+      destination: destination,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     })
+    console.log(results);
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
@@ -75,26 +113,47 @@ function GoogleMapContainer() {
   }
 
 
+  function getLiveLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      })
+    })
+  }
+
+
+  // const markerChangeHandler = (e) => {
+  //   console.log(e.latLng);
+  //   setLocation({lat: e.latLng.lat(), lng: e.latLng.lng()})
+  //   calcRoute(e.latLng.lat(), e.latLng.lng())
+  // }
+
   return (
     <Box sx={{
       height: "400px",
       position: "relative"
     }}
     >
-
       <GoogleMap
         center={center}
+        // onClick={markerChangeHandler}
         zoom={15}
         mapContainerStyle={{ width: '100%', height: '100%' }}
         options={{
           zoomControl: false,
           streetViewControl: false,
-          mapTypeControl: false,
-          fullscreenControl: false,
+          // mapTypeControl: false,
+          // fullscreenControl: false,
         }}
         onLoad={map => setMap(map)}
       >
-        <Marker position={center} />
+        <Marker position={center}
+          icon="https://i.imgur.com/oz3r3Wq.png"
+        />
+        <Marker position={destination}
+          icon="https://i.imgur.com/cIooqnp.png"
+        />
         {directionsResponse && (
           <DirectionsRenderer directions={directionsResponse} />
         )}
@@ -123,7 +182,7 @@ function GoogleMapContainer() {
             </Autocomplete>
           </Grid>
           <Grid item xs={2}>
-            <Button sx={{ p: "3px" }} variant="outlined" style={{ textTransform: "none" }} type='submit' onClick={calculateRoute}>
+            <Button sx={{ p: "3px" }} variant="outlined" style={{ textTransform: "none" }} type='submit' onClick={() => { calculateRoute(originRef.current.value, destiantionRef.current.value) }}>
               Distance
             </Button>
           </Grid>
@@ -134,10 +193,10 @@ function GoogleMapContainer() {
           </Grid>
         </Grid >
         <Grid container sx={{ mt: 2 }}>
-          <Grid item xs={5}>
+          <Grid item xs={4}>
             <Typography>Distance: {distance} </Typography>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={4}>
             <Typography>Duration: {duration} </Typography>
           </Grid>
           <Grid item xs={2}>
@@ -149,6 +208,11 @@ function GoogleMapContainer() {
               }}
             >
               <NavigationIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={2}>
+            <IconButton sx={{ p: "3px" }} onClick={getLiveLocation}>
+              <GpsFixedIcon />
             </IconButton>
           </Grid>
         </Grid>
