@@ -48,31 +48,46 @@ export const login = async (dispatch, user) => {
   }
 };
 
-export const getUsers = async (dispatch) => {
+export const getUsers = async (dispatch,token) => {
   dispatch(getUserStart());
   try {
-    const res = await userRequest.get("/users");
+    const res = await userRequest.get("/users",{
+      headers: {
+        "Content-Type": "application/json",
+        token: `Bearer ${token}`,
+      },
+    });
     dispatch(getUserSuccess(res.data));
   } catch (err) {
     dispatch(getUserFailure());
   }
 };
 
-export const deleteUser = async (id, dispatch) => {
+export const deleteUser = async (id, dispatch,token) => {
   dispatch(deleteUserStart());
   try {
-    const res = await userRequest.delete(`/user/${id}`);
+    const res = await userRequest.delete(`/user/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        token: `Bearer ${token}`,
+      },
+    });
     dispatch(deleteUserSuccess(id));
   } catch (err) {
     dispatch(deleteUserFailure());
   }
 };
 
-export const updateUser = async (id, User, dispatch) => {
+export const updateUser = async (id, User, dispatch, token) => {
   dispatch(updateUserStart());
   try {
     // update
-    const res = await userRequest.put(`/user/${id}`);
+    const res = await userRequest.put(`/user/${id}`,{
+      headers: {
+        "Content-Type": "application/json",
+        token: `Bearer ${token}`,
+      },
+    });
     dispatch(updateUserSuccess({ id, User }));
   } catch (err) {
     dispatch(updateUserFailure());
