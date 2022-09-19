@@ -10,6 +10,7 @@ import CenteredBox from "../../ui/CenteredBox";
 import BuyingModal from "./BuyingModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, addProduct } from "../../../store/productApiCalls";
+import { getUsers } from "../../../store/userApiCalls";
 
 //Filter panel
 const CustomToolbar = ({ setFilterButtonEl }) => (
@@ -24,13 +25,15 @@ CustomToolbar.propTypes = {
 
 export default function PendingRequestTable() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.product.products);
+  const orders = useSelector((state) => state.order.orders);
   const token = useSelector((state) => state.user.token);
+  const otherUsers = useSelector((state) => state.user.otherUsers);
   const [deleteTrigger, setDeleteTrigger] = React.useState("");
 
-  React.useEffect(() => {
+  React.useEffect(async () => {
     //orders
-    getProducts(dispatch, token);
+    await getProducts(dispatch, token);
+    getUsers(dispatch, token);
   }, [dispatch, deleteTrigger]);
 
   const rows = [
@@ -88,7 +91,7 @@ export default function PendingRequestTable() {
     };
     console.log(token);
     await addProduct(data,dispatch, token);
-    console.log(products);
+    console.log(orders);
   };
 
   const columns = [

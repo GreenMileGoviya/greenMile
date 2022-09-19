@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
+import Users from './userModel.js';
 
 const { DataTypes } = Sequelize;
 
@@ -52,9 +53,10 @@ const Orders = db.define(
   },
   {
     freezeTableName: true,
+    // include: Users
   }
 );
-
+// Orders.belongsTo(Users);
 
 (async () => {
   await db
