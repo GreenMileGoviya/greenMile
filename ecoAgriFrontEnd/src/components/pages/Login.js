@@ -30,7 +30,7 @@ export default function Registration() {
     // border: '2px solid #000',
     border: "none",
     boxShadow: 24,
-    borderRadius: 5,
+    borderRadius: 2,
     px: 4,
     pt: 2
   };
@@ -38,16 +38,16 @@ export default function Registration() {
   return (
     <div>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
-      <Modal
+      {/* <Modal
         open={open}
         // onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
+      > */}
         <Box sx={style}>
           <SignInForm />
         </Box>
-      </Modal>
+      {/* </Modal> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   useJsApiLoader,
   GoogleMap,
@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import "./GoogleMapContainer.css";
 import axios from "axios";
+import AddProductContext from '../../context/AddProduct-context';
 
 const style = {
   position: 'absolute',
@@ -23,17 +24,7 @@ const style = {
   bgcolor: 'background.paper',
   p: 2,
   width: 450
-  // boxShadow: 24,
-  // pt: 0,
-  // pr: 0
 };
-
-const DUMMY_DELIVERIES = [
-  { lng: 79.88389509223174, lat: 6.872037471140445 }
-  // {lng: 79.88922832802155, lat: 6.869367245163559},
-  // {lng: 79.89069906133057, lat: 6.85667478076337},
-]
-
 const API_KEY = "AIzaSyALcSlRXEsNoL2uMQtEx9x01OUAiXnbAj0"
 
 function setLocationAddress(lat, lng, locationType) {
@@ -42,7 +33,8 @@ function setLocationAddress(lat, lng, locationType) {
     locationType(response.data.results[0].formatted_address)
   })
 }
-function GoogleMapContainer() {
+function GoogleMapContainer(props) {
+  const ctx = useContext(AddProductContext);
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
@@ -50,6 +42,7 @@ function GoogleMapContainer() {
 
   const [center, setCenter] = useState(null)
   const [origin, setOrigin] = useState(null);
+
   //product location here
   const [destination, setDestination] = useState({ lng: 79.88389509223174, lat: 6.872037471140445 });
 
@@ -61,12 +54,31 @@ function GoogleMapContainer() {
       })
       setLocationAddress(position.coords.latitude, position.coords.longitude, setOrigin);
       setLocationAddress(destination.lat, destination.lng, setDestination);
-
     })
     calculateRoute(origin, destination)
   }
+
+  async function getLiveLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      })
+    })
+  }
+
   useEffect(() => {
-    setPath()
+    if (props.mapType !== "get_live_location") {
+      setPath()
+    } else {
+      getLiveLocation();
+      navigator.geolocation.getCurrentPosition((position) => {
+        ctx.setLiveLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      })
+    }
   }, [origin, destination])
 
   const { isLoaded } = useJsApiLoader({
@@ -112,17 +124,6 @@ function GoogleMapContainer() {
     destiantionRef.current.value = ''
   }
 
-
-  function getLiveLocation() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setCenter({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      })
-    })
-  }
-
-
   // const markerChangeHandler = (e) => {
   //   console.log(e.latLng);
   //   setLocation({lat: e.latLng.lat(), lng: e.latLng.lng()})
@@ -151,9 +152,11 @@ function GoogleMapContainer() {
         <Marker position={center}
           icon="https://i.imgur.com/oz3r3Wq.png"
         />
-        <Marker position={destination}
-          icon="https://i.imgur.com/cIooqnp.png"
-        />
+        {props.mapType !== "get_live_location" &&
+          <Marker position={destination}
+            icon="https://i.imgur.com/cIooqnp.png"
+          />
+        }
         {directionsResponse && (
           <DirectionsRenderer directions={directionsResponse} />
         )}

@@ -126,7 +126,12 @@ export default function Checkout() {
       <Grid item xs={12} sx={{ mt: 5 }}>
         <CssBaseline />
         <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-          <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+          <Paper variant="outlined"
+           sx={{
+            my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 }, 
+            boxShadow: 24,
+            borderRadius: 2,
+          }}>
             {activeStep !== 0 && (
               <IconButton onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                 <KeyboardArrowLeftIcon />
