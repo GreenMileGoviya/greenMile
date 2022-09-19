@@ -66,14 +66,16 @@ function SignInForm() {
         //   confirmButtonText: "Ok",
         // }).then((result) => {
         //   if (result.isConfirmed) {
-            
+
         //   }
         // });
       } else {
+        navigate("/login");
         Swal.fire({
           icon: "error",
-          title: "Oops...",
           text: "Login Unsuccess!",
+          showConfirmButton: false,
+          timer: 1500,
         });
       }
       const TOKEN = JSON.parse(localStorage.getItem("accessToken"));
@@ -92,12 +94,12 @@ function SignInForm() {
 
   const loginSuccess = () => {
     Swal.fire({
-      icon: 'success',
-      title: 'Login Success!',
+      icon: "success",
+      title: "Login Success!",
       showConfirmButton: false,
-      timer: 1500
-    })
-  }
+      timer: 1500,
+    });
+  };
 
   return (
     <form onSubmit={loginPress}>

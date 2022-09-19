@@ -1,20 +1,21 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
-import ProductImage from "./productImagesModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Products = db.define(
-  "products",
+const Orders = db.define(
+  "orders",
   {
-    productName: {
-      type: DataTypes.STRING,
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    productCategory: {
-      type: DataTypes.STRING,
+    productId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    weight: {
-      type: DataTypes.FLOAT,
+    quantity: {
+      type: DataTypes.INTEGER,
       defaultValue: 0,
     },
     unitPrice: {
@@ -48,30 +49,12 @@ const Products = db.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    image1: {
-      type:DataTypes.STRING,
-      allowNull: true
-    },
-    image2: {
-      type:DataTypes.STRING,
-      allowNull: true
-    },
-    image3: {
-      type:DataTypes.STRING,
-      allowNull: true
-    },
-    image4: {
-      type:DataTypes.STRING,
-      allowNull: true
-    }
   },
   {
     freezeTableName: true,
   }
 );
 
-// Products.hasMany(ProductImage);
-// products.belongsToMany(productImage, { through: 'ProductProductImage' });
 
 (async () => {
   await db
@@ -84,4 +67,4 @@ const Products = db.define(
     });
 })();
 
-export default Products;
+export default Orders;
