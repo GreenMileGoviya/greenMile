@@ -33,7 +33,6 @@ export default function ChatContainer(props) {
     const user = useSelector((state) => state.user.currentUser);
     const userType = user.userrole;
 
-    const [selectContactdetails, setSelectContactdetails] = React.useState({ value1: 0, value2: "Chat for AthPotha" });
     return (
         <div>
             <IconButton
@@ -48,7 +47,7 @@ export default function ChatContainer(props) {
             >
                 <Box sx={style}>
                     <CloseIcon onClose={handleClose} />
-                    <Coverstaions setSelectContactdetails={setSelectContactdetails} />
+                    <Coverstaions />
                 </Box>
             </Modal>
         </div >
