@@ -8,16 +8,11 @@ import UserTypeSelector from '../registraion/UserTypeSelector';
 import { useSelector } from "react-redux";
 import SignUpForm from '../registraion/SignUpForm';
 import SignInForm from '../login/SignInForm';
+import { Grid } from '@mui/material';
+import LandingAppBar from '../Landing/LandingAppBar';
 
 
 export default function Registration() {
-  const [open, setOpen] = React.useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const selectedSignupButton = useSelector(
-    (state) => state.userTypeSelectorButton.selectedSignupButton
-  );
-
   const style = {
     position: 'absolute',
     top: '50%',
@@ -36,18 +31,15 @@ export default function Registration() {
   };
 
   return (
-    <div>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
-      {/* <Modal
-        open={open}
-        // onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      > */}
+    <Grid container>
+      <Grid item xs={12}>
+        <LandingAppBar />
+      </Grid>
+      <Grid item xs={12} sx={{ mt: 5 }}>
         <Box sx={style}>
           <SignInForm />
         </Box>
-      {/* </Modal> */}
-    </div>
+      </Grid>
+    </Grid>
   );
 }

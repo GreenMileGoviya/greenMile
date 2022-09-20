@@ -30,11 +30,11 @@ export default function PendingRequestTable() {
   const otherUsers = useSelector((state) => state.user.otherUsers);
   const [deleteTrigger, setDeleteTrigger] = React.useState("");
 
-  React.useEffect(async () => {
-    //orders
-    await getProducts(dispatch, token);
-    getUsers(dispatch, token);
-  }, [dispatch, deleteTrigger]);
+  // React.useEffect(async () => {
+  //   //orders
+  //   await getProducts(dispatch, token);
+  //   getUsers(dispatch, token);
+  // }, [dispatch, deleteTrigger]);
 
   const rows = [
     {

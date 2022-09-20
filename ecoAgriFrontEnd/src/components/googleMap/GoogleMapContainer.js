@@ -124,11 +124,13 @@ function GoogleMapContainer(props) {
     destiantionRef.current.value = ''
   }
 
-  // const markerChangeHandler = (e) => {
-  //   console.log(e.latLng);
-  //   setLocation({lat: e.latLng.lat(), lng: e.latLng.lng()})
-  //   calcRoute(e.latLng.lat(), e.latLng.lng())
-  // }
+  const markerChangeHandler = (e) => {
+    setCenter({lat: e.latLng.lat(), lng: e.latLng.lng()})
+    ctx.setLiveLocation({
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    });
+  }
 
   return (
     <Box sx={{
@@ -138,19 +140,20 @@ function GoogleMapContainer(props) {
     >
       <GoogleMap
         center={center}
-        // onClick={markerChangeHandler}
         zoom={15}
         mapContainerStyle={{ width: '100%', height: '100%' }}
         options={{
           zoomControl: false,
           streetViewControl: false,
-          // mapTypeControl: false,
+          mapTypeControl: false,
           // fullscreenControl: false,
         }}
         onLoad={map => setMap(map)}
       >
         <Marker position={center}
           icon="https://i.imgur.com/oz3r3Wq.png"
+          onDragEnd={markerChangeHandler}
+          draggable={true}
         />
         {props.mapType !== "get_live_location" &&
           <Marker position={destination}

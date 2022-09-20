@@ -84,7 +84,13 @@ const theme = createTheme({
         fontWeightBold: 700,
     },
 });
-export default function BottomAppBar() {
+export default function ChatList(props) {
+    
+    const [active, setActive] = React.useState(-1);
+    const selectItem = (id, name) => {
+        setActive(id)
+        { props.setSelectContactdetails((obj) => ({ ...obj, value1: id, value2: name })) }
+    }
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -95,7 +101,7 @@ export default function BottomAppBar() {
                 <List sx={{ mb: 2 }}>
                     {messages.map(({ id, personName, lastMessage, person }) => (
                         <React.Fragment key={id}>
-                            <ListItem button>
+                            <ListItem button onClick={props.onClick}>
                                 <ListItemAvatar>
                                     <Avatar alt="Profile Picture" src={person} />
                                 </ListItemAvatar>
