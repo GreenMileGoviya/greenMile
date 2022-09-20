@@ -74,91 +74,74 @@ import LogoCom from '../Landing/LogoCom';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { Grid, IconButton } from '@mui/material';
 import LandingAppBar from '../Landing/LandingAppBar';
+import ChatList from './ChatList';
 function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        ecoAgri
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+    return (
+        <Typography variant="body2" color="text.secondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://mui.com/">
+                ecoAgri
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
 }
 
 const steps = ['Select User Type', 'Sign Up'];
 
+export default function Coverstaions(props) {
+    const [activeStep, setActiveStep] = React.useState(0);
 
+    const handleNext = () => {
+        setActiveStep(activeStep + 1);
+    };
 
-
-export default function Registration() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [userType, setUserType] = React.useState("");
-
-  const handleNext = (user_type) => {
-    setUserType(user_type)
-    setActiveStep(activeStep + 1);
-  };
-
-  function getStepContent(step) {
-    switch (step) {
-      case 0:
-        return <UserTypeSelector onClick={handleNext} />;
-      case 1:
-        return <SignUpForm userType={userType} />;
-      // case 2:
-      //   return <Review />;
-      default:
-        throw new Error('Unknown step');
+    function getStepContent(step) {
+        switch (step) {
+            case 0:
+                return <ChatList setSelectContactdetails={props.setSelectContactdetails} onClick={handleNext} />;
+            case 1:
+                return <SignUpForm />;
+            // case 2:
+            //   return <Review />;
+            default:
+                throw new Error('Unknown step');
+        }
     }
-  }
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
+    const handleBack = () => {
+        setActiveStep(activeStep - 1);
+    };
 
-  return (
-    <Grid container>
-      <Grid item xs={12}>
-        <LandingAppBar />
-      </Grid>
-      <Grid item xs={12} sx={{ mt: 5 }}>
-        <CssBaseline />
-        <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-          <Paper variant="outlined"
-           sx={{
-            my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 }, 
-            boxShadow: 24,
-            borderRadius: 2,
-          }}>
-            {activeStep !== 0 && (
-              <IconButton onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                <KeyboardArrowLeftIcon />
-              </IconButton>
-            )}
-            <Typography component="h1" variant="h4" align="center">
-              Sign Up
-            </Typography>
-            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
+    return (
+        <React.Fragment>
+            <Paper variant="outlined"
+                sx={{
+                    boxShadow: 24,
+                    borderRadius: 2,
+                }}>
+                {activeStep !== 0 && (
+                    <IconButton onClick={handleBack}>
+                        <KeyboardArrowLeftIcon />
+                    </IconButton>
+                )}
+                {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+                    {steps.map((label) => (
+                        <Step key={label}>
+                            <StepLabel>{label}</StepLabel>
+                        </Step>
+                    ))}
+                </Stepper> */}
 
-            <React.Fragment>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <React.Fragment>
+                    {getStepContent(activeStep)}
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 
-              </Box>
-            </React.Fragment>
-          </Paper>
-          <Copyright />
-        </Container>
-      </Grid>
-    </Grid>
-  );
+                    </Box>
+                </React.Fragment>
+            </Paper>
+        </React.Fragment>
+    );
 }
 
