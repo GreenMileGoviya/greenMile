@@ -19,6 +19,8 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { alpha, Divider, InputBase } from '@mui/material';
+import Test from './Test';
+import ContactList from './ContactList';
 const StyledFab = styled(Fab)({
     position: 'absolute',
     zIndex: 1,
@@ -50,13 +52,13 @@ const theme = createTheme({
 const messages = [
     {
         id: 1,
-        primary: 'Pavani Mandira',
+        primary: 'Bhanuka Rajapaksha',
         secondary: "Are you ...",
         person: 'images/tutors/tutor-2.png',
     },
     {
         id: 2,
-        primary: 'Roneki Manamperi',
+        primary: 'Jonny perera',
         secondary: "Are you ...",
         person: 'images/tutors/tutor-3.png',
     },
@@ -68,27 +70,15 @@ const messages = [
     },
     {
         id: 4,
-        primary: 'Kumud Perera',
+        primary: 'Lahiru wije',
         secondary: 'Are you ...',
         person: 'images/tutors/tutor-2.png',
     },
     {
         id: 5,
-        primary: 'Pearson',
+        primary: 'Akila Perera',
         secondary: 'Are you ...',
         person: 'images/tutors/tutor-3.png',
-    },
-    {
-        id: 6,
-        primary: 'UCSC',
-        secondary: 'Are you ...',
-        person: 'images/tutors/tutor-1.png',
-    },
-    {
-        id: 7,
-        primary: 'SLIIT',
-        secondary: 'Are you ...',
-        person: 'images/tutors/tutor-2.png',
     },
 ];
 
@@ -186,19 +176,7 @@ export default function ChatList(props) {
             </Paper>
             <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
                 <Toolbar>
-                    <IconButton color="inherit" aria-label="open drawer">
-                        <MenuIcon />
-                    </IconButton>
-                    <StyledFab color="secondary" aria-label="add">
-                        <AddIcon />
-                    </StyledFab>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <IconButton color="inherit">
-                        <SearchIcon />
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <MoreIcon />
-                    </IconButton>
+                    <ContactList onSelect={props.onClick} setSelectContactdetails={props.setSelectContactdetails} />
                 </Toolbar>
             </AppBar>
         </ThemeProvider>

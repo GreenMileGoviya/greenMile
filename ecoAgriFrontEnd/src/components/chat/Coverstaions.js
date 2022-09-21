@@ -19,7 +19,7 @@ export default function Coverstaions(props) {
             case 0:
                 return <ChatList setSelectContactdetails={setSelectContactdetails} onClick={handleNext} />;
             case 1:
-                return <ChatWall onBack={handleBack} selectContactdetails={selectContactdetails} />;
+                return <ChatWall onBack={handleBack} selectContactdetails={selectContactdetails}  />;
             default:
                 throw new Error('Unknown step');
         }

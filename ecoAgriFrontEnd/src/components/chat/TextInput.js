@@ -36,7 +36,6 @@ function TextInput(props) {
                 <Box
                     sx={{
                         display: "flex",
-
                     }}>
                     <TextField
                         // variant="filled"
@@ -45,7 +44,7 @@ function TextInput(props) {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                     />
-                    <Button variant="contained" color="primary" input type="submit">
+                    <Button variant="contained" color="primary" type="submit">
                         <SendRoundedIcon />
                     </Button>
                 </Box>

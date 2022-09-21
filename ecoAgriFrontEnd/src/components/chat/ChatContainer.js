@@ -9,6 +9,7 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import CenteredBox from '../ui/CenteredBox';
 import CloseIcon from '../ui/CloseIcon';
 import Coverstaions from './Coverstaions';
+import Test from './Test';
 
 const style = {
     position: 'absolute',
@@ -47,6 +48,7 @@ export default function ChatContainer(props) {
             >
                 <Box sx={style}>
                     <CloseIcon onClose={handleClose} />
+                    {/* <Test id="chat-div-id" /> */}
                     <Coverstaions />
                 </Box>
             </Modal>
