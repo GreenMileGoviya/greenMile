@@ -18,7 +18,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { alpha, Divider, InputBase } from '@mui/material';
+import { alpha, Autocomplete, Divider, InputBase, TextField } from '@mui/material';
 import Test from './Test';
 import ContactList from './ContactList';
 const StyledFab = styled(Fab)({
@@ -52,31 +52,37 @@ const theme = createTheme({
 const messages = [
     {
         id: 1,
-        primary: 'Bhanuka Rajapaksha',
+        label: 'Bhanuka Rajapaksha',
         secondary: "Are you ...",
         person: 'images/tutors/tutor-2.png',
     },
     {
         id: 2,
-        primary: 'Jonny perera',
+        label: 'Jonny perera',
         secondary: "Are you ...",
         person: 'images/tutors/tutor-3.png',
     },
     {
         id: 3,
-        primary: 'Melaka Pathirangama',
+        label: 'Melaka Pathirangama',
         secondary: 'Are you ...',
         person: 'images/tutors/tutor-1.png',
     },
     {
         id: 4,
-        primary: 'Lahiru wije',
+        label: 'Lahiru wije',
         secondary: 'Are you ...',
         person: 'images/tutors/tutor-2.png',
     },
     {
         id: 5,
-        primary: 'Akila Perera',
+        label: 'Akila Perera',
+        secondary: 'Are you ...',
+        person: 'images/tutors/tutor-3.png',
+    },
+    {
+        id: 6,
+        label: 'Akila Perera',
         secondary: 'Are you ...',
         person: 'images/tutors/tutor-3.png',
     },
@@ -137,40 +143,85 @@ export default function ChatList(props) {
         props.onClick();
         { props.setSelectContactdetails((obj) => ({ ...obj, value1: id, value2: name })) }
     }
+
+    const [searchItem, setSearchItem] = React.useState('')
+    const searchHandler = (e) => {
+        setSearchItem(e.target.value)
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Paper square sx={{ pb: '50px', height: "400px", overflowY: "auto" }}>
                 <Box>
-                    <Search>
+                    <Autocomplete
+                        onSelect={searchHandler}
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={messages.map((option) => option.label)}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                placeholder="Search users"
+                                InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                }}
+                            />
+                        )}
+                    />
+                    {/* <Search>
                         <SearchIconWrapper>
                             <SearchIcon sx={{ color: 'grey.400', }} />
                         </SearchIconWrapper>
                         <StyledInputBase
                             placeholder="Search messages ..."
                             inputProps={{ 'aria-label': 'search' }}
+                            onChange={searchHandler}
                         />
-                    </Search>
+                    </Search> */}
                 </Box>
                 <Box sx={{
                     overflow: "hidden",
                 }}>
                     <List sx={{ mb: 2 }}>
-                        {messages.map(({ id, primary, secondary, person }) => (
-                            <React.Fragment key={id} >
-                                <ListItem
-                                    button
-                                    style={{ borderLeft: active == id ? '3px #3399FF solid' : '3px #FFFFFF solid' }}
-                                    onClick={() => selectItem(id, primary)}
-                                >
-                                    <ListItemAvatar>
-                                        <Avatar alt="Profile Picture" src={person} />
-                                    </ListItemAvatar>
-                                    <ListItemText primary={primary} secondary={secondary} />
-                                </ListItem>
-                                <Divider />
-                            </React.Fragment>
-                        ))}
+                        {searchItem === "" && (
+                            messages.map(({ id, label, secondary, person }) => (
+                                <React.Fragment key={id} >
+                                    <ListItem
+                                        button
+                                        style={{ borderLeft: active == id ? '3px #3399FF solid' : '3px #FFFFFF solid' }}
+                                        onClick={() => selectItem(id, label)}
+                                    >
+                                        <ListItemAvatar>
+                                            <Avatar alt="Profile Picture" src={person} />
+                                        </ListItemAvatar>
+                                        <ListItemText primary={label} secondary={secondary} />
+                                    </ListItem>
+                                    <Divider />
+                                </React.Fragment>
+                            )
+                            ))}
+                        {searchItem !== "" && (
+                            messages.map(({ id, label, secondary, person }) => {
+                                return (
+                                    searchItem === label &&
+                                    <React.Fragment key={id} >
+                                        <ListItem
+                                            button
+                                            style={{ borderLeft: active == id ? '3px #3399FF solid' : '3px #FFFFFF solid' }}
+                                            onClick={() => selectItem(id, label)}
+                                        >
+                                            <ListItemAvatar>
+                                                <Avatar alt="Profile Picture" src={person} />
+                                            </ListItemAvatar>
+                                            <ListItemText primary={label} secondary={secondary} />
+                                        </ListItem>
+                                        <Divider />
+                                    </React.Fragment>
+                                )
+                            }))}
                     </List>
                 </Box>
             </Paper>
