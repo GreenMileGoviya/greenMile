@@ -86,7 +86,7 @@ function App() {
           <Route path='/moderator/profile' element={<ModeratorProfile />} />
           {/* <Route path="/buy-product/" element={<BuyProduct />} /> */}
           <Route path="/buy-product/:productId" element={<BuyProduct />} />
-          {/* <Route path="/testing" element={<GoogleMapContainer />} /> */}
+          {/* <Route path="/testing" element={<Test />} /> */}
 
 
           <Route path="/otp-verify" element={<OtpVerify />} />

@@ -1,112 +1,100 @@
-import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Grid from '@mui/material/Grid';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
-import CenteredBox from './CenteredBox';
-import { Typography } from '@mui/material';
+import React, { useEffect } from 'react'
+import './Test.css';
+import $ from 'jquery'
 
-export default function Test() {
+function Test() {
+
+    $(document).ready(function () {
+        $(".SlickCarousel").slick({
+            rtl: false, // If RTL Make it true & .slick-slide{float:right;}
+            autoplay: true,
+            autoplaySpeed: 5000, //  Slide Delay
+            speed: 800, // Transition Speed
+            slidesToShow: 4, // Number Of Carousel
+            slidesToScroll: 1, // Slide To Move 
+            pauseOnHover: false,
+            appendArrows: $(".Container .Head .Arrows"), // Class For Arrows Buttons
+            prevArrow: '<span class="Slick-Prev"></span>',
+            nextArrow: '<span class="Slick-Next"></span>',
+            easing: "linear",
+            responsive: [
+                {
+                    breakpoint: 801, settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 641, settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 481, settings: {
+                        slidesToShow: 1,
+                    }
+                },
+            ],
+        })
+    })
     return (
-        <Grid container spacing={2}>
-            {itemData.map((item) => (
-                <Grid item xs={3} key={item.img}>
-                    <ImageListItem>
-                        <img
-                            src={`${item.img}?w=248&fit=crop&auto=format`}
-                            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                            alt={item.title}
-                            loading="lazy"
-                            style={{height: "220px"}}
-                        />
-                        <ImageListItemBar
-                            title={item.title}
-                            subtitle={item.author}
-                        />
-                    </ImageListItem>
-                </Grid>
-            ))}
-        </Grid>
-    );
+        <div className="Container">
+            <h3 className="Head">Featured Products <span className="Arrows"></span></h3>
+            {/* Carousel Container */}
+            <div className="SlickCarousel">
+                {/* Item */}
+                <div className="ProductBlock">
+                    <div className="Content">
+                        <div className="img-fill">
+                            <img src="https://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg" />
+                        </div>
+                        <h3>Block Title</h3>
+                    </div>
+                </div>
+                {/* <!-- Item --> */}
+                {/* <!-- Item --> */}
+                <div className="ProductBlock">
+                    <div className="Content">
+                        <div className="img-fill">
+                            <img src="https://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg" />
+                        </div>
+                        <h3>Block Title</h3>
+                    </div>
+                </div>
+                {/* <!-- Item -->
+                <!-- Item --> */}
+                <div className="ProductBlock">
+                    <div className="Content">
+                        <div className="img-fill">
+                            <img src="https://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg" />
+                        </div>
+                        <h3>Block Title</h3>
+                    </div>
+                </div>
+                {/* <!-- Item -->
+                <!-- Item --> */}
+                <div className="ProductBlock">
+                    <div className="Content">
+                        <div className="img-fill">
+                            <img src="https://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg" />
+                        </div>
+                        <h3>Block Title</h3>
+                    </div>
+                </div>
+                {/* <!-- Item -->
+                <!-- Item --> */}
+                <div className="ProductBlock">
+                    <div className="Content">
+                        <div className="img-fill">
+                            <img src="https://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg" />
+                        </div>
+                        <h3>Block Title</h3>
+                    </div>
+                </div>
+                {/* <!-- Item --> */}
+            </div>
+            {/* <!-- Carousel Container --> */}
+        </div>
+    )
 }
 
-const itemData = [
-    {
-        img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-        title: 'Breakfast',
-        author: <Grid container>
-            <Grid item xs={8}>
-                <Typography variant="body2">
-                    Rs. 300
-                </Typography>
-            </Grid>
-            <Grid item xs={4}>
-                <CenteredBox align="right">
-                    <Typography variant="body2">
-                        2kg
-                    </Typography>
-                </CenteredBox>
-            </Grid>
-        </Grid>,
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-        title: 'Burger',
-        author: '@rollelflex_graphy726',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-        title: 'Camera',
-        author: '@helloimnik',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-        title: 'Coffee',
-        author: '@nolanissac',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Hats',
-        author: '@hjrc33',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-        title: 'Honey',
-        author: '@arwinneil',
-
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-        title: 'Basketball',
-        author: '@tjdragotta',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-        title: 'Fern',
-        author: '@katie_wasserman',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-        title: 'Mushrooms',
-        author: '@silverdalex',
-
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-        title: 'Tomato basil',
-        author: '@shelleypauls',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-        title: 'Sea star',
-        author: '@peterlaster',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-        title: 'Bike',
-        author: '@southside_customs',
-    },
-];
+export default Test
