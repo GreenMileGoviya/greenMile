@@ -20,10 +20,10 @@ function ProdcutCard(props) {
                     <Button
                         variant='contained'
                         style={{ textTransform: "none" }}
-                        sx={{ p: 0, mt: 3, mr: 2 }}
+                        sx={{ p: 0, px: 1, mt: 3, mr: 2 }}
                         onClick={() => { navigate(`/buy-product/${props.id}`) }}
                     >
-                        Request
+                        Shop Now
                     </Button>
                 }
             />
