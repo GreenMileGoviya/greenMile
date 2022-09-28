@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import db from "../config/database.js";
 import Products from "./productsModel.js";
 
 const { DataTypes } = Sequelize;
@@ -10,7 +10,7 @@ const ProductImage = db.define(
     productImages: {
       type: DataTypes.STRING,
       allowNull: true
-    //   defaultValue: DataTypes.UUIDV4
+      //   defaultValue: DataTypes.UUIDV4
     },
   },
   {
