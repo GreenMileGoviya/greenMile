@@ -66,6 +66,7 @@ function LandingPageCarousel() {
         prevArrow: <SamplePrevArrow />
     };
 
+    
     return (
         <Box sx={{ p: 3 }}>
             <div>
