@@ -20,14 +20,19 @@ import { register } from "../../store/userApiCalls";
 import { useNavigate } from "react-router";
 import useInput from "../../hooks/use-input";
 import FileUploader from "../ui/fileUploader/FileUploader";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { v4 } from "uuid";
+import Swal from "sweetalert2";
+import { storage } from "../../Firebase";
+import BackDrop from "../ui/BackDrop";
 function SignUpForm(props) {
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
+  const [isDataUploading, setIsDataUploading] = useState(false);
+  const [registrationResult, setRegistrationResult] = useState(0);
   const setCharityFile = (value) => {
     setFile(value)
   }
-  // const [password, setPassword] = useState(null);
-  // const [confirmPassword, setConfirmPassword] = useState(null);
   const selectedSignupButton = useSelector(
     (state) => state.userTypeSelectorButton.selectedSignupButton
   );
@@ -291,7 +296,6 @@ function SignUpForm(props) {
   })
 
 
-
   const [checked, setChecked] = useState(false);
   const signUpAgreeHandler = (event) => {
     setChecked(event.target.checked);
@@ -319,6 +323,7 @@ function SignUpForm(props) {
 
   const clickRegister = async (e) => {
     e.preventDefault();
+    setIsDataUploading(true);
     if (!formIsValid) {
       return;
     }
@@ -335,24 +340,71 @@ function SignUpForm(props) {
       confPassword: confirmPassword,
     };
 
-    if (props.userType !== "Charity") {
+    if (props.userType === "Charity") {
+      const filePath = `/signup/charityProof/${file.name + v4()}`
+      const fileRef = ref(storage, filePath);
+
+      const uploadTask = uploadBytesResumable(fileRef, file);
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          switch (snapshot.state) {
+            case 'paused':
+              break;
+            case 'running':
+              break;
+          }
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong !',
+          })
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            data = {
+              ...data,
+              registerNo: "",
+              img: downloadURL,
+              isAccept: false,
+            };
+            setRegistrationResult(register(data))
+          }).catch((error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong !',
+            })
+          });
+          setIsDataUploading(false);
+        }
+      );
+
+    } else {
       data = {
         ...data,
         registerNo: "",
         img: "",
         isAccept: false,
       };
-    } else {
-      //image upload part
+      setIsDataUploading(false);
+      setRegistrationResult(register(data))
     }
-    const result = await register(data);
-    if (result) {
-      navigate("/login");
-    }
-    console.log(data);
   };
+  if (registrationResult) {
+    Swal.fire(
+      'Registration Success!',
+      'You clicked the button!',
+      'success'
+    ).then(() => {
+      navigate("/login");
+    })
+  }
   return (
     <div>
+      <BackDrop dataUploading={isDataUploading} />
       <form onSubmit={clickRegister}>
         <div onClick={backButtonClicked}>
           <GoBackIcon show={selectedSignupButton !== ""} />
@@ -404,9 +456,7 @@ function SignUpForm(props) {
               helperText={lnameHasError ? lnameError : ""}
             />
           </Grid>
-          {/* <Grid item xs={6}>
-            <TextField required variant="standard" label="email" onChange={handleChange} />
-          </Grid> */}
+
         </Grid>
         <Grid container sx={{ mb: 3 }} spacing={3}>
           <Grid item xs={12}>
