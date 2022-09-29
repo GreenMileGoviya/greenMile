@@ -102,6 +102,15 @@ function SignUpForm(props) {
     }
   })
 
+  //Validate The mobile
+  function phonenumber(inputtxt) {
+    var phoneno = /^\d*(?:\.\d{1,2})?$/;
+    if (inputtxt.match(phoneno)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   const {
     value: phone_number,
     isValid: phone_numberIsValid,
@@ -112,13 +121,11 @@ function SignUpForm(props) {
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
-    }
-    // else if (hasNumber(value.trim())) {
-    //   return { inputIsValid: false, error: "Can't contained numbers !" };
-    // } else if (hasSpecialChars(value.trim())) {
-    //   return { inputIsValid: false, error: "Can't contained special chars !" };
-    // } 
-    else {
+    } else if (value.trim().length > 10) {
+      return { inputIsValid: false, error: "More than 10 charcters" };
+    } else if (!phonenumber(value.trim())) {
+      return { inputIsValid: false, error: "Phone number can't include characters" };
+    } else {
       return { inputIsValid: true, error: "" };
     }
   })
@@ -283,21 +290,28 @@ function SignUpForm(props) {
     }
   })
 
+
+
+  const [checked, setChecked] = useState(false);
+  const signUpAgreeHandler = (event) => {
+    setChecked(event.target.checked);
+  };
+
   let formIsValid = false;
   if (props.userType === "Farmer") {
-    if (fnameIsValid && lnameIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
+    if (fnameIsValid && lnameIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
       formIsValid = true;
     }
   } else if (props.userType === "Buyer") {
-    if (fnameIsValid && lnameIsValid && phone_numberIsValid && passwordIsValid && confirmPasswordIsValid) {
+    if (fnameIsValid && lnameIsValid && phone_numberIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
       formIsValid = true;
     }
   } else if (props.userType === "Charity") {
-    if (fnameIsValid && lnameIsValid && registerNoIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
+    if (fnameIsValid && lnameIsValid && registerNoIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
       formIsValid = true;
     }
   } else if (props.userType === "Advertiser" || props.userType === "AgriExpert") {
-    if (fnameIsValid && lnameIsValid && emailIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
+    if (fnameIsValid && lnameIsValid && emailIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
       formIsValid = true;
     }
   }
@@ -403,7 +417,7 @@ function SignUpForm(props) {
               label="Phone number"
               name="phone_number"
               id="phone_number"
-              type="number"
+              type="text"
               value={phone_number}
               onChange={phone_numberChangeHandler}
               onBlur={phone_numberBlurHandler}
@@ -533,7 +547,11 @@ function SignUpForm(props) {
             <React.Fragment>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
+                  control={
+                    <Checkbox
+                      checked={checked}
+                      onChange={signUpAgreeHandler}
+                    />}
                   label={
                     <p className={classes.text}>
                       By signing up, I agree to the{" "}
@@ -555,7 +573,7 @@ function SignUpForm(props) {
                 </Button>
                 <CenteredBox align="center">
                   <p className={classes.text}>
-                    Already have an account? <a style={{cursor: "pointer"}} onClick={() => {navigate("/login")}}>sign in</a>
+                    Already have an account? <a style={{ cursor: "pointer" }} onClick={() => { navigate("/login") }}>sign in</a>
                   </p>
                 </CenteredBox>
               </Grid>
