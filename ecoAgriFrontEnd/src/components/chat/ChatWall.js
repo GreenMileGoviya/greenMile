@@ -5,7 +5,7 @@ import { MessageLeft, MessageRight } from "./Message";
 import TextInput from "./TextInput";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { storage, db } from "../../Firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useSelector } from 'react-redux';
 import { async } from "@firebase/util";
 // import { useAuthState } from 'react-firebase-hooks/auth';
@@ -146,20 +146,22 @@ function ChatWall(props) {
     const [messages, setMessages] = useState([])
     const getMessages = async () => {
         setIsLoading(true);
-        const querySnapshot = await getDocs(collection(db, "messages"));
+        const q = query(collection(db, "messages"), where("receiverId", "==", userId));
+        const receiveMessages = []
+        const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-            setMessages(`${doc.id} => ${doc.data()}`);
+            receiveMessages.push({
+                mId: doc.id,
+                ...doc.data(),
+            });
         });
-        console.log(messages)
+        setMessages(receiveMessages);
         setIsLoading(false);
     }
     useEffect(() => {
-        // db.collection('messages').orderBy('createdAt').limit(50).onSnapshot(snapshot => {
-        //     setMessages(snapshot.docs.map(doc => doc.data()))
-        // })
         getMessages();
     }, [])
-    if(isLoading) {
+    if (isLoading) {
         return <p>Loading .....</p>
     }
     console.log(messages)
@@ -189,27 +191,27 @@ function ChatWall(props) {
                         height: "400px",
                     }}
                 >
-                    {/* {messages.map(({ id, text, photoURL, senderId, receiverId }) => {
-                        if (receiverId == userId) {
+                    {messages.map((message) => {
+                        if (message.receiverId === userId) {
                             return (
                                 <MessageLeft
-                                    key={id}
-                                    message={text}
+                                    key={message.mId}
+                                    message={message.text}
                                 // timestamp={timestamp}
                                 // displayName={displayName}
                                 />
                             );
-                        } else if (senderId == userId) {
+                        } else if (message.senderId === userId) {
                             return (
                                 <MessageRight
-                                    key={id}
-                                    message={text}
+                                    key={message.mId}
+                                    message={message.text}
                                 // timestamp={timestamp}
                                 // displayName={displayName}
                                 />
                             );
                         }
-                    })} */}
+                    })}
 
                 </Box>
                 {/* {active == "true" && <TextInput id={id} scroll={scroll}></TextInput>} */}

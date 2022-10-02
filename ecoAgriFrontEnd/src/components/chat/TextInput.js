@@ -44,7 +44,7 @@ function TextInput(props) {
             const docRef = await addDoc(collection(db, "messages"), {
                 text: msg,
                 senderId: userId,
-                receiverId: 3,
+                receiverId: 5,
                 // photoURL,
                 // uid,
                 // createdAt: db.
