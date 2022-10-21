@@ -106,12 +106,12 @@ function SignInForm() {
       <Grid container sx={{ mb: 3, zIndex: 0 }}>
         <Grid item xs={12}>
           <CenteredBox align="center">
-            <Typography>Welcome Back !</Typography>
+            <Typography color="primary" variant="h4" sx={{p: 2}}>Welcome Back !</Typography>
           </CenteredBox>
         </Grid>
         <Grid item xs={12}>
           <CenteredBox align="center">
-            <Typography>Please, Login</Typography>
+            <Typography variant="h5">Please, Login</Typography>
           </CenteredBox>
         </Grid>
       </Grid>
@@ -150,7 +150,7 @@ function SignInForm() {
           />
           <CenteredBox align="right">
             <p className={classes.text}>
-              <a href="#">Forget Password?</a>
+              <a onClick={() => {navigate("/forget-password")}}>Forget Password?</a>
             </p>
           </CenteredBox>
         </Grid>
@@ -162,8 +162,7 @@ function SignInForm() {
             fullWidth
             style={{ textTransform: "none", borderRadius: 10 }}
           >
-            {" "}
-            Sign In{" "}
+            Sign In
           </Button>
           <CenteredBox align="center">
             <p className={classes.text}>

@@ -1,40 +1,52 @@
-import React, { useContext, useEffect, useRef } from "react";
-// import { AuthContext } from "../context/AuthContext";
-// import { ChatContext } from "../context/ChatContext";
+import React from "react";
+import StyledEngineProvider from "@mui/material/StyledEngineProvider";
+import { makeStyles, createStyles } from "@mui/material/styles";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { Grid } from "@mui/material";
 
-const Message = ({ message }) => {
-//   const { currentUser } = useContext(AuthContext);
-//   const { data } = useContext(ChatContext);
 
-//   const ref = useRef();
-
-//   useEffect(() => {
-//     ref.current?.scrollIntoView({ behavior: "smooth" });
-//   }, [message]);
-
-  return (
-    <p>hello</p>
-    // <div
-    //   ref={ref}
-    //   className={`message ${message.senderId === currentUser.uid && "owner"}`}
-    // >
-    //   <div className="messageInfo">
-    //     <img
-    //       src={
-    //         message.senderId === currentUser.uid
-    //           ? currentUser.photoURL
-    //           : data.user.photoURL
-    //       }
-    //       alt=""
-    //     />
-    //     <span>just now</span>
-    //   </div>
-    //   <div className="messageContent">
-    //     <p>{message.text}</p>
-    //     {message.img && <img src={message.img} alt="" />}
-    //   </div>
-    // </div>
-  );
+export const MessageRight = (props) => {
+    const message = props.message ? props.message : "no message";
+    const timestamp = props.timestamp ? props.timestamp : "";
+    const displayName = props.displayName ? props.displayName : "Ashani";
+    return (
+        <StyledEngineProvider injectFirst>
+            <List >
+                <ListItem key="1" sx={{}}>
+                    <Grid container >
+                        <Grid item xs={12}>
+                            <ListItemText align="right" primary={message}></ListItemText>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <ListItemText align="right" secondary={timestamp}></ListItemText>
+                        </Grid>
+                    </Grid>
+                </ListItem>
+            </List>
+        </StyledEngineProvider >
+    );
 };
 
-export default Message;
+export const MessageLeft = (props) => {
+    const message = props.message ? props.message : "no message";
+    const timestamp = props.timestamp ? props.timestamp : "";
+    return (
+        <>
+            <List >
+                <ListItem key="2" style={{marginLeft:"2px", background:"#93ffbf", width:"fit-content", borderRadius:"10px"}}>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <ListItemText align="left"  primary={message} ></ListItemText>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <ListItemText align="left" secondary={timestamp}></ListItemText>
+                        </Grid>
+                    </Grid>
+                </ListItem>
+            </List>
+        </>
+    );
+};

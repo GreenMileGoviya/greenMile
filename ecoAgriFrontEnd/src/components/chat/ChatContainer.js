@@ -8,8 +8,8 @@ import { Grid, IconButton, Typography } from '@mui/material';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import CenteredBox from '../ui/CenteredBox';
 import CloseIcon from '../ui/CloseIcon';
-import BottomAppBar from './BottomAppBar';
-import Conversation from './Conversation';
+import Coverstaions from './Coverstaions';
+import Test from './Test';
 
 const style = {
     position: 'absolute',
@@ -33,6 +33,7 @@ export default function ChatContainer(props) {
     const handleClose = () => setOpen(false);
     const user = useSelector((state) => state.user.currentUser);
     const userType = user.userrole;
+
     return (
         <div>
             <IconButton
@@ -43,12 +44,12 @@ export default function ChatContainer(props) {
             </IconButton>
             <Modal
                 open={open}
-                // onClose={handleClose}
+            // onClose={handleClose}
             >
                 <Box sx={style}>
                     <CloseIcon onClose={handleClose} />
-                    {/* <Conversation /> */}
-                    <BottomAppBar />
+                    {/* <Test id="chat-div-id" /> */}
+                    <Coverstaions />
                 </Box>
             </Modal>
         </div >
