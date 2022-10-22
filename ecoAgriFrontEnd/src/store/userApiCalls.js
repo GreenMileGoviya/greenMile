@@ -58,8 +58,10 @@ export const getUsers = async (dispatch,token) => {
       },
     });
     dispatch(getUserSuccess(res.data));
+    return 1;
   } catch (err) {
     dispatch(getUserFailure());
+    return 0;
   }
 };
 
