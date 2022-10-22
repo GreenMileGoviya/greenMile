@@ -109,6 +109,8 @@ function ChatWall(props) {
     const [isLoading, setIsLoading] = useState(false);
     const user = useSelector((state) => state.user.currentUser);
     const userId = user.id;
+    const receiverId = props.value1;
+
     // useEffect(() => {
     //     if (id == 0) {
     //         setActive("false")
@@ -146,7 +148,7 @@ function ChatWall(props) {
     const [messages, setMessages] = useState([])
     const getMessages = async () => {
         setIsLoading(true);
-        const q = query(collection(db, "messages"), where("receiverId", "==", userId));
+        const q = query(collection(db, "messages"), where("id", "==", `${userId}-${receiverId}`));
         const receiveMessages = []
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {

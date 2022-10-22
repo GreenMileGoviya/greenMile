@@ -42,6 +42,7 @@ function TextInput(props) {
 
         try {
             const docRef = await addDoc(collection(db, "messages"), {
+                id: `${userId}-3`,
                 text: msg,
                 senderId: userId,
                 receiverId: 5,
