@@ -15,7 +15,18 @@ import {
     countOrderStart,
     countOrderSuccess,
     countOrderFailure,
+    getAmountSuccess,
+    getQuantitySuccess,
+    getProductIdSuccess,
+    getOrderIdSuccess,
 } from "./orderSlice";
+
+export const saveAmount = async (dispatch, amount,quantity,productId,id) => {
+  dispatch(getAmountSuccess(amount));
+  dispatch(getQuantitySuccess(quantity));
+  dispatch(getProductIdSuccess(productId));
+  dispatch(getOrderIdSuccess(id));
+};
 
 export const getOrders = async (dispatch, token) => {
   dispatch(getOrderStart());

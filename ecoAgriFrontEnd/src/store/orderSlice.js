@@ -5,6 +5,10 @@ export const orderSlice = createSlice({
   initialState: {
     orders: [],
     count: null,
+    totalAmount: 0,
+    totalQuantity: 0,
+    productId: null,
+    orderId: null,
     isFetching: false,
     error: false,
   },
@@ -80,6 +84,23 @@ export const orderSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
+
+    getAmountSuccess: (state, action) => {
+      state.isFetching = false;
+      state.totalAmount = action.payload;
+    },
+    getQuantitySuccess: (state, action) => {
+      state.isFetching = false;
+      state.totalQuantity = action.payload;
+    },
+    getProductIdSuccess: (state, action) => {
+      state.isFetching = false;
+      state.productId = action.payload;
+    },
+    getOrderIdSuccess: (state, action) => {
+      state.isFetching = false;
+      state.orderId = action.payload;
+    },
   },
 });
 
@@ -99,6 +120,10 @@ export const {
   countOrderStart,
   countOrderSuccess,
   countOrderFailure,
+  getAmountSuccess,
+  getQuantitySuccess,
+  getProductIdSuccess,
+  getOrderIdSuccess
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

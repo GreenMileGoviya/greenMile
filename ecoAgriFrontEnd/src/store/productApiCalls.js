@@ -60,7 +60,7 @@ export const updateProduct = async (id, product, dispatch, token) => {
       },
     });
     console.log(res);
-    dispatch(updateProductSuccess({ id, product }));
+    dispatch(updateProductSuccess(res));
     return 1;
   } catch (err) {
     dispatch(updateProductFailure());
