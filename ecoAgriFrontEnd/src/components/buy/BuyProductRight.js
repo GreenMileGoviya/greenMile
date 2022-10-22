@@ -25,6 +25,7 @@ function BuyProductRight(props) {
   const [price, setPrice] = useState(props.productDetail.unitPrice);
   let token = useSelector((state) => state.user.token);
   let userId = useSelector((state) => state.user.currentUser.id);
+  let user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
 
   const paymentTypeHandler = (payment_type) => {
@@ -45,6 +46,7 @@ function BuyProductRight(props) {
       weightUOM: props.productDetail.weightUOM,
       sellerId: props.productDetail.sellerId,
       sellerName: props.productDetail.sellerName,
+      username:user.username,
       sellerContact: props.productDetail.sellerContact,
       totalPrice:price,
       manuDate: "2022-05-14",
@@ -52,7 +54,6 @@ function BuyProductRight(props) {
       fieldAddress: "789",
       status: "Pending",
       isAccept: false,
-      location: "Malabe",
     };
     const afterPlaceOrder = await addOrder(data, dispatch, token);
     if (afterPlaceOrder) {

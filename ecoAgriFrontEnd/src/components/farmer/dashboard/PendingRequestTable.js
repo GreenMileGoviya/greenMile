@@ -27,8 +27,14 @@ CustomToolbar.propTypes = {
 export default function PendingRequestTable() {
   const dispatch = useDispatch();
   // const [sellerId, setSellerId] = React.useState(0);
+  const user = useSelector((state) => state.user.currentUser);
   const orderPending = useSelector((state) =>
-    state.order.orders.filter((x) => x.status == "Pending" || (x.status == "Accept" && x.isAccept == false))
+    state.order.orders.filter(
+      (x) =>
+        (x.status == "Pending" ||
+          (x.status == "Accept" && x.isAccept == false)) &&
+        x.userId == user.id
+    )
   );
   //purchase completed the isAccept = 1
   //but if seller was accept buyer doesnt complete payment.. then status="Accept" and isAccept = 0
@@ -49,25 +55,27 @@ export default function PendingRequestTable() {
 
   React.useEffect(() => {
     const getOrderData = async () => {
-      const orderStatus = await getOrders(dispatch, token);
-      console.log(orderPending);
-      console.log(orderIsAccept);
-      let rowData = [];
-      orderPending.map((item) => {
-        rowData.push({
-          id: item.id,
-          status: item.status,
-          col1: "Potato",
-          col2: "Vegitable",
-          col3: item.quantity,
-          col4: item.totalPrice,
-          col5: item.expireDate,
-          col6: "Lahiru",
-          col7: "0712345678",
+      // const orderStatus = await getOrders(dispatch, token);
+      // if (orderStatus) {
+        console.log(orderPending);
+        console.log(orderIsAccept);
+        let rowData = [];
+        orderPending.map((item) => {
+          rowData.push({
+            id: item.id,
+            status: item.status,
+            col1: item.productName,
+            col2: item.productCategory,
+            col3: item.quantity,
+            col4: item.totalPrice,
+            col5: item.expireDate,
+            col6: item.sellerName,
+            col7: item.sellerContact,
+          });
         });
-      });
-      setRows(rowData);
-    };
+        setRows(rowData);
+      }
+    // };
     getOrderData();
   }, [deleteTrigger]);
 

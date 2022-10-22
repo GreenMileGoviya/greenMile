@@ -8,7 +8,7 @@ function ProdcutCard(props) {
         <ImageListItem style={{ borderRadius: 10 }}>
             <img
                 src={`${props.item.image1}?w=248&fit=crop&auto=format`}
-                srcSet={`${props.item.image2}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                srcSet={`${props.item.image1}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 alt={props.item.title}
                 loading="lazy"
                 style={{ height: "230px" }}

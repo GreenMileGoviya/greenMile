@@ -60,7 +60,8 @@ export const updateOrder = async (id, Order, dispatch, token) => {
       },
     });
     console.log(res);
-    dispatch(updateOrderSuccess({ id, Order }));
+    dispatch(updateOrderSuccess({ id, res }));
+    // dispatch(updateOrderSuccess(res.data));
     return 1;
   } catch (err) {
     dispatch(updateOrderFailure());

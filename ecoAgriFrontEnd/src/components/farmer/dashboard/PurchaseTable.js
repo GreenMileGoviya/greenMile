@@ -21,8 +21,11 @@ CustomToolbar.propTypes = {
 };
 
 export default function PurchaseTable() {
+  const user = useSelector((state) => state.user.currentUser);
   const orderIsAccept = useSelector((state) =>
-    state.order.orders.filter((x) => x.status == "Accept" && x.isAccept)
+    state.order.orders.filter(
+      (x) => x.status == "Accept" && x.isAccept && x.userId == user.id
+    )
   );
 
   const token = useSelector((state) => state.user.token);
