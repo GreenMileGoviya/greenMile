@@ -24,7 +24,7 @@ export default function PurchaseTable() {
   const user = useSelector((state) => state.user.currentUser);
   const orderIsAccept = useSelector((state) =>
     state.order.orders.filter(
-      (x) => x.status == "Accept" && x.isAccept && x.userId == user.id
+      (x) => (x.status == "Accept" || x.status == "Completed") && x.isAccept && x.userId == user.id
     )
   );
 

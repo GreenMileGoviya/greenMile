@@ -3,7 +3,7 @@ import express from "express";
 import { Login, Register } from "../controllers/authController.js";
 import { getUsers,getUser,updateUser,deleteUser } from "../controllers/userDetailsController.js";
 import { saveProduct,getProducts,getProduct,updateProduct,deleteProduct } from "../controllers/productDetailController.js";
-import { savePayment, getPayment, getPayments, updatePayment, deletePayment } from "../controllers/paymentController.js";
+import { savePayment, getPayment, getPayments, updatePayment, deletePayment, paymentIntent } from "../controllers/paymentController.js";
 import { saveOrder, getOrder, getOrders, updateOrder, deleteOrder } from "../controllers/orderController.js";
 import { saveArticle, getArticle, getArticles, updateArticle, deleteArticle } from "../controllers/articleController.js";
 import { saveAdvertisement, getAdvertisement, getAdvertisements, updateAdvertisement, deleteAdvertisement } from "../controllers/advertisementController.js";
@@ -45,6 +45,7 @@ router.put("/product/:id", [verifyToken], updateProduct);
 router.delete("/product/:id", [verifyToken], deleteProduct);
 
 router.get("/payments/all", getPayments);
+router.post("/payments/create-payment-intent", paymentIntent);
 router.post("/payment/save",[verifyToken], savePayment);
 router.get("/payments", [verifyToken], getPayments);
 router.get("/payment/:id", [verifyToken], getPayment);

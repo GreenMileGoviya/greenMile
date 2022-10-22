@@ -63,6 +63,7 @@ export default function PendingRequestTable() {
         orderPending.map((item) => {
           rowData.push({
             id: item.id,
+            productId:item.productId,
             status: item.status,
             col1: item.productName,
             col2: item.productCategory,
@@ -197,10 +198,7 @@ export default function PendingRequestTable() {
       disableColumnMenu: true,
       sortable: false,
       renderCell: (params) => {
-        // const onClick = (e) => {};
-        // const thisRow: Record<string, GridCellValue> = {};
-        // console.log(thisRow);
-        console.log(params);
+        console.log(params.row.productId);
         const viewUserClickHandler = (e) => {
           console.log(params);
           console.log("hello on View");
@@ -211,7 +209,7 @@ export default function PendingRequestTable() {
         return (
           <React.Fragment>
             {params.row.status === "Accept" && (
-              <BuyingModal />
+              <BuyingModal amount={params.row.col4} quantity={params.row.col3} productId={params.row.productId} id={params.row.id} />
               // <Button onClick={buttonClick}>Add</Button>
             )}
             {params.row.status === "Cancel" && (

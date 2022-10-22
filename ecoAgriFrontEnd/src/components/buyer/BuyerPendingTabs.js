@@ -58,7 +58,7 @@ export default function BuyerPendingTabs() {
     state.order.orders.filter((x) =>(x.status == "Pending" || (x.status == "Accept" && x.isAccept == false)) && x.userId == user.id)
   );
   const orderIsAccept = useSelector((state) =>
-    state.order.orders.filter((x) => x.status == "Accept" && x.isAccept && x.userId == user.id)
+    state.order.orders.filter((x) => (x.status == "Accept" || x.status == "Completed") && x.isAccept && x.userId == user.id)
   );
   const [pendingNumber, setPendingNumber] = React.useState(orderPending.length);
   const [purchaseNumber, setPurchaseNumber] = React.useState(orderIsAccept.length);
@@ -92,13 +92,13 @@ export default function BuyerPendingTabs() {
         >
           <Tab
             label={
-              <SlideBarBox number={pendingNumber} name="Pending Request" />
+              <SlideBarBox number={orderPending.length} name="Pending Request" />
             }
             {...a11yProps(0)}
           />
           <Tab
             label={
-              <SlideBarBox number={purchaseNumber} name="Purchased Products" />
+              <SlideBarBox number={orderIsAccept.length} name="Purchased Products" />
             }
             {...a11yProps(1)}
           />
