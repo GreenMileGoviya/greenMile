@@ -46,6 +46,8 @@ function a11yProps(index) {
 export default function BuyerPendingTabs() {
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.currentUser);
+
   // const [sellerId, setSellerId] = React.useState(0);
   //   const orderPending = useSelector((state) =>
   //     state.order.orders.filter((x) => {if(x.status == "Pending"){
@@ -53,10 +55,10 @@ export default function BuyerPendingTabs() {
   //     }})
   //   );
   const orderPending = useSelector((state) =>
-    state.order.orders.filter((x) =>x.status == "Pending" || (x.status == "Accept" && x.isAccept == false))
+    state.order.orders.filter((x) =>(x.status == "Pending" || (x.status == "Accept" && x.isAccept == false)) && x.userId == user.id)
   );
   const orderIsAccept = useSelector((state) =>
-    state.order.orders.filter((x) => x.status == "Accept" && x.isAccept)
+    state.order.orders.filter((x) => x.status == "Accept" && x.isAccept && x.userId == user.id)
   );
   const [pendingNumber, setPendingNumber] = React.useState(orderPending.length);
   const [purchaseNumber, setPurchaseNumber] = React.useState(orderIsAccept.length);

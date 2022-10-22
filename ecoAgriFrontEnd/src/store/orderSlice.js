@@ -45,9 +45,10 @@ export const orderSlice = createSlice({
     },
     updateOrderSuccess: (state, action) => {
       state.isFetching = false;
+      // state.orders = action.payload;
       state.orders[
         state.orders.findIndex((item) => item.id === action.payload.id)
-      ] = action.payload.order;
+      ] = action.payload.res;
     },
     updateOrderFailure: (state) => {
       state.isFetching = false;

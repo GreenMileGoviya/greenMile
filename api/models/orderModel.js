@@ -76,6 +76,9 @@ const Orders = db.define(
     sellerName: {
       type: DataTypes.STRING,
     },
+    username: {
+      type: DataTypes.STRING,
+    },
     sellerContact: {
       type: DataTypes.STRING,
     },
