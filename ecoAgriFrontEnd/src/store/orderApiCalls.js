@@ -27,8 +27,10 @@ export const getOrders = async (dispatch, token) => {
       },
     });
     dispatch(getOrderSuccess(res.data));
+    return 1;
   } catch (err) {
     dispatch(getOrderFailure());
+    return 0;
   }
 };
 

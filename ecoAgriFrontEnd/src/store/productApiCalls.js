@@ -27,8 +27,10 @@ export const getProducts = async (dispatch, token) => {
       },
     });
     dispatch(getProductSuccess(res.data));
+    return 1;
   } catch (err) {
     dispatch(getProductFailure());
+    return 0;
   }
 };
 
