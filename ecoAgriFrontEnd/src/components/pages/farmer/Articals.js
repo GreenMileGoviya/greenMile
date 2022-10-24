@@ -10,7 +10,7 @@ function Articals() {
         <React.Fragment>
             <MainHeader value={3}></MainHeader>
             <Grid container sx={{ pt: "100px" }}>
-                {/* <Grid item xs={12} sx={{ mx: 2, pt: 2 }}>
+                <Grid item xs={12} sx={{ mx: 2, pt: 2 }}>
                     <div>
                         <Grid container rowSpacing={4}>
                             <Grid item xs={12} sm={3} sx={{mb: 2, pr: "12px"}}>
@@ -21,7 +21,7 @@ function Articals() {
                             </Grid>
                         </Grid>
                     </div>
-                </Grid> */}
+                </Grid>
             </Grid>
         </React.Fragment>
     )

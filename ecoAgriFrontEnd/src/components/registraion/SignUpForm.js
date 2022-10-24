@@ -341,47 +341,24 @@ function SignUpForm(props) {
     };
 
     if (props.userType === "Charity") {
-      const filePath = `/signup/charityProof/${file.name + v4()}`
-      const fileRef = ref(storage, filePath);
-
-      const uploadTask = uploadBytesResumable(fileRef, file);
-      uploadTask.on('state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          switch (snapshot.state) {
-            case 'paused':
-              break;
-            case 'running':
-              break;
-          }
-        },
-        (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong !',
-          })
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            data = {
-              ...data,
-              registerNo: "",
-              img: downloadURL,
-              isAccept: false,
-            };
-            setRegistrationResult(register(data))
-          }).catch((error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong !',
-            })
-          });
-          setIsDataUploading(false);
-        }
-      );
-
+      data = {
+        ...data,
+        registerNo: "",
+        img: file,
+        isAccept: false,
+      };
+      const status = register(data);
+      if (status) {
+        Swal.fire(
+          'Registration Success!',
+          'You clicked the button!',
+          'success'
+        ).then(() => {
+          // window.location.href = "/login";
+          navigate("/login");
+        })
+      }
+      setIsDataUploading(false);
     } else {
       data = {
         ...data,
@@ -389,22 +366,33 @@ function SignUpForm(props) {
         img: "",
         isAccept: false,
       };
+      // setRegistrationResult(register(data))
+      const status = register(data);
+      if (status) {
+        Swal.fire(
+          'Registration Success!',
+          'You clicked the button!',
+          'success'
+        ).then(() => {
+          // window.location.href = "/login";
+          navigate("/login");
+        })
+      }
       setIsDataUploading(false);
-      setRegistrationResult(register(data))
     }
   };
-  if (registrationResult) {
-    Swal.fire(
-      'Registration Success!',
-      'You clicked the button!',
-      'success'
-    ).then(() => {
-      navigate("/login");
-    })
-  }
+  // if (registrationResult) {
+  //   Swal.fire(
+  //     'Registration Success!',
+  //     'You clicked the button!',
+  //     'success'
+  //   ).then(() => {
+  //     navigate("/login");
+  //   })
+  // }
   return (
     <div>
-      <BackDrop dataUploading={isDataUploading} />
+      {/* <BackDrop dataUploading={isDataUploading} /> */}
       <form onSubmit={clickRegister}>
         <div onClick={backButtonClicked}>
           <GoBackIcon show={selectedSignupButton !== ""} />
@@ -565,6 +553,7 @@ function SignUpForm(props) {
                 type="file"
                 id="file"
                 name="file"
+                path="/signup/charityProof"
                 onChange={setCharityFile}
               />
             </Grid>

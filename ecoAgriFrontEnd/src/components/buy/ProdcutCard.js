@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 
 function ProdcutCard(props) {
     const navigate = useNavigate();
+    console.log(props.productType)
     return (
         <ImageListItem style={{ borderRadius: 10 }}>
             <img
@@ -13,20 +14,38 @@ function ProdcutCard(props) {
                 loading="lazy"
                 style={{ height: "230px" }}
             />
-            <ImageListItemBar
-                title={props.item.title}
-                subtitle={props.item.author}
-                actionIcon={
-                    <Button
-                        variant='contained'
-                        style={{ textTransform: "none" }}
-                        sx={{ p: 0, px: 1, mt: 3, mr: 2 }}
-                        onClick={() => { navigate(`/buy-product/${props.item.id}`) }}
-                    >
-                        Shop Now
-                    </Button>
-                }
-            />
+            {props.productType === "buy" &&
+                <ImageListItemBar
+                    title={props.item.title}
+                    subtitle={props.item.author}
+                    actionIcon={
+                        <Button
+                            variant='contained'
+                            style={{ textTransform: "none" }}
+                            sx={{ p: 0, px: 1, mt: 3, mr: 2 }}
+                            onClick={() => { navigate(`/buy-product/${props.item.id}`) }}
+                        >
+                            Shop Now
+                        </Button>
+                    }
+                />
+            }
+            {props.productType === "donate" &&
+                <ImageListItemBar
+                    title={props.item.title}
+                    subtitle={props.item.author}
+                    actionIcon={
+                        <Button
+                            variant='contained'
+                            style={{ textTransform: "none" }}
+                            sx={{ p: 0, px: 1, mt: 3, mr: 2 }}
+                            onClick={() => { navigate(`/request-product/${props.item.id}`) }}
+                        >
+                            request Now
+                        </Button>
+                    }
+                />
+            }
         </ImageListItem>
     )
 }

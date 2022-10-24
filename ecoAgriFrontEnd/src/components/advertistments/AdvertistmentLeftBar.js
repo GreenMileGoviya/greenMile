@@ -4,8 +4,8 @@ import React from 'react'
 import RecentPosts from './RecentPosts'
 import SearchBar from '../ui/Searchbar'
 import PostCategories from './PostCategories'
-import AddPostButton from './AddPostButton'
 import { useSelector } from 'react-redux'
+import AddAdvertistmentButton from './AddAdvertistmentButton'
 
 const style = {
     boxShadow: 5,
@@ -14,7 +14,7 @@ const style = {
     bgcolor: "#fff"
 }
 
-function ArticalsLeftBar() {
+function AdvertistmentLeftBar() {
     const user = useSelector((state) => state.user.currentUser);
     const userType = user.userrole;
     return (
@@ -25,18 +25,18 @@ function ArticalsLeftBar() {
                         <SearchBar placeholder="Search articals" />
                     </Box>
                 </Grid> */}
-                <Grid item xs={12}>
-                    <Box sx={style}>
-                        <RecentPosts />
-                    </Box>
-                </Grid>
                 {userType !== "Moderator" &&
                     <Grid item xs={12}>
                         <Box sx={style}>
-                            <AddPostButton />
+                            <AddAdvertistmentButton />
                         </Box>
                     </Grid>
                 }
+                {/* <Grid item xs={12}>
+                    <Box sx={style}>
+                        <RecentPosts />
+                    </Box>
+                </Grid> */}
                 {/* <Grid item xs={12}>
                     <Box sx={style}>
                         <PostCategories />
@@ -47,4 +47,4 @@ function ArticalsLeftBar() {
     )
 }
 
-export default ArticalsLeftBar
+export default AdvertistmentLeftBar
