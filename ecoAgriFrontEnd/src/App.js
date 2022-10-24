@@ -30,6 +30,8 @@ import ForgetPassword from './components/pages/ForgetPassword';
 import OtpVerify from './components/pages/OtpVerify';
 import Checkout from './components/checkout/Checkout';
 import StripePaymentForm from './components/checkout/Payments/StripePaymentForm';
+import CharityDashboard from './components/pages/charity/Dashboard';
+import Profile from './components/pages/farmer/Profile';
 
 function App() {
   const theme = createTheme({
@@ -91,6 +93,10 @@ function App() {
           <Route path="/testing" element={<Test />} />
 
 
+          {/* charity */}
+          <Route path='/charity/dashboard' element={<CharityDashboard />} />
+
+          <Route path="/profile" element={<Profile />}></Route>
           <Route path="/otp-verify" element={<OtpVerify />} />
           {/* <Route path="/checkout" element={<Checkout />} /> */}
         </Routes>

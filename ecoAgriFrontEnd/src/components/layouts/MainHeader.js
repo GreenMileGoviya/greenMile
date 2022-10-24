@@ -76,7 +76,7 @@ export default function MainHeader(props) {
                                 <MainTab value={tabValue} />
                             </Box>
                         }
-                        {userType === "Moderator" &&
+                        {userType === "Moderator" || userType === "Charity" &&
                             <IconButton onClick={() => navigate("/profile")}>
                                 <Avatar></Avatar>
                             </IconButton>

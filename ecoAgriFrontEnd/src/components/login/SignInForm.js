@@ -58,6 +58,10 @@ function SignInForm() {
           // window.location.href = "buyer/dashboard";
           navigate("/buyer/dashboard");
           loginSuccess();
+        } else if (userType === "Charity") {
+          // window.location.href = "buyer/dashboard";
+          navigate("/charity/dashboard");
+          loginSuccess();
         }
         // Swal.fire({
         //   title: "Login Success!",
