@@ -25,6 +25,7 @@ export default function BuyProducts(props) {
       (x) => x.productCategory == props.productCategory
     )
   );
+  
   // const vegitables = useSelector((state) => state.product.products.filter(x => x.productCategory == "Vegitable"));
   let token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();

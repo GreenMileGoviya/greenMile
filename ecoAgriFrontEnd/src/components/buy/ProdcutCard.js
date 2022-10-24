@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 
 function ProdcutCard(props) {
     const navigate = useNavigate();
+    console.log(props.productType)
     return (
         <ImageListItem style={{ borderRadius: 10 }}>
             <img

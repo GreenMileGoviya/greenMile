@@ -5,7 +5,7 @@ import Buy from '../Buy'
 function Dashboard() {
   return (
     <React.Fragment>
-      <Buy />
+      <Buy productType="buy" />
     </React.Fragment>
   )
 }

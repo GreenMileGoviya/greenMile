@@ -31,7 +31,11 @@ import OtpVerify from './components/pages/OtpVerify';
 import Checkout from './components/checkout/Checkout';
 import StripePaymentForm from './components/checkout/Payments/StripePaymentForm';
 import CharityDashboard from './components/pages/charity/Dashboard';
-import Profile from './components/pages/farmer/Profile';
+import CharityProfile from './components/pages/buyer/Profile';
+import FarmerBuy from './components/pages/farmer/FarmerBuy';
+import AdvertiserDashboard from './components/pages/advertiser/Dashboard';
+import AdvertiserProfile from './components/pages/moderator/Profile';
+
 
 function App() {
   const theme = createTheme({
@@ -71,6 +75,7 @@ function App() {
           <Route path="/sell/add-bankAccount" element={<AddBank />} />
           <Route path="/sell/add-sell-product" element={<AddSaleProduct />} />
           <Route path="/donate/add-donate-product" element={<AddDonateProduct />} />
+          <Route path="/farmer/buy" element={<FarmerBuy />} />
 
           {/* buyer */}
           <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
@@ -95,8 +100,15 @@ function App() {
 
           {/* charity */}
           <Route path='/charity/dashboard' element={<CharityDashboard />} />
+          <Route path='/charity/profile' element={<CharityProfile />} />
+          <Route path="/request-product/:productId" element={<BuyProduct />} />
 
-          <Route path="/profile" element={<Profile />}></Route>
+
+          {/* advertiser */}
+          <Route path="/advertiser/dashboard" element={<AdvertiserDashboard />} />
+          <Route path="/advertiser/profile" element={<AdvertiserProfile />} />
+
+          {/* <Route path="/profile" element={<Profile />}></Route> */}
           <Route path="/otp-verify" element={<OtpVerify />} />
           {/* <Route path="/checkout" element={<Checkout />} /> */}
         </Routes>
