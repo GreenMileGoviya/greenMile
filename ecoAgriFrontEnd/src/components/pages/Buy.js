@@ -19,11 +19,13 @@ function Buy() {
         </Grid>
         <Grid item xs={12} sx={{ bgcolor: "#FFF", mt: 3, p: 3 }}>
           <BuyProducts
+            productType={prop.productType}
             productCategory="Vegetable"
           />
         </Grid>
         <Grid item xs={12} sx={{ bgcolor: "#FFF", mt: 3, p: 3 }}>
           <BuyProducts
+            productType={prop.productType}
             productCategory="Fruits"
           />
         </Grid>
