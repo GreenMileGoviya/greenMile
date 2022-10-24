@@ -302,23 +302,44 @@ function SignUpForm(props) {
   };
 
   let formIsValid = false;
-  if (props.userType === "Farmer") {
-    if (fnameIsValid && lnameIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
-      formIsValid = true;
+  if (props.from === "create_user") {
+    if (props.userType === "Farmer") {
+      if (fnameIsValid && lnameIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
+        formIsValid = true;
+      }
+    } else if (props.userType === "Buyer") {
+      if (fnameIsValid && lnameIsValid && phone_numberIsValid && passwordIsValid && confirmPasswordIsValid) {
+        formIsValid = true;
+      }
+    } else if (props.userType === "Charity") {
+      if (fnameIsValid && lnameIsValid && registerNoIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
+        formIsValid = true;
+      }
+    } else if (props.userType === "Advertiser" || props.userType === "AgriExpert") {
+      if (fnameIsValid && lnameIsValid && emailIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid) {
+        formIsValid = true;
+      }
     }
-  } else if (props.userType === "Buyer") {
-    if (fnameIsValid && lnameIsValid && phone_numberIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
-      formIsValid = true;
-    }
-  } else if (props.userType === "Charity") {
-    if (fnameIsValid && lnameIsValid && registerNoIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
-      formIsValid = true;
-    }
-  } else if (props.userType === "Advertiser" || props.userType === "AgriExpert") {
-    if (fnameIsValid && lnameIsValid && emailIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
-      formIsValid = true;
+  } else {
+    if (props.userType === "Farmer") {
+      if (fnameIsValid && lnameIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
+        formIsValid = true;
+      }
+    } else if (props.userType === "Buyer") {
+      if (fnameIsValid && lnameIsValid && phone_numberIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
+        formIsValid = true;
+      }
+    } else if (props.userType === "Charity") {
+      if (fnameIsValid && lnameIsValid && registerNoIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
+        formIsValid = true;
+      }
+    } else if (props.userType === "Advertiser" || props.userType === "AgriExpert") {
+      if (fnameIsValid && lnameIsValid && emailIsValid && phone_numberIsValid && addressIsValid && cityIsValid && townIsValid && passwordIsValid && confirmPasswordIsValid && checked) {
+        formIsValid = true;
+      }
     }
   }
+
 
 
   const clickRegister = async (e) => {
@@ -369,15 +390,28 @@ function SignUpForm(props) {
       // setRegistrationResult(register(data))
       const status = register(data);
       if (status) {
-        Swal.fire(
-          'Registration Success!',
-          'You clicked the button!',
-          'success'
-        ).then(() => {
-          // window.location.href = "/login";
-          navigate("/login");
-        })
+        if (props.from === undefined) {
+          Swal.fire(
+            'Registration Success!',
+            'You clicked the button!',
+            'success'
+          ).then(() => {
+            // window.location.href = "/login";
+            navigate("/login");
+          })
+        } else if (props.from === "create_user") {
+          Swal.fire(
+            'Registration Success!',
+            'You clicked the button!',
+            'success'
+          ).then(() => {
+            navigate("/admin/manage-users");
+          })
+        }
+
       }
+
+
       setIsDataUploading(false);
     }
   };
