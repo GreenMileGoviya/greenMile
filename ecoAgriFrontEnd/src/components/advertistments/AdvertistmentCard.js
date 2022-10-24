@@ -183,12 +183,40 @@ export default function AdvertistmentCard() {
         })
     }
 
+    const deleteHandler = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Remove it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //----------------delete api call here-----------------------------
+                // fetchUserData({
+                //     method: "put",
+                //     url: "api/v1/post/delete-post",
+                //     data: postData
+                // }).then(() => {
+                //     Swal.fire(
+                //         'Deleted!',
+                //         'Your file has been removed.',
+                //         'success'
+                //     ).then(() => {
+                //         dispatch(postActions.setPostDelete())
+                //     })
+                // })
+            }
+        })
+    }
     return (
         <Card sx={{ width: "100%" }}>
             <CardHeader
                 sx={{ p: 0, pl: 1 }}
                 action={
-                    <IconButton color="error">
+                    <IconButton color="error" onClick={deleteHandler}>
                         <HighlightOffIcon />
                     </IconButton>
                 }
