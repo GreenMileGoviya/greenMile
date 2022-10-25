@@ -44,6 +44,7 @@ function AddProductForm(props) {
     error: productNameError,
     valueChangeHandler: productNameChangeHandler,
     inputBlurHandler: productNameBlurHandler,
+    reset: productNameResetHandler
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -65,6 +66,7 @@ function AddProductForm(props) {
     error: productCategoryError,
     valueChangeHandler: productCategoryChangeHandler,
     inputBlurHandler: productCategoryBlurHandler,
+    reset: productCategoryResetHandler
   } = useInput((value) => {
     if (value === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -86,6 +88,7 @@ function AddProductForm(props) {
     error: weightError,
     valueChangeHandler: weightChangeHandler,
     inputBlurHandler: weightBlurHandler,
+    reset: weightResetHandler
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -107,6 +110,7 @@ function AddProductForm(props) {
     error: unitPriceError,
     valueChangeHandler: unitPriceChangeHandler,
     inputBlurHandler: unitPriceBlurHandler,
+    reset: unitPriceResetHandler
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -128,6 +132,7 @@ function AddProductForm(props) {
     error: manuDateError,
     valueChangeHandler: manuDateChangeHandler,
     inputBlurHandler: manuDateBlurHandler,
+    reset: manuDateResetHandler
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -149,6 +154,7 @@ function AddProductForm(props) {
     error: expireDateError,
     valueChangeHandler: expireDateChangeHandler,
     inputBlurHandler: expireDateBlurHandler,
+    reset: expireDateResetHandler
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -170,6 +176,7 @@ function AddProductForm(props) {
     error: fieldAddressError,
     valueChangeHandler: fieldAddressChangeHandler,
     inputBlurHandler: fieldAddressBlurHandler,
+    reset: fieldAddressResetHandler
   } = useInput((value) => {
     if (value.trim() === "") {
       return { inputIsValid: false, error: "Can't be Empty !" };
@@ -184,6 +191,15 @@ function AddProductForm(props) {
     }
   })
 
+  const resetForm = () => {
+    productNameResetHandler();
+    productCategoryResetHandler();
+    weightResetHandler();
+    unitPriceResetHandler();
+    manuDateResetHandler();
+    expireDateResetHandler();
+    fieldAddressResetHandler();
+  }
 
   const [productImages, setProductImages] = useState([]);
   const [productImageUrls, setProductImageUrls] = useState([]);
@@ -311,7 +327,7 @@ function AddProductForm(props) {
                 });
               }
 
-              console.log(imagUrls);
+              // console.log(imagUrls);
             }
             ).catch((error) => {
               Swal.fire({
@@ -322,6 +338,7 @@ function AddProductForm(props) {
             });
         }
       )
+      resetForm();
       setImageUploadingCount(i + 1)
     }
 
