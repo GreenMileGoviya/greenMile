@@ -1,4 +1,4 @@
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import classes from "../registraion/SignUpForm.module.css";
@@ -8,6 +8,7 @@ import PasswordInputField from "../ui/PasswordInputField";
 import { login } from "../../store/userApiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import CloseIcon from '@mui/icons-material/Close';
 import Swal from "sweetalert2";
 
 function SignInForm() {
@@ -111,6 +112,11 @@ function SignInForm() {
 
   return (
     <form onSubmit={loginPress}>
+      <CenteredBox align="right">
+        <IconButton onClick={() => {navigate("/")}}>
+          <CloseIcon />
+        </IconButton>
+      </CenteredBox>
       <Grid container sx={{ mb: 3, zIndex: 0 }}>
         <Grid item xs={12}>
           <CenteredBox align="center">

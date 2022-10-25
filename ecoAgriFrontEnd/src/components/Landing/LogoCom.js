@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
 import Logo from "../../assets/images/ecoAgri.png";
+import { useNavigate } from "react-router";
 
 function LogoCom() {
   const LogoBox = styled(Box)(({ theme }) => ({
@@ -71,6 +72,8 @@ function LogoCom() {
     height: 144,
     width: 136,
     position: "absolute",
+    cursor: "pointer",
+    zIndex: 10000,
     top: 5,
     left: 8,
     [theme.breakpoints.down("lg")]: {
@@ -93,9 +96,11 @@ function LogoCom() {
       left: 0,
     },
   }));
+
+  const navigate = useNavigate();
   return (
     <LogoBox>
-      <BoxImage component="img" alt="The house from the offer." src={Logo} />
+      <BoxImage component="img" alt="The house from the offer." src={Logo} onClick={() => {navigate("/")}} />
       <IconBoxOne></IconBoxOne>
       <IconBoxTwo></IconBoxTwo>
     </LogoBox>
