@@ -245,6 +245,7 @@ function AddProductForm(props) {
     weight = props.weight;
   }
 
+  console.log(productImages);
   const onSubmitHandler = async (e) => {
     console.log(liveLocation);
 
@@ -258,94 +259,49 @@ function AddProductForm(props) {
     let imagUrls = [];
     console.log(productImages);
     let count = 0;
-    for (var i = 0; i < productImages.length; i++) {
-      imagePath.push(`images/products/${productImages[i].file.name + v4()}`);
-      imageRef.push(ref(storage, imagePath[i]));
-      uploadTask = uploadBytesResumable(imageRef[i], productImages[i].file);
-      uploadTask.on('state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Uploading progress is " + progress);
-        },
-        (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong !',
-          })
-        },
-        async () => {
-          console.log(uploadTask.snapshot);
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((downloadURL) => {
-              imagUrls.push(downloadURL);
-              setProductImageUrls(imagUrls)
-              console.log(imagUrls);
+    const data = {
+      productName: productName,
+      productCategory: productCategory,
+      weight: weight,
+      unitPrice: props.productType === "sellProduct" ? unitPrice : 0,
+      fieldAddress: fieldAddress,
+      manuDate: manuDate,
+      expireDate: expireDate,
+      status: "Pending",
+      isAccept: true,
+      location: "Malabe",
+      latitude: liveLocation.lat,
+      longitude: liveLocation.lng,
+      isDonate: props.productType === "sellProduct" ? false : true,
+      priceUOM: "Rs.",
+      sellerId: user.id,
+      sellerName: user.username,
+      sellerContact: user.phone_number,
+      weightUOM: "Kg",
+      image1: (productImages.length >= 1 ? productImages[0].url : null),
+      image2: (productImages.length >= 2 ? productImages[1].url : null),
+      image3: (productImages.length >= 3 ? productImages[2].url : null),
+      image4: (productImages.length >= 4 ? productImages[3].url : null)
 
-              const data = {
-                productName: productName,
-                productCategory: productCategory,
-                weight: weight,
-                unitPrice: props.productType === "sellProduct" ? unitPrice : 0,
-                fieldAddress:fieldAddress,
-                manuDate: manuDate,
-                expireDate: expireDate,
-                status:"Pending",
-                isAccept: true,
-                location:"Malabe",
-                latitude: liveLocation.lat,
-                longitude: liveLocation.lng,
-                isDonate: props.productType === "sellProduct" ? false : true,
-                priceUOM:"Rs.",
-                sellerId:user.id,
-                sellerName:user.username,
-                sellerContact:user.phone_number,
-                weightUOM:"Kg",
-                image1:imagUrls[0],
-                image2:imagUrls[1],
-                image3:imagUrls[2],
-                image4:imagUrls[3]
-          
-                // images: productImageUrls.map((image) => {
-                //   return image
-                // })
-              };
-          
-              console.log(data);
-              const productDataSave = addProduct(data,dispatch,token);
-              if(productDataSave){
-                Swal.fire({
-                  icon: "success",
-                  title: "Product Save Successful!",
-                  showConfirmButton: true,
-                });
-              }else {
-                Swal.fire({
-                  icon: "error",
-                  text: "Product Save Unsuccess!",
-                  showConfirmButton: true,
-                });
-              }
-
-              // console.log(imagUrls);
-            }
-            ).catch((error) => {
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong !',
-              })
-            });
-        }
-      )
-      resetForm();
-      setImageUploadingCount(i + 1)
+      // images: productImageUrls.map((image) => {
+      //   return image
+      // })
+    };
+    const productDataSave = addProduct(data, dispatch, token);
+    if (productDataSave) {
+      Swal.fire({
+        icon: "success",
+        title: "Product Save Successful!",
+        showConfirmButton: true,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        text: "Product Save Unsuccess!",
+        showConfirmButton: true,
+      });
     }
-
-    if (imageUploadingCount === productImages.length) {
-      console.log(productImageUrls);
-    }
-    //api call here
+    resetForm();
   }
   return (
     <AddProductContext.Provider value={{
@@ -475,10 +431,10 @@ function AddProductForm(props) {
                     <UploadProduct id={1} images={productImages} onDelete={deleteImageHandler} size={`${style.width / 4}px`} />
                   </Grid>
                   <Grid item xs={3}>
-                    <UploadProduct id={2} images={productImages} onDelete={deleteImageHandler}  size={`${style.width / 4}px`} />
+                    <UploadProduct id={2} images={productImages} onDelete={deleteImageHandler} size={`${style.width / 4}px`} />
                   </Grid>
                   <Grid item xs={3}>
-                    <UploadProduct id={3} images={productImages} onDelete={deleteImageHandler}  size={`${style.width / 4}px`} />
+                    <UploadProduct id={3} images={productImages} onDelete={deleteImageHandler} size={`${style.width / 4}px`} />
                   </Grid>
                   <Grid item xs={3}>
                     <UploadProduct id={4} images={productImages} onDelete={deleteImageHandler} size={`${style.width / 4}px`} />
