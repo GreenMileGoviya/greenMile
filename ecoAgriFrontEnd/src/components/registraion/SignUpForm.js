@@ -250,7 +250,7 @@ function SignUpForm(props) {
 
   //Helper for the password
   function CheckPassword(string) {
-    let pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    let pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,10000}$/;
     if (!string.match(pattern)) {
       return true;
     } else {
