@@ -22,7 +22,7 @@ export default function BuyProducts(props) {
   const products = useSelector((state) => state.product.products);
   const productCategory = useSelector((state) =>
     state.product.products.filter(
-      (x) => x.productCategory == props.productCategory
+      (x) => x.productCategory == props.productCategory && x.isDonate == false
     )
   );
 
@@ -33,8 +33,8 @@ export default function BuyProducts(props) {
         // alert("Hii");
         let result = products.filter(
           (x) =>
-            x.district == props.locationDetail &&
-            x.productCategory == props.productCategory
+            (x.district == props.locationDetail &&
+            x.productCategory == props.productCategory) && x.isDonate == false
         );
         console.log(result);
         let data = [];
@@ -74,8 +74,8 @@ export default function BuyProducts(props) {
         // alert("Hii");
         let result = products.filter(
           (x) =>
-            x.location == props.cityDetail &&
-            x.productCategory == props.productCategory
+            (x.location == props.cityDetail &&
+            x.productCategory == props.productCategory) && x.isDonate == false
         );
         console.log(result);
         let data = [];
