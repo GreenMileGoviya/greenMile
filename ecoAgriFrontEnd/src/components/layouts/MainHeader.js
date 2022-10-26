@@ -68,7 +68,7 @@ export default function MainHeader(props) {
                                 style={{ width: 60, height: 60 }}
                             /> */}
                         </Typography>
-                        {(userType === "Farmer" || userType === "Buyer") &&
+                        {(userType === "Farmer" || userType === "Buyer"  || userType === "Charity" || userType === "Advertiser") &&
                             <Box
                                 id="nav-container-list"
                                 sx={{ display: { xs: "none", sm: "block" } }}
