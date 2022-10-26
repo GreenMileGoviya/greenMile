@@ -80,8 +80,10 @@ export const deleteUser = async (id, dispatch, token) => {
       },
     });
     dispatch(deleteUserSuccess(id));
+    return 1;
   } catch (err) {
     dispatch(deleteUserFailure());
+    return 0;
   }
 };
 
@@ -89,15 +91,17 @@ export const updateUser = async (id, User, dispatch, token) => {
   dispatch(updateUserStart());
   try {
     // update
-    const res = await userRequest.put(`/user/${id}`, {
+    const res = await userRequest.put(`/user/${id}`, User,{
       headers: {
         "Content-Type": "application/json",
         token: `Bearer ${token}`,
       },
     });
     dispatch(updateUserSuccess({ id, User }));
+    return 1;
   } catch (err) {
     dispatch(updateUserFailure());
+    return 0;
   }
 };
 
