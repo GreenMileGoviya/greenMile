@@ -25,7 +25,89 @@ export default function BuyProducts(props) {
       (x) => x.productCategory == props.productCategory
     )
   );
-  
+
+  React.useEffect(() => {
+    const setFilter = () => {
+      console.log(props.locationDetail);
+      if (!(props.locationDetail == "None")) {
+        // alert("Hii");
+        let result = products.filter(
+          (x) =>
+            x.district == props.locationDetail &&
+            x.productCategory == props.productCategory
+        );
+        console.log(result);
+        let data = [];
+        result.map((item) => {
+          data.push({
+            key: item.id,
+            id: item.id,
+            author: (
+              <Grid container>
+                <Grid item xs={6}>
+                  <Typography variant="body2">Rs. {item.unitPrice}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                  <CenteredBox align="right">
+                    <Typography variant="body2">{item.weight} kg</Typography>
+                  </CenteredBox>
+                </Grid>
+              </Grid>
+            ),
+            title: item.productName,
+            image1: item.image1,
+            image2: item.image2,
+            image3: item.image3,
+            image4: item.image4,
+          });
+        });
+        setItemProductData(data);
+      }
+    };
+    setFilter();
+  }, [props.flag, props.locationDetail]);
+
+  React.useEffect(() => {
+    const setFilter = () => {
+      console.log(props.cityDetail);
+      if (!(props.cityDetail == "None")) {
+        // alert("Hii");
+        let result = products.filter(
+          (x) =>
+            x.location == props.cityDetail &&
+            x.productCategory == props.productCategory
+        );
+        console.log(result);
+        let data = [];
+        result.map((item) => {
+          data.push({
+            key: item.id,
+            id: item.id,
+            author: (
+              <Grid container>
+                <Grid item xs={6}>
+                  <Typography variant="body2">Rs. {item.unitPrice}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                  <CenteredBox align="right">
+                    <Typography variant="body2">{item.weight} kg</Typography>
+                  </CenteredBox>
+                </Grid>
+              </Grid>
+            ),
+            title: item.productName,
+            image1: item.image1,
+            image2: item.image2,
+            image3: item.image3,
+            image4: item.image4,
+          });
+        });
+        setItemProductData(data);
+      }
+    };
+    setFilter();
+  }, [props.cityFlag, props.cityDetail]);
+
   // const vegitables = useSelector((state) => state.product.products.filter(x => x.productCategory == "Vegitable"));
   let token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
@@ -43,15 +125,11 @@ export default function BuyProducts(props) {
             author: (
               <Grid container>
                 <Grid item xs={6}>
-                  <Typography variant="body2">
-                    Rs. {item.unitPrice}
-                  </Typography>
+                  <Typography variant="body2">Rs. {item.unitPrice}</Typography>
                 </Grid>
                 <Grid item xs={2}>
                   <CenteredBox align="right">
-                    <Typography variant="body2">
-                      {item.unitPrice} kg
-                    </Typography>
+                    <Typography variant="body2">{item.weight} kg</Typography>
                   </CenteredBox>
                 </Grid>
               </Grid>
