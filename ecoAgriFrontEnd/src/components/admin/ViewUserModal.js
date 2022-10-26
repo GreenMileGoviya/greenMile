@@ -35,7 +35,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
 }));
 export default function ViewUserModal(props) {
-    console.log(props);
+   // console.log(props);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
         setOpen(true);
