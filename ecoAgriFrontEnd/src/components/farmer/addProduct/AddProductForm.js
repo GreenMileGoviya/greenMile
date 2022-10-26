@@ -14,8 +14,12 @@ import { async } from '@firebase/util';
 import AddProductContext from '../../../context/AddProduct-context';
 import { addProduct } from '../../../store/productApiCalls';
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from 'react-router';
+import PlaceSelector from '../../registraion/PlaceSelector';
+import DistrictService from '../../../services/DistrictService';
 
 function AddProductForm(props) {
+  const navigate = useNavigate();
   const style = {
     // position: 'absolute',
     // top: '50%',
@@ -191,6 +195,47 @@ function AddProductForm(props) {
     }
   })
 
+  const {
+    value: town,
+    isValid: townIsValid,
+    hasError: townHasError,
+    error: townError,
+    valueChangeHandler: townChangeHandler,
+    inputBlurHandler: townBlurHandler,
+  } = useInput((value) => {
+    if (value === "") {
+      return { inputIsValid: false, error: "Can't be Empty !" };
+    }
+    // else if (hasNumber(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained numbers !" };
+    // } else if (hasSpecialChars(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained special chars !" };
+    // } 
+    else {
+      return { inputIsValid: true, error: "" };
+    }
+  })
+
+  const {
+    value: city,
+    isValid: cityIsValid,
+    hasError: cityHasError,
+    error: cityError,
+    valueChangeHandler: cityChangeHandler,
+    inputBlurHandler: cityBlurHandler,
+  } = useInput((value) => {
+    if (value === "") {
+      return { inputIsValid: false, error: "Can't be Empty !" };
+    }
+    // else if (hasNumber(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained numbers !" };
+    // } else if (hasSpecialChars(value.trim())) {
+    //   return { inputIsValid: false, error: "Can't contained special chars !" };
+    // } 
+    else {
+      return { inputIsValid: true, error: "" };
+    }
+  })
   const resetForm = () => {
     productNameResetHandler();
     productCategoryResetHandler();
@@ -217,12 +262,16 @@ function AddProductForm(props) {
   }
 
   const [liveLocation, setLiveLocation] = useState(null);
+  const [checked, setChecked] = useState(false);
+  const locationSetHandler = (event) => {
+    setChecked(event.target.checked);
+  };
   console.log(liveLocation);
   let formIsValid = false;
 
-  if ((liveLocation !== null) && productNameIsValid && productCategoryIsValid && weightIsValid && unitPriceIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && (productImages.length !== 0) && (props.productType === "sellProduct")) {
+  if ((liveLocation !== null) && productNameIsValid && productCategoryIsValid && weightIsValid && unitPriceIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && cityIsValid && townIsValid && (productImages.length !== 0) && (props.productType === "sellProduct") && checked) {
     formIsValid = true;
-  } else if ((liveLocation !== null) && productNameIsValid && productCategoryIsValid && weightIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && (productImages.length !== 0) && (props.productType === "donateProduct")) {
+  } else if ((liveLocation !== null) && productNameIsValid && productCategoryIsValid && weightIsValid && manuDateIsValid && expireDateIsValid && fieldAddressIsValid && cityIsValid && townIsValid && (productImages.length !== 0) && (props.productType === "donateProduct") && checked) {
     formIsValid = true;
   }
 
@@ -289,11 +338,14 @@ function AddProductForm(props) {
     };
     const productDataSave = addProduct(data, dispatch, token);
     if (productDataSave) {
+      resetForm();
       Swal.fire({
         icon: "success",
         title: "Product Save Successful!",
         showConfirmButton: true,
-      });
+      }).then(() => {
+        navigate("/sell")
+      })
     } else {
       Swal.fire({
         icon: "error",
@@ -301,8 +353,18 @@ function AddProductForm(props) {
         showConfirmButton: true,
       });
     }
-    resetForm();
   }
+  const districtPlaces = []
+  let cityPlaces = []
+  DistrictService.map((place) => (
+    districtPlaces.push(place.district)
+  ))
+  // console.log()
+  DistrictService.map((place) => {
+    if (city === place.district) {
+      cityPlaces = place.cities
+    }
+  })
   return (
     <AddProductContext.Provider value={{
       productImages: productImages,
@@ -424,6 +486,29 @@ function AddProductForm(props) {
                 helperText={fieldAddressHasError ? fieldAddressError : ""}
               />
             </Grid>
+            <Grid item xs={6}>
+              <PlaceSelector
+                label="District"
+                value={city}
+                onChange={cityChangeHandler}
+                onBlur={cityBlurHandler}
+                cities={districtPlaces}
+                hasError={cityHasError}
+                error={cityError}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <PlaceSelector
+                label="City"
+                value={town}
+                onChange={townChangeHandler}
+                onBlur={townBlurHandler}
+                cities={cityPlaces}
+                disabled={city === ""}
+                hasError={townHasError}
+                error={townError}
+              />
+            </Grid>
             <Grid item xs={12}>
               <div>
                 <Grid container spacing={2}>
@@ -447,7 +532,11 @@ function AddProductForm(props) {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox defaultChecked />}
+                control={
+                  <Checkbox
+                    checked={checked}
+                    onChange={locationSetHandler}
+                  />}
                 label={
                   <p className={classes.text}>
                     Make sure you have set your product location
