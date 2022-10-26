@@ -58,7 +58,17 @@ function GoogleMapContainer(props) {
   //product location here
   const [destination, setDestination] = useState({ lng: 79.88389509223174, lat: 6.872037471140445 });
 
+  useEffect(()=>{
+    const setLocation = ()=>{
+      setDestination({
+        lng: props.longitude, lat: props.latitude
+      });
+    }
+    setLocation();
+  },[]);
+
   const setPath = async () => {
+    
     navigator.geolocation.getCurrentPosition((position) => {
       setCenter({
         lat: position.coords.latitude,

@@ -15,7 +15,7 @@ function DashBoard() {
   let userType = useSelector((state) => state.user.userType);
 
   useEffect(() => {
-    alert("hiii");
+    // alert("hiii");
     const checkUserExist = () => {
       if (userType == null) {
         navigate("/login");
