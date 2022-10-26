@@ -67,6 +67,10 @@ function SignInForm() {
           // window.location.href = "buyer/dashboard";
           navigate("/Advertiser/dashboard");
           loginSuccess();
+        } else if (userType === "AgriExpert") {
+          // window.location.href = "buyer/dashboard";
+          navigate("/agriExpert/dashboard");
+          loginSuccess();
         }
         // Swal.fire({
         //   title: "Login Success!",
@@ -113,7 +117,7 @@ function SignInForm() {
   return (
     <form onSubmit={loginPress}>
       <CenteredBox align="right">
-        <IconButton onClick={() => {navigate("/")}}>
+        <IconButton onClick={() => { navigate("/") }}>
           <CloseIcon />
         </IconButton>
       </CenteredBox>

@@ -35,6 +35,8 @@ import CharityProfile from './components/pages/buyer/Profile';
 import FarmerBuy from './components/pages/farmer/FarmerBuy';
 import AdvertiserDashboard from './components/pages/advertiser/Dashboard';
 import AdvertiserProfile from './components/pages/moderator/Profile';
+import ModeratorDashboard from './components/moderator/ModeratorDashboard';
+import AgriExpertDashboard from './components/pages/agriExpert/Dashboard';
 
 
 function App() {
@@ -90,7 +92,7 @@ function App() {
 
 
           {/* moderator */}
-          <Route path='/moderator/dashboard' element={<AdminDashboard />} />
+          <Route path='/moderator/dashboard' element={<ModeratorDashboard />} />
           <Route path='/moderator/articals' element={<ConfirmArticals />} />
           <Route path='/moderator/profile' element={<ModeratorProfile />} />
           {/* <Route path="/buy-product/" element={<BuyProduct />} /> */}
@@ -108,6 +110,10 @@ function App() {
           <Route path="/advertiser/dashboard" element={<AdvertiserDashboard />} />
           <Route path="/advertiser/profile" element={<AdvertiserProfile />} />
 
+          {/* agriExpert */}
+          <Route path="/agriExpert/dashboard" element={<AgriExpertDashboard />}></Route>
+          <Route path='/agriExpert/articals' element={<ConfirmArticals />} />
+          <Route path='/agriExpert/profile' element={<ModeratorProfile />} />
           {/* <Route path="/profile" element={<Profile />}></Route> */}
           <Route path="/otp-verify" element={<OtpVerify />} />
           {/* <Route path="/checkout" element={<Checkout />} /> */}

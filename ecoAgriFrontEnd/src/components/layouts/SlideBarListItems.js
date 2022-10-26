@@ -78,25 +78,32 @@ export const SlideBarListItems = () => {
             },
 
         ];
-    } else if (userType === "Moderator") {
+    } else if (userType === "Moderator" || userType === "AgriExpert") {
+        let linkFirstElement = ""
+        if(userType === "Moderator") {
+            linkFirstElement = "moderator";
+        } else if(userType === "AgriExpert") {
+            linkFirstElement = "agriExpert"
+        }
         listItems = [
             {
                 id: "leftbar-listItem-1",
                 listName: "Dashboard",
                 icon: <BookmarksIcon />,
-                link: "/moderator/dashboard",
+                link: `/${linkFirstElement}/dashboard`,
             },
             {
                 id: "leftbar-listItem-2",
                 listName: "Articals",
                 icon: <BookmarksIcon />,
                 link: "/moderator/articals",
+                link: `/${linkFirstElement}/articals`,
             },
             {
-                id: "leftbar-listItem-3",
+                id: "leftbar-listItem-4",
                 listName: "My Profile",
                 icon: <BookmarksIcon />,
-                link: "/moderator/profile",
+                link: `/${linkFirstElement}/profile`,
             },
             
         ];
@@ -162,6 +169,15 @@ export const SlideBarListItems = () => {
                 listName: "My Account",
                 icon: <PeopleAltIcon />,
                 link: "/buyer/profile"
+            },
+        ];
+    } else if (userType === "Advertiser") {
+        listItems = [
+            {
+                id: "leftbar-listItem-2",
+                listName: "My Account",
+                icon: <PeopleAltIcon />,
+                link: "/advertiser/profile"
             },
         ];
     }
