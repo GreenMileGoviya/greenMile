@@ -40,7 +40,7 @@ export default function Contacts(props) {
     const [active, setActive] = React.useState(-1);
 
     const currentUserId = useSelector((state) => state.user.currentUser.id);
-    const otherUsers = useSelector((state) => state.user.otherUsers.filter((x) => x.id != currentUserId && (x.userrole == "Farmer" || x.userrole == "Buyer")));
+    const otherUsers = useSelector((state) => state.user.otherUsers.filter((x) => x.id != currentUserId && (x.userrole == "Farmer" || x.userrole == "Buyer" || x.userrole == "AgriExpert")));
     const token = useSelector((state) => state.user.token);
     const dispatch = useDispatch();
     console.log(otherUsers);
@@ -87,7 +87,7 @@ export default function Contacts(props) {
                         <ListItemAvatar>
                             <Avatar alt="Profile Picture" src={user.img} />
                         </ListItemAvatar>
-                        <ListItemText primary={<Typography sx={{ color: "#000" }}>{user.username}</Typography>} />
+                        <ListItemText primary={<Typography sx={{ color: "#000" }}>{user.username}</Typography>} secondary={user.userrole} />
                     </ListItem>
                     <Divider />
                 </React.Fragment>
@@ -105,7 +105,7 @@ export default function Contacts(props) {
                                 <ListItemAvatar>
                                     <Avatar alt="Profile Picture" src={user.img} />
                                 </ListItemAvatar>
-                                <ListItemText primary={<Typography sx={{ color: "#000" }}>{user.username}</Typography>} />
+                                <ListItemText primary={<Typography sx={{ color: "#000" }}>{user.username}</Typography>} secondary={user.userrole} />
                             </ListItem>
                             <Divider />
                         </React.Fragment>

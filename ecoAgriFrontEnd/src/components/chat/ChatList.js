@@ -159,7 +159,8 @@ export default function ChatList(props) {
 
     const user = useSelector((state) => state.user.currentUser);
     const userId = user.id;
-    const otherUsers = useSelector((state) => state.user.otherUsers.filter((x) => x.id != userId && (x.userrole == "Farmer" || x.userrole == "Buyer")));
+    console.log(user.userrole)
+    const otherUsers = useSelector((state) => state.user.otherUsers.filter((x) => x.id != userId && (x.userrole == "Farmer" || x.userrole == "Buyer" || x.userrole == "AgriExpert")));
 
     const getMessages = async () => {
         setIsLoading(true)
@@ -231,7 +232,7 @@ export default function ChatList(props) {
                                         <ListItemAvatar>
                                             <Avatar alt="Profile Picture" src={user.img} />
                                         </ListItemAvatar>
-                                        <ListItemText primary={user.username} />
+                                        <ListItemText primary={user.username} secondary={user.userrole} />
                                     </ListItem>
                                     <Divider />
                                 </React.Fragment>
@@ -250,7 +251,7 @@ export default function ChatList(props) {
                                             <ListItemAvatar>
                                                 <Avatar alt="Profile Picture" src={user.img} />
                                             </ListItemAvatar>
-                                            <ListItemText primary={user.username} />
+                                            <ListItemText primary={user.username} secondary={user.userrole} />
                                         </ListItem>
                                         <Divider />
                                     </React.Fragment>

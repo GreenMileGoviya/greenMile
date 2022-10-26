@@ -5,7 +5,7 @@ import { MessageLeft, MessageRight } from "./Message";
 import TextInput from "./TextInput";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { storage, db } from "../../Firebase";
-import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy, Timestamp, serverTimestamp } from "firebase/firestore";
 import { useSelector } from 'react-redux';
 import { async } from "@firebase/util";
 import LinearIndeterminate from "../ui/LinearIndeterminate";
@@ -36,7 +36,7 @@ function ChatWall(props) {
     const userId = user.id;
     const receiverId = props.selectContactdetails.value1;
     console.log(userId, receiverId);
-    
+
     const scroll = useRef()
     const [messages, setMessages] = useState([])
     const [msgSending, setMsgSending] = useState(-1);
@@ -50,13 +50,13 @@ function ChatWall(props) {
         setIsLoading(true);
         // const q = query(collection(db, "messages"), where("id", "==", `${userId}-${receiverId}`), orderBy('timestamp'));
         // console.log(`${userId}-${receiverId}`)
-        const q = query(collection(db, "messages") ,orderBy('timestamp'));
+        const q = query(collection(db, "messages"), orderBy('timestamp'));
         const receiveMessages = []
         const querySnapshot = await getDocs(q);
         console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
             console.log(doc.data());
-            if(doc.data().id === `${userId}-${receiverId}` || doc.data().id === `${receiverId}-${userId}`) {
+            if (doc.data().id === `${userId}-${receiverId}` || doc.data().id === `${receiverId}-${userId}`) {
                 receiveMessages.push({
                     mId: doc.id,
                     ...doc.data(),
@@ -70,6 +70,15 @@ function ChatWall(props) {
         getMessages();
     }, [msgSending])
 
+    const convertTimestamp = (timestamp) => {
+        let date = timestamp.toDate();
+        let mm = date.getMonth();
+        let dd = date.getDate();
+        let yyyy = date.getFullYear();
+
+        date = mm + '-' + dd + '-' + yyyy;
+        return date;
+    }
     return (
         <ThemeProvider theme={theme}>
             <Box>
@@ -99,11 +108,13 @@ function ChatWall(props) {
                 >
                     {messages.map((message) => {
                         if (message.receiverId === userId) {
+                            // console.log(convertTimestamp(message.timestamp))
+                            // console.log(message.timestamp)
                             return (
                                 <MessageLeft
                                     key={message.mId}
                                     message={message.text}
-                                // timestamp={timestamp}
+                                    timestamp={convertTimestamp(message.timestamp)}
                                 // displayName={displayName}
                                 />
                             );
@@ -112,7 +123,7 @@ function ChatWall(props) {
                                 <MessageRight
                                     key={message.mId}
                                     message={message.text}
-                                // timestamp={timestamp}
+                                    timestamp={convertTimestamp(message.timestamp)}
                                 // displayName={displayName}
                                 />
                             );
