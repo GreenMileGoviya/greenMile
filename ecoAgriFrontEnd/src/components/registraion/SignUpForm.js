@@ -25,7 +25,10 @@ import { v4 } from "uuid";
 import Swal from "sweetalert2";
 import { storage } from "../../Firebase";
 import BackDrop from "../ui/BackDrop";
+import DistrictService from "../../services/DistrictService";
+import PlaceSelector from "./PlaceSelector";
 function SignUpForm(props) {
+  // https://raw.githubusercontent.com/Group22UCSC/thekolaya/main/vendors/images/default_profile/profile.jpg
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const [isDataUploading, setIsDataUploading] = useState(false);
@@ -349,7 +352,7 @@ function SignUpForm(props) {
       return;
     }
     let data = {
-      username: `${lname} ${fname}`,
+      username: `${fname} ${lname}`,
       phone_number: phone_number,
       address: address,
       email: email,
@@ -424,6 +427,17 @@ function SignUpForm(props) {
   //     navigate("/login");
   //   })
   // }
+  const districtPlaces = []
+  let cityPlaces = []
+  DistrictService.map((place) => (
+    districtPlaces.push(place.district)
+  ))
+  // console.log()
+  DistrictService.map((place) => {
+    if (city === place.district) {
+      cityPlaces = place.cities
+    }
+  })
   return (
     <div>
       {/* <BackDrop dataUploading={isDataUploading} /> */}
@@ -536,20 +550,39 @@ function SignUpForm(props) {
         </Grid>
         <Grid container spacing={2} sx={{ mb: 3 }}>
           <Grid item xs={6}>
-            <TextField
+            <PlaceSelector
+              label="District"
+              value={city}
+              onChange={cityChangeHandler}
+              onBlur={cityBlurHandler}
+              cities={districtPlaces}
+              hasError={cityHasError}
+              error={cityError}
+            />
+            {/* <TextField
               required
               variant="standard"
-              label="City"
+              label="District"
               value={city}
               onChange={cityChangeHandler}
               onBlur={cityBlurHandler}
               error={cityHasError}
               helperText={cityHasError ? cityError : ""}
               fullWidth
-            />
+            /> */}
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <PlaceSelector
+              label="City"
+              value={town}
+              onChange={townChangeHandler}
+              onBlur={townBlurHandler}
+              cities={cityPlaces}
+              disabled={city === ""}
+              hasError={townHasError}
+              error={townError}
+            />
+            {/* <TextField
               required
               variant="standard"
               label="Town"
@@ -559,7 +592,7 @@ function SignUpForm(props) {
               error={townHasError}
               helperText={townHasError ? townError : ""}
               fullWidth
-            />
+            /> */}
           </Grid>
         </Grid>
         <Grid container sx={{ mb: 3 }} spacing={3}>
