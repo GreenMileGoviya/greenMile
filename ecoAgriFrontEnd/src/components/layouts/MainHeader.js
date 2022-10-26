@@ -87,21 +87,21 @@ export default function MainHeader(props) {
                                 src="/images/athpotha_v2.png"
                                 style={{ width: 60, height: 60 }}
                             /> */}
-            </Typography>
-            {(userType === "Farmer" || userType === "Buyer") && (
-              <Box
-                id="nav-container-list"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
-                <MainTab value={tabValue} />
-              </Box>
-            )}
-            {userType === "Moderator" && (
-              <IconButton onClick={() => navigate("/profile")}>
-                <Avatar></Avatar>
-              </IconButton>
-            )}
-            {/* {userType !== "Moderator" &&
+                        </Typography>
+                        {(userType === "Farmer" || userType === "Buyer"  || userType === "Charity" || userType === "Advertiser") &&
+                            <Box
+                                id="nav-container-list"
+                                sx={{ display: { xs: "none", sm: "block" } }}
+                            >
+                                <MainTab value={tabValue} />
+                            </Box>
+                        }
+                        {userType === "Moderator" &&
+                            <IconButton onClick={() => navigate("/profile")}>
+                                <Avatar></Avatar>
+                            </IconButton>
+                        }
+                        {/* {userType !== "Moderator" &&
                         <ChatBubbleIcon />
                         } */}
             <ChatContainer />

@@ -20,7 +20,7 @@ function Dashboard() {
   }, [navigate]);
   return (
     <React.Fragment>
-      <Buy />
+      <Buy productType="buy" />
     </React.Fragment>
   )
 }

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router";
 // import classes from '../../ui/HideScrollBar.module.css';
 
-function Buy() {
+function Buy(props) {
   const user = useSelector((state) => state.user.currentUser);
   let userType = useSelector((state) => state.user.userType);
   // const userType = user.userrole ? user.userrole : "none";
@@ -24,7 +24,7 @@ function Buy() {
     };
     checkUserExist();
   },[]);
-  const value = (userType === "Farmer" && 2) || (userType === "Buyer" && 0);
+  const value = (userType === "Farmer" && 2) || (userType === "Buyer" && 0) || (userType === "Charity" && 0);
   return (
     <React.Fragment>
       <MainHeader value={value} />
@@ -34,11 +34,13 @@ function Buy() {
         </Grid>
         <Grid item xs={12} sx={{ bgcolor: "#FFF", mt: 3, p: 3 }}>
           <BuyProducts
+            productType={props.productType}
             productCategory="Vegetable"
           />
         </Grid>
         <Grid item xs={12} sx={{ bgcolor: "#FFF", mt: 3, p: 3 }}>
           <BuyProducts
+            productType={props.productType}
             productCategory="Fruits"
           />
         </Grid>

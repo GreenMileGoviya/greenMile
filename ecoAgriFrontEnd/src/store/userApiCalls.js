@@ -17,18 +17,24 @@ import {
   addUserFailure,
 } from "./userSlice";
 import { publicRequest, userRequest } from "../requestMethods";
-// import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 export const register = async (User) => {
   // dispatch(addUserStart());
   try {
     const res = await publicRequest.post(`/register`, User);
-    console.log(res);
-    alert("User registration Success!");
+    
     return 1;
+
+    // alert("User registration Success!");
     //   dispatch(addUserSuccess(res.data));
   } catch (err) {
-    alert("User registration Failed!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'User registration Failed!',
+    })
     return 0;
     //   dispatch(addUserFailure());
   }
@@ -47,10 +53,10 @@ export const login = async (dispatch, user) => {
   }
 };
 
-export const getUsers = async (dispatch,token) => {
+export const getUsers = async (dispatch, token) => {
   dispatch(getUserStart());
   try {
-    const res = await userRequest.get("/users",{
+    const res = await userRequest.get("/users", {
       headers: {
         "Content-Type": "application/json",
         token: `Bearer ${token}`,
@@ -64,10 +70,10 @@ export const getUsers = async (dispatch,token) => {
   }
 };
 
-export const deleteUser = async (id, dispatch,token) => {
+export const deleteUser = async (id, dispatch, token) => {
   dispatch(deleteUserStart());
   try {
-    const res = await userRequest.delete(`/user/${id}`,{
+    const res = await userRequest.delete(`/user/${id}`, {
       headers: {
         "Content-Type": "application/json",
         token: `Bearer ${token}`,
@@ -83,7 +89,7 @@ export const updateUser = async (id, User, dispatch, token) => {
   dispatch(updateUserStart());
   try {
     // update
-    const res = await userRequest.put(`/user/${id}`,{
+    const res = await userRequest.put(`/user/${id}`, {
       headers: {
         "Content-Type": "application/json",
         token: `Bearer ${token}`,
