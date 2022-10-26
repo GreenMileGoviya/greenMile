@@ -49,7 +49,7 @@ function ProdcutCard(props) {
                                         variant='contained'
                                         style={{ textTransform: "none" }}
                                         sx={{ p: 0, px: 1, mt: 3, mr: 2 }}
-                                        onClick={() => { navigate(`/buy-product/${props.item.id}`) }}
+                                        onClick={() => { navigate(`/login`) }}
                                     >
                                         Shop Now
                                     </Button>
