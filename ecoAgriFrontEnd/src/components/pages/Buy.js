@@ -1,14 +1,29 @@
 import { Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import MainHeader from '../layouts/MainHeader'
 import BuyProducts from '../buy/BuyProducts'
 import BuyProductActions from '../buy/BuyProductActions'
 import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router";
 // import classes from '../../ui/HideScrollBar.module.css';
 
 function Buy(props) {
   const user = useSelector((state) => state.user.currentUser);
-  const userType = user.userrole;
+  let userType = useSelector((state) => state.user.userType);
+  // const userType = user.userrole ? user.userrole : "none";
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    const checkUserExist = () => {
+      console.log(userType);
+      // alert("Hi");
+      if (!userType) {
+        alert("ayi");
+        navigate("/login");
+      }
+    };
+    checkUserExist();
+  },[]);
   const value = (userType === "Farmer" && 2) || (userType === "Buyer" && 0) || (userType === "Charity" && 0);
   return (
     <React.Fragment>
