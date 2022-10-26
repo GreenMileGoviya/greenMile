@@ -31,7 +31,7 @@ const ImageUploadService = (path, file, handleChange) => {
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 url = downloadURL;
-                // handleChange(downloadURL);
+                handleChange(downloadURL);
             }).catch((error) => {
                 Swal.fire({
                     icon: 'error',

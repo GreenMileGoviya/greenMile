@@ -28,6 +28,7 @@ import BackDrop from "../ui/BackDrop";
 import DistrictService from "../../services/DistrictService";
 import PlaceSelector from "./PlaceSelector";
 function SignUpForm(props) {
+  // https://raw.githubusercontent.com/Group22UCSC/thekolaya/main/vendors/images/default_profile/profile.jpg
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const [isDataUploading, setIsDataUploading] = useState(false);
