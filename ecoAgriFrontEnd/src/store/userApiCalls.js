@@ -44,8 +44,7 @@ export const login = async (dispatch, user) => {
   // const userData = JSON.stringify(user);
   dispatch(loginStart());
   try {
-    const res = await publicRequest.post("/login", user);
-    console.log(res);
+    const res = await userRequest.post("/login", user);
     dispatch(loginSuccess(res.data));
     return 1;
   } catch (err) {
