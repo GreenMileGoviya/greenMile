@@ -19,10 +19,12 @@ export default function BuyProducts(props) {
   const navigate = useNavigate();
   const [itemProductData, setItemProductData] = React.useState([]);
 
+  const userId = useSelector((state) => state.user.currentUser.id);
+  console.log(userId);
   const products = useSelector((state) => state.product.products);
   const productCategory = useSelector((state) =>
     state.product.products.filter(
-      (x) => x.productCategory == props.productCategory && x.isDonate == false
+      (x) => (x.productCategory == props.productCategory && x.isDonate == false) && x.sellerId != userId
     )
   );
 
