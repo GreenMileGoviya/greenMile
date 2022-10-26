@@ -9,7 +9,7 @@ import {
 // import styled from "@emotion/styled";
 import { green, red, blue } from "@mui/material/colors";
 import CenteredBox from "../ui/CenteredBox";
-import { Box, Button, Grid } from "@mui/material";
+import { Alert, Box, Button, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 // import Popup from "./Popup";
 import { useRef } from "react";
@@ -18,6 +18,8 @@ import ViewUserModal from "./ViewUserModal";
 import { GridApi } from "@mui/x-data-grid";
 import { getUsers } from "../../store/userApiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { deleteUser } from "../../store/userApiCalls";
 //Filter panel
 const CustomToolbar = ({ setFilterButtonEl }) => (
   <GridToolbarContainer>
@@ -46,7 +48,13 @@ const style = {
 };
 export default function ManageUserTable() {
   const [rows, setRows] = React.useState([]);
-  const otherUsers = useSelector((state) => state.user.otherUsers);
+  const [updateTrigger, setupdateTrigger] = React.useState(0);
+  const [deleteTrigger, setDeleteTrigger] = React.useState(0);
+  const otherUsers = useSelector((state) =>
+    state.user.otherUsers.filter(
+      (x) => x.userrole != "Admin" && x.userrole != "Moderator"
+    )
+  );
   const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -73,7 +81,11 @@ export default function ManageUserTable() {
       }
     };
     getAllUsers();
-  }, []);
+  }, [updateTrigger]);
+
+  const DeleteUser = () => {
+    Alert("In delete User");
+  };
   //   const rows = [
   //     {
   //       id: 1,
@@ -145,7 +157,7 @@ export default function ManageUserTable() {
         // const thisRow: Record<string, GridCellValue> = {};
         // console.log(thisRow);
         const viewUserClickHandler = (e) => {
-          console.log(params);
+          console.log(params.row);
           console.log("hello on View");
         };
         const updateUserClickHandler = () => {
@@ -161,11 +173,43 @@ export default function ManageUserTable() {
                 userType={params.row.col2}
                 onUpdate={updateUserClickHandler}
                 data={params.row}
+                updateTrigger={setupdateTrigger}
               />
             </Grid>
             <Grid item xs={4}>
-              <ColorButton3>Delete</ColorButton3>
+              <ColorButton3
+                onClick={()=>{
+                   //console.log("hello")
+                    
+                      Swal.fire({
+                        title: 'Do you want to Delete the User?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'Delete',
+              
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                          Swal.fire('User Deleted!', '', 'success')
+                          const result = deleteUser(params.row.id,dispatch,token);
+                          setDeleteTrigger(Math.random());
+                          window.location.reload(false);
+                          //window.location.reload(false);
+                          
+                        } else if (result.isDenied) {
+                          Swal.fire('Changes are not saved', '', 'info')
+                        }
+                      })
+                      
+                          //window.location.reload(false);
+                        
+                  }}
+              >
+                Delete
+              </ColorButton3>
+              
             </Grid>
+            {/* <button onClick={DeleteUser}>Delete</button> */}
           </Grid>
         );
       },
