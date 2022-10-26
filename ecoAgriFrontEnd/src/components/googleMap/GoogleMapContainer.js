@@ -59,6 +59,9 @@ function GoogleMapContainer(props) {
   const [destination, setDestination] = useState({ lng: 79.88389509223174, lat: 6.872037471140445 });
 
   const setPath = async () => {
+    setDestination({
+      lng: props.lng, lat: props.lat
+    });
     navigator.geolocation.getCurrentPosition((position) => {
       setCenter({
         lat: position.coords.latitude,
