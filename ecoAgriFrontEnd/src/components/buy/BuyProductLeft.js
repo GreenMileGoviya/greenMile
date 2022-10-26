@@ -46,7 +46,7 @@ const imageBoxStyle = {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#effcf0",
-    overflow: "hidden",
+    // overflow: "hidden",
     boxShadow: 24
 }
 
@@ -61,11 +61,14 @@ export default function BuyProductLeft(props) {
     const images = [];
     if (props.productDetail.image1) {
         images.push(props.productDetail.image1);
-    } else if (props.productDetail.image2) {
+    }
+    if (props.productDetail.image2) {
         images.push(props.productDetail.image2);
-    } else if (props.productDetail.image3) {
+    }
+    if (props.productDetail.image3) {
         images.push(props.productDetail.image3);
-    } else if (props.productDetail.image4) {
+    }
+    if (props.productDetail.image4) {
         images.push(props.productDetail.image4);
     }
 
@@ -121,7 +124,7 @@ export default function BuyProductLeft(props) {
                     <Box sx={imageBoxStyle}>
                         <img
                             src={props.productDetail.image1}
-                            style={{ height: "100%" }}
+                            style={{ height: "100%", width: "100%" }}
                         />
                     </Box>
                 </TabPanel>
@@ -131,7 +134,7 @@ export default function BuyProductLeft(props) {
                     <Box sx={imageBoxStyle}>
                         <img
                             src={props.productDetail.image2}
-                            style={{ height: "100%" }}
+                            style={{ height: "100%", width: "100%" }}
                         />
                     </Box>
                 </TabPanel>
@@ -141,7 +144,7 @@ export default function BuyProductLeft(props) {
                     <Box sx={imageBoxStyle}>
                         <img
                             src={props.productDetail.image3}
-                            style={{ height: "100%" }}
+                            style={{ height: "100%", width: "100%" }}
                         />
                     </Box>
                 </TabPanel>
@@ -151,7 +154,7 @@ export default function BuyProductLeft(props) {
                     <Box sx={imageBoxStyle}>
                         <img
                             src={props.productDetail.image3}
-                            style={{ height: "100%" }}
+                            style={{ height: "100%", width: "100%" }}
                         />
                     </Box>
                 </TabPanel>

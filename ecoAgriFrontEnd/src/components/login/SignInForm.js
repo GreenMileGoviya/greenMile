@@ -73,6 +73,10 @@ function SignInForm() {
           // window.location.href = "buyer/dashboard";
           navigate("/Advertiser/dashboard");
           loginSuccess();
+        } else if (userType === "AgriExpert") {
+          // window.location.href = "buyer/dashboard";
+          navigate("/agriExpert/dashboard");
+          loginSuccess();
         }
       } else {
         navigate("/login");
@@ -101,6 +105,11 @@ function SignInForm() {
     // <form onSubmit={loginPress}>
     // <form>
     <div>      
+      <CenteredBox align="right">
+        <IconButton onClick={() => { navigate("/") }}>
+          <CloseIcon />
+        </IconButton>
+      </CenteredBox>
       <Grid container sx={{ mb: 3, zIndex: 0 }}>
         <Grid item xs={12}>
           <CenteredBox align="center">
