@@ -19,10 +19,25 @@ export default function BuyProducts(props) {
   const navigate = useNavigate();
   const [itemProductData, setItemProductData] = React.useState([]);
 
+  const userId = useSelector((state) => state.user.currentUser.id);
+  const userType = useSelector((state) => state.user.userType);
+
+  console.log(userId);
   const products = useSelector((state) => state.product.products);
   const productCategory = useSelector((state) =>
     state.product.products.filter(
-      (x) => x.productCategory == props.productCategory && x.isDonate == false
+      (x) =>
+        x.productCategory == props.productCategory &&
+        x.isDonate == false &&
+        x.sellerId != userId
+    )
+  );
+  const productCategoryCharity = useSelector((state) =>
+    state.product.products.filter(
+      (x) =>
+        x.productCategory == props.productCategory &&
+        x.isDonate == true &&
+        x.sellerId != userId
     )
   );
 
@@ -33,8 +48,9 @@ export default function BuyProducts(props) {
         // alert("Hii");
         let result = products.filter(
           (x) =>
-            (x.district == props.locationDetail &&
-            x.productCategory == props.productCategory) && x.isDonate == false
+            x.district == props.locationDetail &&
+            x.productCategory == props.productCategory &&
+            x.isDonate == false
         );
         console.log(result);
         let data = [];
@@ -74,8 +90,9 @@ export default function BuyProducts(props) {
         // alert("Hii");
         let result = products.filter(
           (x) =>
-            (x.location == props.cityDetail &&
-            x.productCategory == props.productCategory) && x.isDonate == false
+            x.location == props.cityDetail &&
+            x.productCategory == props.productCategory &&
+            x.isDonate == false
         );
         console.log(result);
         let data = [];
@@ -118,29 +135,59 @@ export default function BuyProducts(props) {
       let data = [];
       if (productStatus) {
         // alert("Data success");
-        productCategory.map((item) => {
-          data.push({
-            key: item.id,
-            id: item.id,
-            author: (
-              <Grid container>
-                <Grid item xs={6}>
-                  <Typography variant="body2">Rs. {item.unitPrice}</Typography>
+        if (userType == "Charity") {
+          productCategoryCharity.map((item) => {
+            data.push({
+              key: item.id,
+              id: item.id,
+              author: (
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Typography variant="body2">
+                      Rs. {item.unitPrice}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <CenteredBox align="right">
+                      <Typography variant="body2">{item.weight} kg</Typography>
+                    </CenteredBox>
+                  </Grid>
                 </Grid>
-                <Grid item xs={2}>
-                  <CenteredBox align="right">
-                    <Typography variant="body2">{item.weight} kg</Typography>
-                  </CenteredBox>
-                </Grid>
-              </Grid>
-            ),
-            title: item.productName,
-            image1: item.image1,
-            image2: item.image2,
-            image3: item.image3,
-            image4: item.image4,
+              ),
+              title: item.productName,
+              image1: item.image1,
+              image2: item.image2,
+              image3: item.image3,
+              image4: item.image4,
+            });
           });
-        });
+        } else {
+          productCategory.map((item) => {
+            data.push({
+              key: item.id,
+              id: item.id,
+              author: (
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Typography variant="body2">
+                      Rs. {item.unitPrice}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <CenteredBox align="right">
+                      <Typography variant="body2">{item.weight} kg</Typography>
+                    </CenteredBox>
+                  </Grid>
+                </Grid>
+              ),
+              title: item.productName,
+              image1: item.image1,
+              image2: item.image2,
+              image3: item.image3,
+              image4: item.image4,
+            });
+          });
+        }
         setItemProductData(data);
         console.log(productCategory);
       } else {

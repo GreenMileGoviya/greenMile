@@ -109,12 +109,12 @@ export const SlideBarListItems = () => {
         ];
     } else if (userType === "Farmer") {
         listItems = [
-            {
-                id: "leftbar-listItem-1",
-                listName: "Bank Account",
-                icon: <PeopleAltIcon />,
-                link: "/sell/add-bankAccount"
-            },
+            // {
+            //     id: "leftbar-listItem-1",
+            //     listName: "Bank Account",
+            //     icon: <PeopleAltIcon />,
+            //     link: "/sell/add-bankAccount"
+            // },
             {
                 id: "leftbar-listItem-2",
                 listName: "Add Product",

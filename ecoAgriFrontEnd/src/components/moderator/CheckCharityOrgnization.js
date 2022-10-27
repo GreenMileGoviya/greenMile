@@ -14,7 +14,7 @@ function CheckCharityOrgnization() {
                     </CenteredBox>
                 </Grid>
                 <Grid item xs={12}>
-                    <CharityField charityName="Hello world" link={"https://images.template.net/wp-content/uploads/2019/08/Independent-Examiner-Charity-Report-Template.jpg?width=390"} />
+                    <CharityField charityName="Western Union Organization" link={"https://images.template.net/wp-content/uploads/2019/08/Independent-Examiner-Charity-Report-Template.jpg?width=390"} />
                 </Grid>
             </Grid>
         </Box>

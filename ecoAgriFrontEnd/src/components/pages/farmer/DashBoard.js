@@ -27,12 +27,12 @@ function DashBoard() {
     <React.Fragment>
       <MainHeader value={0} />
       <Grid container spacing={2} sx={{ pt: "100px", px: 5 }}>
-        <Grid item xs={10}>
+        <Grid item xs={12}>
           <DashboardTabs />
         </Grid>
-        <Grid item xs={2}>
+        {/* <Grid item xs={2}>
           <Advertisement />
-        </Grid>
+        </Grid> */}
       </Grid>
     </React.Fragment>
   );
